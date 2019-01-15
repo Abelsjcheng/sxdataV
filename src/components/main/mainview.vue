@@ -1,8 +1,17 @@
 <template>
  <div class="main overview">
-    <div class="m_left1">
-      echarts1
+    <div class="m_left">
+      <div class="m_left1">
+        <tabledata />
+      </div>
+      <div class="m_left1">
+        <tabledata />
+      </div>
     </div>
+    <div class="m_right">
+      <charts1 />   
+    </div>
+   
     <div class="m_center2">   
       <baidu-map class="bm-view" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true" :mapStyle="mapStyle" >
       </baidu-map> 
@@ -12,7 +21,11 @@
 
 <script>
 import mapStyle from '../../static/json/mapStyle.json';
+import charts1 from './charts/charts1'
+import tabledata from './charts/tabledata'
 export default {
+components: {charts1,tabledata
+    },
 name: "mianview",
   data () {
     return {
@@ -20,7 +33,8 @@ name: "mianview",
       zoom: 15,
       mapStyle: {
         styleJson: mapStyle        
-      }
+      },
+     
     }
   },
   methods: {
@@ -30,7 +44,8 @@ name: "mianview",
       this.center.lat = 28.216
       this.zoom = 15
     }
-  }
+  },
+  
 }
 </script>
 
@@ -40,18 +55,21 @@ name: "mianview",
   height: 824px;
 
 }
-.m_left1{
-  position:absolute;
-  width:250px;
-  height:200px;
-  padding:5px 10px;
-  color:#fff;
-  text-align:right;
-  z-index:2;
-  background: rgba(0,0,0,0.5);
-  box-shadow: 0 0 5px #000;
-}
+
 .m_center2{
-  z-index:1;
+  position: relative;
+  overflow: hidden;
+  z-index:0;
+}
+.m_left{
+  width: 350px;
+  min-height: 824px;
+  
+  position: absolute;
+   
+  left: 0;
+}
+div {
+    display: block;
 }
 </style>

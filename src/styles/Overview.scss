@@ -1,179 +1,72 @@
 .overview{
 	min-height: 824px;
 	background-color: #242b42;
-	.left{
-		.img-wrap {
-			height: 135px;
-			padding-top: 15px;
-			text-align: center;
-			img {
-				height: 100%;
-			}
-		}
-		.component_refresh_time{
-			align-items:center;
-		}
-	}
-	.right{
-		display: flex;
-		flex-direction:column;
-		.top{
-			position: relative;
-			background-color: #202b49;
-			height: 500px;
-			margin: 10px;
-			
-		}
-		.bottom{
-			position: relative;
-			background-color: #202b49;
-			margin: 0 10px;
-			flex:1;
-		}
-	}
-	.rank_list{
-		position: absolute;
-		z-index:10;
-		right: 50px;
-		bottom: 50px;
+	
+	.m_left1{
+		position: relative;
 		width:300px;
-		height: 170px;
-		color: #b7b7b7;
-		.title{
-		    height: 24px;
-		    width: 100%;
-		    color: #fff;
-		    font-size: 14px;
-		    font-weight: bold;
-		    margin-bottom: 10px;
-		    display: flex;
-		    align-items: center;
-		    i{
-	    	    background-color: #f34235;
-			    width: 4px;
-			    border-radius: 2px;
-			    height: 14px;
-			    margin-right: 4px;
-			    display: inline-block;
-		    }
-		}
-		ul{
-			padding: 0;
-			display: flex;
-			flex-wrap: wrap;
-			li{
-				width:50%;
-				list-style: none;
-				margin-bottom: 5px;
-    			overflow:hidden;
-    			text-overflow:ellipsis;
-    			white-space: nowrap;
-				i{
-					width: 20px;
-				    height: 16px;
-				    border-radius: 2px;
-				    text-align: center;
-				    display: inline-block;
-				    background-color: #2e3e69;
-				    font-size: 10px;
-				    line-height: 16px;
-    				margin-right: 10px;
-    				font-style: normal;
-    				font-weight: normal;
-				}
-				&:nth-child(1){
-					color: white;
-					i{
-						background-color: #f34235;
-					}
-				}
-				&:nth-child(2){
-					color: white;
-					i{
-						background-color: #ffa795;
-					}
-				}
-				&:nth-child(3){
-					color: white;
-					i{
-						background-color: #45c8dc;
-					}
+		height:200px;
+		padding:5px 10px;	
+		color:#fff;
+		text-align:center;
+		z-index:2;
+		background: url(../static/img/bgbg1.png) no-repeat;
+		background-size: 100% 100%;
+		box-shadow: inset 0px 0px 20px #038d98;
+		
+	  }
+	  
+	.m_right{
+		position: absolute;
+    	right: 0px;
+    	width: 300px;
+    	height:200px;
+		padding:5px 10px;
+		text-align:center;
+		z-index:2;
+		background: url(../static/img/bgbg1.png) no-repeat;
+		background-size: 100% 100%;
+		box-shadow: inset 0px 0px 20px #038d98;
+		
+	  }
+	.box_left_1{
+		height: 25vh;
+		
+		.tablebox1{
+			width: 100%;
+    		height: 100%;
+    		padding: 0;
+			margin: 0;
+			.box1-y{
+				cursor: pointer;
+    			position: relative;
+    			display: inline-block;
+				overflow: hidden;
+				top:5px;
+				width: 90%;
+				height: 75px;
+    			background: url(../static/img/bgbg1.png) 0 0 no-repeat;
+   				background-size: 100% 100%;
+    			padding: 1vh 0;
+				font-size: 16px;
+				span {
+					margin: 1vh 0;
+					display: inline-block;
+					font-family: 'electronicFont';
+					color: #96d668;
+					font-size: 22px;
 				}
 			}
-
 		}
 	}
-	.select_bar{
+	.animation{
 		position: absolute;
-		top: 0;
-		left: 80px;
-		display: flex;
-		align-items: center;
-		padding: 10px 20px;
-		z-index: 10;
-		label{
-			color: white;
-			font-size: 16px;
-			margin-right: 10px;
-			margin-bottom: 0;
-			height: 25px;
-
-		}
-		select{
-			background: none;
-		    border: #888e9e solid 1px;
-		    border-radius: 16px;
-		    width: 110px;
-		    color: #fff;
-		    padding: 1px 15px;
-		    margin-right: 10px;
-		    option{
-		    	color: #b7b7b7;
-		    }
-		    &:focus{
-		    	outline: none;
-		    }
-		}		
+    left: 0;
+    bottom: 2px;
+    height: 3px;
+    width: 130%;
+	background: url(../static/img/bg04bigindex1.png) 0 0 repeat-x;
+	animation: animate-cloud 20s linear infinite;
 	}
-	.button_group{
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		display: flex;
-		align-items: center;
-		z-index: 10;
-		color: #b7b7b7;
-		button{
-			font-size: 12px;
-			height: 24px;
-		    border: #1968ab solid 1px;
-		    border-radius: 15px;
-		    padding: 0 25px;
-		    color: #ffffff;
-		    background: none;
-		    margin: 0 10px;
-		    text-align: center;
-		    &:focus{
-		    	outline: none;
-		    }
-		}
-		button.active{
-			background-color: #1968ab;
-		}
-	}
-	.clearall-btn{
-		font-size: 12px;
-		height: 24px;
-	    border: #1968ab solid 1px;
-	    border-radius: 15px;
-	    padding: 1px 15px;
-	    color: #ffffff;
-	    background: #1968ab;
-	    margin: 0;
-	    text-align: center;
-	    &:focus{
-	    	outline: none;
-	    }
-	}
-
+	  
 }

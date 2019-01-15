@@ -1,0 +1,59 @@
+.app-header{
+	background-color: rgb(24,37,53);
+	color: white;
+	height: 80px;
+	min-height: 80px;
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	.logo{
+		padding-left: 30px;
+	}
+	.heading{
+		font-size: 24px;
+	}
+	.bar{
+		display: flex;
+		align-items: center;
+		font-size: 12px;
+		padding-top: 20px;
+		padding-right: 10px;
+		color: #d1d3d7;
+		align-self: flex-start;
+		i{
+			margin-right: 6px;
+			img{
+				vertical-align: text-top;
+			}
+			
+		}
+		em{
+			color: #3974a8;
+    		margin: 0 4px;
+    		font-style: normal;
+    		font-weight: bold;
+		}
+		.logout_btn{
+			margin-left: 10px;
+			padding: 0px 2px;
+			height: 26px;
+		    width: 80px;
+			border: #194b78 solid 1px;
+    		border-radius: 13px;
+		    background-color: transparent;
+		    
+		}
+	}
+	&:after{
+		content: '';
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+    	height: 3px;
+    	background: linear-gradient(to top right, #3fa6cb,#c2625c);
+	}
+
+}

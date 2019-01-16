@@ -15,7 +15,15 @@
 		box-shadow: inset 0px 0px 20px #038d98;
 		
 	  }
-	  
+	.m_center{
+		position: absolute;
+		left: 50%;
+		left: 50%;
+		margin-left: -200px;
+		z-index:2;
+		width:460px;
+		height:50px;
+	}
 	.m_right{
 		position: absolute;
     	right: 0px;
@@ -61,12 +69,12 @@
 	}
 	.animation{
 		position: absolute;
-    left: 0;
-    bottom: 2px;
-    height: 3px;
-    width: 130%;
-	background: url(../static/img/bg04bigindex1.png) 0 0 repeat-x;
-	animation: animate-cloud 20s linear infinite;
+		left: 0;
+		bottom: 2px;
+		height: 3px;
+		width: 130%;
+		background: url(../static/img/bg04bigindex1.png) 0 0 repeat-x;
+		animation: animate-cloud 20s linear infinite;
 	}
 	  
 }

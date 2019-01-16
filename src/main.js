@@ -17,13 +17,13 @@ import 'echarts/lib/component/title.js'
 import BaiduMap from 'vue-baidu-map'
 Vue.config.productionTip = false
 
-
-Vue.component('v-chart', ECharts)
-Vue.use(ElementUI)
 Vue.use(BaiduMap, {
   // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
   ak: 'XU8pwlyFQKLtGHat8Fb98cbCh3ddCz2w'
 })
+Vue.component('v-chart', ECharts)
+Vue.use(ElementUI)
+
 /* eslint-disable no-new */
 new Vue({
   router,

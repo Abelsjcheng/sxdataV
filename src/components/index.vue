@@ -1,25 +1,27 @@
 <template>
-  <div class="avue-contail">
+  <div class="app-warpper">
+    <!-- 头 -->
     <div class="app-header">
 				<div class="logo">
 					<img src='../static/img/hunau.png' alt=""/>
 				</div>
-				<div class="heading">长沙县农村信息化综合服务平台</div>
+				<div class="heading">融媒体综合数据平台</div>
 				<div class="bar">
 
 					<i><img src='../static/img/uesrname.png' alt="" /></i>
 					<span>欢迎您</span><em>|</em><span>施景程</span>
 					<button class="logout_btn">退出</button>
 				</div>
-    </div>    
-    <Slide width="200" >
+    </div>   
+    <!-- 菜单 
+    <Slide width="200" Animations="ScaleRotate" >
       <a id="home" href="#">
         <span>首页</span>
       </a>
-      
     </Slide>  
-        <!-- 主体视图层 -->
-        <mainview />      
+    -->
+     <!-- 主体视图层 -->
+    <mainview />      
   </div>
 </template>
 
@@ -36,7 +38,7 @@ export default {
   components: {
         Slide, // Register your component
         mainview
-    }
+    }//注册组件
 }
 </script>
 
@@ -57,10 +59,10 @@ a {
   color: #42b983;
 }
 
-.avue-contail /deep/ .bm-burger-bars {
+.app-warpper /deep/ .bm-burger-bars {
     background-color: #ffffff;
   }
-.avue-contail /deep/ .bm-burger-button {
+.app-warpper /deep/ .bm-burger-button {
     top:25px;
   }
 </style>

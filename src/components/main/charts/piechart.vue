@@ -1,16 +1,16 @@
 <template>
-      <v-chart  :options="polar"/>    
+      <v-chart  :options="polar" style="width:23vw;height:29vh"/>    
 </template>
 
 <script>
 export default {
-name: "charts1",
+name: "piechart",
   data () {
     return {
       polar: {
         title : {
             text: '某数据统计',
-            x:'107',
+            x:'center',
             textStyle:{
             color: '#00ffb2'
             }
@@ -27,8 +27,8 @@ name: "charts1",
             {
                 name: '访问来源',
                 type: 'pie',
-                radius : '30%',
-                center: ['25%', '30%'],
+                radius : '70%',
+                center: ['50%', '55%'],
                 
                 data:[
                     {value:335, name:'微信访问'},

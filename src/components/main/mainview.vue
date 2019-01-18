@@ -1,28 +1,47 @@
 <template>
  <div class="main overview">
+    <!-- 左视图层 -->
     <div class="m_left">
       <div class="m_left1">
         <tabledata />
       </div>
       <div class="m_left1">
-        <tabledata />
+        <barchart />
+      </div>
+      <div class="m_left1">
+        <radarchart />
       </div>
     </div>
+    <!-- 右视图层 -->
     <div class="m_right">
-      <charts1 />   
+      <div class="m_right1">
+        <piechart />   
+      </div>
+      <div class="m_right2">
+        <painfo/>
+      </div>
     </div>
-    
+    <div class="m_bottom">
+      <div class="m_bottom1">
+          <linechart />
+      </div>
+    </div>
+    <!-- 地图层 -->
     <mainmap />
   </div>
   
 </template>
 
 <script>
-import charts1 from './charts/charts1'
+import piechart from './charts/piechart'//饼图
 import tabledata from './charts/tabledata'
 import mainmap from './mainmap'
+import barchart from './charts/barchart'//柱状图
+import radarchart from './charts/radarchart'//雷达图
+import linechart from './charts/linechart'//折线图
+import painfo from './annoucement/painfo'//公告信息列表
 export default {
-components: {charts1,tabledata,mainmap
+components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,painfo
     },
 name: "mianview",
   data () {
@@ -38,15 +57,26 @@ name: "mianview",
 
 
 .m_left{
-  width: 350px;
-  min-height: 824px;
-  
-  position: absolute;
-   
+  width: 23vw;
+  height: 92vh;  
+  position: absolute;/* */
   left: 0;
+}
+.m_right{
+  width: 23vw;
+  height: 92vh;  
+  position: absolute;
+  right: 0;
 }
 div {
     display: block;
 }
-
+.m_bottom{
+  height:29vh;
+  margin:0 2px;
+  bottom: 5px;
+  left: 23vw;
+  width: 53.5vw;
+  position: absolute;
+}
 </style>

@@ -5,7 +5,7 @@
 	
 	.m_left1{
 		position: relative;
-		height:29vh;
+		height:30vh;
 		margin:4.5px 0;
 		padding:5px 10px;	
 		color:#fff;
@@ -19,15 +19,15 @@
 	.m_center{
 		position: absolute;
 		left: 50%;
-		left: 50%;
 		margin-left: -200px;
 		z-index:2;
 		width:460px;
 		height:50px;
+		top:5px;
 	}
 	.m_right1{
 		position: relative;
-    	height:29vh;
+    	height:30vh;
 		padding:5px 10px;
 		text-align:center;
 		z-index:2;

@@ -3,26 +3,32 @@
     <!-- 左视图层 -->
     <div class="m_left">
       <div class="m_left1">
-        <tabledata />
+        <!-- table数据组 -->
+        <tabledata /> 
       </div>
       <div class="m_left1">
+        <!-- 柱状图 -->
         <barchart />
       </div>
       <div class="m_left1">
+        <!-- 雷达图 -->
         <radarchart />
       </div>
     </div>
     <!-- 右视图层 -->
     <div class="m_right">
       <div class="m_right1">
+        <!-- 饼图 -->
         <piechart />   
       </div>
       <div class="m_right2">
+        <!-- 公告与政策 -->
         <painfo/>
       </div>
     </div>
     <div class="m_bottom">
       <div class="m_bottom1">
+        <!-- 折线图 -->
           <linechart />
       </div>
     </div>
@@ -34,13 +40,13 @@
 
 <script>
 import piechart from './charts/piechart'//饼图
-import tabledata from './charts/tabledata'
-import mainmap from './mainmap'
+import tabledata from './charts/tabledata' //table数据组
+import mainmap from './mainmap' //百度地图层
 import barchart from './charts/barchart'//柱状图
 import radarchart from './charts/radarchart'//雷达图
 import linechart from './charts/linechart'//折线图
 import painfo from './annoucement/painfo'//公告信息列表
-export default {
+export default { //注册组件
 components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,painfo
     },
 name: "mianview",

@@ -1,14 +1,20 @@
 <template>  
     <div class="m_center2">     
         <div class="m_center">
-         <v-distpicker @selected="onSelected" :province="temp.address__province" :city="temp.address__city" :area="temp.address__dist"></v-distpicker>
+          <!-- 地区选择器-->
+         <v-distpicker @selected="onSelected" :province="temp.address__province" :city="temp.address__city" :area="temp.address__dist" ></v-distpicker>
             <button class="clearall-btn" v-on:click="clear"> 清空</button>
         </div> 
-        <baidu-map class="bm-view" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true" :mapStyle="mapStyle" >
+        <baidu-map class="bm-view" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true"  :mapStyle="mapStyle" >
+           <!-- 加载标注-->
           <bml-marker-clusterer :averageCenter="true">
-              <bm-marker v-for="(marker,index) of markers" :key="index" :position="{lng: marker.lng, lat: marker.lat}"></bm-marker>
-          </bml-marker-clusterer>
-
+              <bm-marker v-for="(marker,index) of markers" :key="index" :position="{lng: marker.lng, lat: marker.lat}" v-on:click="Opencontent(marker)">
+              </bm-marker>
+          </bml-marker-clusterer>     
+           <!--地图类型控件-->
+          <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP', 'BMAP_HYBRID_MAP']" :offset="{width:mset.width,height:mset.height}" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
+          <!-- 信息窗体-->
+          <bm-info-window :position="{lng: infowindow.lng, lat: infowindow.lat}" :show="infowindow.show" @close="infoWindowClose" @open="infoWindowOpen">123</bm-info-window>>
         </baidu-map>
     </div> 
 </template>
@@ -24,21 +30,22 @@ name: "mainmap",
   data () {//局内数据
     return {
       temp: {
-        address__province: '',
-        address__city: '',
-        address__dist: '',
+        address__province: '',//县
+        address__city: '',//镇/街道
+        address__dist: '',//村/社区
       },
-      center: {lng: 0, lat: 0},
-      zoom: 12,
+      center: {lng: 0, lat: 0},  //地区中心点
+      zoom: 12,//缩放等级
+      mset:{width:450,height:8},//设置地图类型控件偏移值
+      infowindow:{lng:'',lat:'',title:'',content:'',show:false},//标注弹窗数据
       mapStyle: {
-        styleJson: mapStyle        
+        styleJson: mapStyle         //地图个性样式
       },
-      markers:[],
+      markers:[],//标注json数组
     }
   },
    methods: {//方法函数
       handler ({BMap, map}) { //地图初始化函数
-      console.log(BMap, map)
       this.center.lng = 113.000
       this.center.lat = 28.216
       this.zoom = 12
@@ -59,7 +66,8 @@ name: "mainmap",
     },
     get:function(){ //3000个终端点
             //发送get请求
-            this.$http.get('http://www.teavamc.com/api/gps').then(function(res){
+            this.$http.get('http://www.teavamc.com/api/gps/random').then(function(res){
+              
                           for (let i = 0; i < res.data.length; i++) {
                             const position = {lng: res.data[i].longitude, lat: res.data[i].latitude}
                             this.markers.push(position)
@@ -67,7 +75,16 @@ name: "mainmap",
                         },function(){
                     console.log('请求失败处理');
                 });
-        }
+    },
+    infoWindowClose:function () { //关闭点信息窗口
+      this.infowindow.show = false
+    },
+    infoWindowOpen:function () { //打开点信息窗口
+      this.infowindow.show = true
+    },
+    Opencontent:function (message) {//打开点信息窗口传值
+      this.infowindow={lng:message.lng,lat:message.lat,title:'',content:'',show:true}
+    }
    },
    mounted:function(){//页面初始化函数
         this.get();
@@ -75,7 +92,7 @@ name: "mainmap",
 
 }
 </script>
-<style>
+<style lang="scss">
 .bm-view {
   width: 100%;
   height: 92vh;
@@ -102,4 +119,5 @@ name: "mainmap",
 .anchorBL{
 display:none;
 }
+
 </style>

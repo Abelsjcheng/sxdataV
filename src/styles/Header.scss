@@ -8,11 +8,20 @@
 	justify-content: space-between;
 	align-items: center;
 	.logo{
-		padding-left: 30px;
+		padding-left: 30px;	
+		padding-bottom: 7px	
 	}
+	.tab-time{
+		color: #05d2e2;
+		line-height: 7vh;
+		font-size:2rem;
+		position: absolute;
+		left: 150px;
+		}
 	.heading{
 		font-size: 24px;
 	}
+	
 	.bar{
 		display: flex;
 		align-items: center;
@@ -44,6 +53,7 @@
 		    background-color: transparent;
 		    
 		}
+		
 	}
 	&:after{
 		content: '';

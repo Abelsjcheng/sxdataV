@@ -1,4 +1,5 @@
 <template>
+      <!-- 加载柱状图 并设置图表大小 -->
       <v-chart  :options="polar"  style="width:23vw;height:29vh" />    
 </template>
 
@@ -8,59 +9,59 @@ name: "barchart",
   data () {
     return {
       polar: {
-                title :{
+                title :{                //标题
                     text: '某数据统计',
-                    x:'center',
+                    x:'center',         //居中
                     textStyle:{
-                    color: '#00ffb2'
+                    color: '#00ffb2'    //标题颜色
                     }
                 },
-                tooltip: {
-                    trigger: 'axis',
+                tooltip: {              //数据提示框
+                    trigger: 'axis',    //触发类型：坐标轴触发
                     axisPointer: {
-                        type: 'cross',
+                        type: 'cross',  //提示器类型：十字准星指示器
                         crossStyle: {
-                            color: '#999'
+                            color: '#999' //颜色
                         }
                     }
                 },
-                toolbox: {
-                    feature: {
-                        dataView: {show: true, readOnly: false},
-                        magicType: {show: true, type: [ 'bar']},
-                        restore: {show: true},
-                        saveAsImage: {show: true}
+                toolbox: {              //工具栏
+                    feature: {          //工具配置
+                        dataView: {show: true, readOnly: false}, //数据视图工具
+                        magicType: {show: true, type: [ 'bar']}, //切换图表类型
+                        restore: {show: true}, //配置项还原。
+                        saveAsImage: {show: true} //保存为图片。
                     }
                 },
-                grid:{
+                grid:{ //网格布局
                     
-                    top:'75px',
-                    left: '5%'
+                    top:'75px',  //距顶75px
+                    left: '5%' //距左5%
                 },
-                legend: {
-                    itemWidth: 20,
-                    itemHeight: 10,
-                    itemGap:2,
-                    data:['水量','温度'],
-                    x:'left',
-                    top:'25px',
-                    textStyle: {
+                legend: { //图例组件
+                    itemWidth: 20, //组件宽
+                    itemHeight: 10, //组件高
+                    itemGap:2,  //每项间隔
+                    data:['水量','温度'], //数据数组
+                    x:'left',  //靠左
+                    top:'25px', 
+                    textStyle: {  //组件每项颜色
                         color: ['#1FC06E','#396CC0']
                     }
                 },
                 xAxis: [
                     {
-                        type: 'category',
+                        type: 'category', //坐标轴类型：通过 data 设置类目数据。
                         data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
                         axisPointer: {
-                            type: 'shadow'
+                            type: 'shadow' //指示器类型：阴影
                         },
                         axisLabel:{
                             interval:0,//横轴信息全部显示
                         },
                         axisLine:{
                             lineStyle:{
-                            color:'#0087ED',
+                            color:'#0087ED', //坐标轴线线的颜色。
                             width:1,//这里是为了突出显示加上的
                             }
                         }
@@ -68,20 +69,20 @@ name: "barchart",
                 ],
                 yAxis: [
                     {
-                        type: 'value',
+                        type: 'value', //坐标轴类型：连续数据。
                         name: '水量',
-                        min: 0,
-                        max: 250,
-                        interval: 50,
+                        min: 0, //最小
+                        max: 250,  //最大
+                        interval: 50, //设置坐标轴分割间隔。
                         axisLabel: {
-                            formatter: '{value}'
+                            formatter: '{value}' //刻度标签的内容
                         },
 						nameTextStyle: {
-							color: ['#1FC06E']
+							color: ['#1FC06E'] //坐标轴名称颜色
 						},
 						axisLine:{
 		                    lineStyle:{
-		                    color:'#1FC06E',
+		                    color:'#1FC06E',//坐标轴线线的颜色。
 		                    width:1,//这里是为了突出显示加上的
 		                    }
 						}
@@ -106,7 +107,7 @@ name: "barchart",
 						}
                     }
                 ],
-                series: [
+                series: [ //设置图表类型
                 {
                     name:'水量',
                     type:'bar',

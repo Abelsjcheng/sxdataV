@@ -1,20 +1,22 @@
 <template>
     <div>
       <h2 style="color:#ffffff;text-align:center;">公告与政策</h2>
+      <!--公告与政策列表框 -->
       <virtual-list :size="60" :remain="8">
            <b-list-group >
-            <b-list-group-item v-for="(item, index) in annoucements" :key="index" @click="showcontent">
-
+            <b-list-group-item v-for="(item, index) in annoucements" :key="index" @click="showcontent(item)">
               <b-badge :variant="item.variant" style="float: left;" pill class="px-3 py-2">{{item.badge}}</b-badge> 
               <span style="color:#ffffff;" class="pl-4">{{item.title}}</span> 
-
             </b-list-group-item>
           </b-list-group>
       </virtual-list>
-      <b-modal ref="mycontent"  hide-footer title="公共信息">
+       <!--信息弹窗 -->
+      <b-modal ref="mycontent"  hide-footer :title="infocontent.type" >
+        <h2 style="text-align:center;">{{infocontent.title}} </h2>
         <div class="d-block text-center">
-          <h3>测试信息!</h3>
+          <h4 v-html="infocontent.content"></h4> <!--v-html 输出文本对带html标签进行解析 -->
         </div>
+        <h6 style="text-align:right;">{{infocontent.reldate}} {{infocontent.adduname}}</h6>
         <b-btn class="mt-3" variant="outline-danger" block @click="hidecontent">关闭</b-btn>
       </b-modal>
     </div>  
@@ -28,22 +30,27 @@ components: {'virtual-list': virtualList },
 name: "painfo",
   data () {
     return {
-     annoucements:[]      //badge：置顶/紧急/普通;variant:warning/danger/info;title
-     
+     annoucements:[],      //badge：置顶/紧急/普通;variant:warning/danger/info;title json数组
+     info:{badge:'',variant:'',title:'',type:'',reldate:'',title:'',content:'',adduname:'',pic:''}, //进行双向绑定
+     infocontent:{type:'',reldate:'',title:'',content:'',adduname:'',pic:''} //信息弹窗内容
     }
   },
   methods: {
-    showcontent () {
-      this.$refs.mycontent.show()
+    showcontent (message) {
+      //赋值
+      this.infocontent={type:message.type,reldate:message.reldate,title:message.title,content:message.content,adduname:message.adduname,pic:''}
+      this.$refs.mycontent.show()//显示弹窗
     },
     hidecontent () {
-      this.$refs.mycontent.hide()
+      this.$refs.mycontent.hide()//隐藏弹窗
     },
     get:function(){ 
             //发送get请求
-            this.$http.get('www.teavamc.com/api/policy/limit').then(function(res){
+            this.$http.get('http://www.teavamc.com/api/policy/limit').then(function(res){
+                        console.log(res.data.length);
                           for (let i = 0; i < res.data.length; i++) {
-                            this.annoucements[i]={badge:'普通',variant:'info',title:res.data[i].title}
+                            this.info={badge:'普通',variant:'info',title:res.data[i].title,type:res.data[i].type,reldate:res.data[i].reldate,content:res.data[i].content,adduname:res.data[i].adduname,pic:res.data[i].pic}
+                            this.annoucements.push(this.info) //存入json数组
                           }
                         },function(){
                     console.log('请求失败处理');

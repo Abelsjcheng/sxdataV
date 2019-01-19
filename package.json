@@ -17,6 +17,7 @@
     "echarts-gl": "^1.1.1",
     "element-ui": "^2.4.11",
     "inmap": "^2.2.2",
+    "moment": "^2.23.0",
     "v-distpicker": "^1.1.0",
     "vue": "^2.5.2",
     "vue-baidu-map": "^0.21.16",

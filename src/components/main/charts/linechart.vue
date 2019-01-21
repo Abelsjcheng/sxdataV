@@ -27,6 +27,10 @@ name: "linechart",
             },
             toolbox: {
                 show: true,
+                 right: 20, //toolbox的定位位置
+                iconStyle:{
+                        color:'#ffffff'
+                },
                 feature: {
                     dataZoom: {
                         yAxisIndex: 'none'

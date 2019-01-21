@@ -65,7 +65,7 @@ name: "mianview",
 .m_left{
   width: 23vw;
   height: 92vh;  
-  position: absolute;/* */
+  position: absolute;
   left: 0;
 }
 .m_right{
@@ -84,5 +84,6 @@ div {
   left: 23vw;
   width: 53.5vw;
   position: absolute;
+  background: rgba(0,0,0,0.5);
 }
 </style>

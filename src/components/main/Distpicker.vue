@@ -319,8 +319,8 @@ export default {
     padding: 1px 15px;
     cursor: not-allowed;
     margin-right: 10px;
-    width: 120px;
-    height: 25px;
+    width: 130px;
+    height: 30px;
     top:5px;
     
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;

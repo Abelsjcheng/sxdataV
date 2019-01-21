@@ -12,8 +12,20 @@
         </div>
 				<div class="heading">融媒体综合数据平台</div>
 				<div class="bar">
-           
-					<i><img src='../static/img/uesrname.png' alt="" /></i>
+          <el-tooltip effect="dark" :content="isFullScren?'退出全屏':'全屏'" placement="bottom">
+            <div class="top-bar__item">
+              <i :class="isFullScren?'icon-tuichuquanping':'icon-quanping'"
+                @click="handleScreen">
+                <img height="18" width="18" src='../static/img/quanping.png' alt="" />
+              </i>
+            </div>
+          </el-tooltip>
+          <el-tooltip effect="dark" content="特色主题" style="font-size: 22px;" placement="bottom">
+            <div class="top-bar__item top-bar__item--show">
+              <top-theme></top-theme>
+            </div>
+          </el-tooltip>
+					<i><img  src='../static/img/uesrname.png' alt="" /></i>
 					<span>欢迎您</span><em>|</em><span>施景程</span>
 					<button class="logout_btn" v-on:click="login">登录</button>
 				</div>
@@ -33,6 +45,9 @@
 <script>
 import { Slide } from 'vue-burger-menu'
 import mainview from './main/mainview'
+import topTheme from "./main/top-theme";
+import { mapGetters } from 'vuex';
+import { fullscreenToggel, listenfullscreen } from "@/util/util";
 let moment = require("moment");//直接引入组件
 export default {
   name: 'index',
@@ -41,11 +56,8 @@ export default {
       ndata:{year:'',day:'',week:''}
     }
   },
-  components: {
-        Slide, // Register your component
-        mainview
-    },//注册组件
-    methods:{
+  components: {Slide,mainview,topTheme},//注册组件
+  methods:{
     login:function(){
         window.location.href="http://www.teavamc.com/"
     },
@@ -57,11 +69,21 @@ export default {
     },
     LopTime(){
       setInterval(this.getTime,1000)   //对获取的时间，用定时器让它动起来，定时器中调用getTime方法，注意不能加（），调用函数
-    }
+    },
+    handleScreen () { //全屏
+      fullscreenToggel();
+    },
+    setScreen () {
+      this.$store.commit("SET_FULLSCREN");
+    },
 
+  },
+  computed:{
+    ...mapGetters(["isFullScren"]),
   },
   mounted:function(){//页面初始化函数
       this.LopTime();
+      listenfullscreen(this.setScreen);
   }
 
 }

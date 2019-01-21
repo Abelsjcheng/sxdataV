@@ -25,7 +25,23 @@ name: "barchart",
                         }
                     }
                 },
-                toolbox: {              //工具栏
+                toolbox: {              //工具栏  
+                    right: 20, //toolbox的定位位置
+                    iconStyle:{
+                        color:{
+                            type: 'radial',
+                            x: 0.5,
+                            y: 0.5,
+                            r: 0.5,
+                            colorStops: [{
+                                offset: 0, color: '#ffffff' // 0% 处的颜色
+                            }, {
+                                offset: 1, color: '#ffffff' // 100% 处的颜色
+                            }],
+                            globalCoord: false // 缺省为 false
+                        },
+                        borderColor:'#000'
+                    },
                     feature: {          //工具配置
                         dataView: {show: true, readOnly: false}, //数据视图工具
                         magicType: {show: true, type: [ 'bar']}, //切换图表类型

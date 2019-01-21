@@ -2,25 +2,27 @@
     <div class="m_center2">     
         <div class="m_center">
           <!-- 地区选择器-->
-         <v-distpicker @selected="onSelected" :province="temp.address__province" :city="temp.address__city" :area="temp.address__dist" ></v-distpicker>
-            <button class="clearall-btn" v-on:click="clear"> 清空</button>
+          <v-distpicker @selected="onSelected" :province="temp.address__province" :city="temp.address__city" :area="temp.address__dist" ></v-distpicker>
+          <button class="clearall-btn" v-on:click="clear"> 清空</button>
         </div> 
-        <baidu-map class="bm-view" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true"  :mapStyle="mapStyle" >
+        <baidu-map class="bm-view" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true"  :mapStyle="bmapStyle" >
            <!-- 加载标注-->
           <bml-marker-clusterer :averageCenter="true">
-              <bm-marker v-for="(marker,index) of markers" :key="index" :position="{lng: marker.lng, lat: marker.lat}" v-on:click="Opencontent(marker)">
-              </bm-marker>
+                <bm-marker v-for="(marker,index) of markers" :key="index" v-bind:animation="isActive('a')" :position="{lng: marker.lng, lat: marker.lat}" v-on:click="Opencontent(marker)">
+                </bm-marker>
           </bml-marker-clusterer>     
            <!--地图类型控件-->
-          <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP', 'BMAP_HYBRID_MAP']" :offset="{width:mset.width,height:mset.height}" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
+          <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP', 'BMAP_HYBRID_MAP']" :offset="{width:450,height:8}" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
           <!-- 信息窗体-->
           <bm-info-window :position="{lng: infowindow.lng, lat: infowindow.lat}" :show="infowindow.show" @close="infoWindowClose" @open="infoWindowOpen">123</bm-info-window>>
+          <bm-boundary name="长沙县" :strokeWeight="2" strokeColor="blue" fillColor=""  ></bm-boundary>
         </baidu-map>
     </div> 
 </template>
 
 <script>
 import VDistpicker from './Distpicker' //地区选择器组件
+import { mapGetters } from 'vuex';
 import mapStyle from '../../static/json/mapStyle.json';//地区json
 import {BmlMarkerClusterer} from 'vue-baidu-map'
 export default {
@@ -36,10 +38,9 @@ name: "mainmap",
       },
       center: {lng: 0, lat: 0},  //地区中心点
       zoom: 12,//缩放等级
-      mset:{width:450,height:8},//设置地图类型控件偏移值
       infowindow:{lng:'',lat:'',title:'',content:'',show:false},//标注弹窗数据
-      mapStyle: {
-        styleJson: mapStyle         //地图个性样式
+      bmapStyle: {
+        styleJson:mapStyle        //地图个性样式
       },
       markers:[],//标注json数组
     }
@@ -63,11 +64,12 @@ name: "mainmap",
       this.temp.address__province=''
       this.temp.address__city = ''
       this.temp.address__dist = ''
+      
     },
     get:function(){ //3000个终端点
             //发送get请求
             this.$http.get('http://www.teavamc.com/api/gps/random').then(function(res){
-              
+                          
                           for (let i = 0; i < res.data.length; i++) {
                             const position = {lng: res.data[i].longitude, lat: res.data[i].latitude}
                             this.markers.push(position)
@@ -84,9 +86,28 @@ name: "mainmap",
     },
     Opencontent:function (message) {//打开点信息窗口传值
       this.infowindow={lng:message.lng,lat:message.lat,title:'',content:'',show:true}
+    },
+    isActive:function(judge){ //v-bind绑定属性用函数进行判断 标注是否执行跳动动画
+        if(judge=='b') //judage==warning/danger
+        return 'BMAP_ANIMATION_BOUNCE';
     }
+    
    },
+  computed: { //计算属性 取存在状态库中的值
+     ...mapGetters(["themeName"]),
+     listenstage(){ //返回状态库中的值
+       return this.themeName;
+     }
+  },
+  watch:{
+      listenstage:function(vag){//实时监听状态库中值的改变 
+        this.bmapStyle={styleJson:vag}
+      }
+  },
    mounted:function(){//页面初始化函数
+        
+        console.log(this.themeName)
+        console.log(1)
         this.get();
     }
 

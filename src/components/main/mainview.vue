@@ -1,5 +1,5 @@
 <template>
- <div class="main overview">
+  <div >
     <!-- 左视图层 -->
     <div class="m_left">
       <div class="m_left1">

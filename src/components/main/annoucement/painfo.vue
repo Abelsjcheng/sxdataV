@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2 style="color:#ffffff;text-align:center;">公告与政策</h2>
+      <h2 style="color:#ffffff;text-align:center;">公告</h2>
       <!--公告与政策列表框 -->
       <virtual-list :size="60" :remain="8">
            <b-list-group >
@@ -59,6 +59,7 @@ name: "painfo",
   },
    mounted:function(){//页面初始化函数
         this.get();
+        //setInterval(this.get,6000)//用定时器循环get
     }
   
 }

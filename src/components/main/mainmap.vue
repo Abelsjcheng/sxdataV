@@ -105,9 +105,6 @@ name: "mainmap",
       }
   },
    mounted:function(){//页面初始化函数
-        
-        console.log(this.themeName)
-        console.log(1)
         this.get();
     }
 

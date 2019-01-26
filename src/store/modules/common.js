@@ -6,8 +6,11 @@ const common = {
 
     state: {
         isFullScren: false,
+        isdisplay: true,
         theme: getStore({ name: 'theme' }) || '',
         themeName: getStore({ name: 'themeName' }) || '',
+        zdinfo: getStore({ name: 'zdinfo' }) || '',
+        selectplace: getStore({ name: 'selectplace' }) || '',
     },
     actions: {
         //获取字典公用类
@@ -29,6 +32,9 @@ const common = {
         SET_FULLSCREN: (state) => {
             state.isFullScren = !state.isFullScren;
         },
+        SET_DISPLAY: (state) => {
+            state.isdisplay = !state.isdisplay;
+        },
         SET_THEME_NAME: (state, themeName) => {
             state.themeName = themeName;
             setStore({
@@ -43,7 +49,20 @@ const common = {
                 content: state.theme,
             })
         },
-          
+        SET_ZDINFO: (state, zdinfo) => {
+            state.zdinfo = zdinfo;
+            setStore({
+                name: 'zdinfo',
+                content: state.zdinfo,
+            })
+        },  
+        SET_SELECTPLACE: (state, selectplace) => {
+            state.selectplace = selectplace;
+            setStore({
+                name: 'selectplace',
+                content: state.selectplace,
+            })
+        },  
     }
 }
 export default common

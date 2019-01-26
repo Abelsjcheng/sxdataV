@@ -27,7 +27,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import mapStyle from '../../static/json/mapStyle.json';//地图json
+import mapStyle from '../../static/json/mapstyle.json';//地图json
 import mapblack from '../../static/json/mapblack.json';//地图json
 import mapFreshblue from '../../static/json/mapFreshblue.json';//地图json
 export default {

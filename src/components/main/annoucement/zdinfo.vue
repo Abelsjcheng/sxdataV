@@ -1,22 +1,22 @@
 <template>
     <div>
       <h2 style="color:#ffffff;text-align:center;">公告</h2>
-      <!--公告与政策列表框 -->
+      <!--公告列表框 -->
       <virtual-list :size="60" :remain="8">
            <b-list-group >
             <b-list-group-item v-for="(item, index) in annoucements" :key="index" @click="showcontent(item)">
               <b-badge :variant="item.variant" style="float: left;" pill class="px-3 py-2">{{item.badge}}</b-badge> 
-              <span style="color:#ffffff;" class="pl-4">{{item.title}}</span> 
+              <span style="color:#ffffff;" class="pl-4">{{item.content}}</span> 
             </b-list-group-item>
           </b-list-group>
       </virtual-list>
        <!--信息弹窗 -->
-      <b-modal ref="mycontent"  hide-footer :title="infocontent.type" >
-        <h2 style="text-align:center;">{{infocontent.title}} </h2>
-        <div class="d-block text-center">
+      <b-modal ref="mycontent"  hide-footer :title="'终端号:'+infocontent.tid" >
+        <h2 style="text-align:center;">终端故障 </h2>
+        <div class="d-block ">
           <h4 v-html="infocontent.content"></h4> <!--v-html 输出文本对带html标签进行解析 -->
         </div>
-        <h6 style="text-align:right;">{{infocontent.reldate}} {{infocontent.adduname}}</h6>
+        <h6 style="text-align:right;">{{infocontent.ctime}} </h6>
         <b-btn class="mt-3" variant="outline-danger" block @click="hidecontent">关闭</b-btn>
       </b-modal>
     </div>  
@@ -27,18 +27,19 @@
 import virtualList from 'vue-virtual-scroll-list'//列表滚动组件
 export default {
 components: {'virtual-list': virtualList },
-name: "painfo",
+name: "zdinfo",
   data () {
     return {
      annoucements:[],      //badge：置顶/紧急/普通;variant:warning/danger/info;title json数组
-     info:{badge:'',variant:'',title:'',type:'',reldate:'',title:'',content:'',adduname:'',pic:''}, //进行双向绑定
-     infocontent:{type:'',reldate:'',title:'',content:'',adduname:'',pic:''} //信息弹窗内容
+     info:{badge:'',variant:'',tid:'',content:'',ctime:'',lo:'',la:'',type:''}, //进行双向绑定 tid:终端id content：终端故障原因
+     infocontent:{tid:'',content:'',ctime:'',lo:'',la:''} //信息弹窗内容
     }
   },
   methods: {
     showcontent (message) {
       //赋值
-      this.infocontent={type:message.type,reldate:message.reldate,title:message.title,content:message.content,adduname:message.adduname,pic:''}
+      console.log(this.message);
+      this.infocontent={tid:message.tid,content:message.content,ctime:message.ctime}
       this.$refs.mycontent.show()//显示弹窗
     },
     hidecontent () {
@@ -46,12 +47,13 @@ name: "painfo",
     },
     get:function(){ 
             //发送get请求
-            this.$http.get('http://www.teavamc.com/api/policy/limit').then(function(res){
+            this.$http.get('http://www.teavamc.com/api/device/mlal').then(function(res){
                         
-                          for (let i = 0; i < res.data.length; i++) {
-                            this.info={badge:'普通',variant:'info',title:res.data[i].title,type:res.data[i].type,reldate:res.data[i].reldate,content:res.data[i].content,adduname:res.data[i].adduname,pic:res.data[i].pic}
+                          for (let i = 0; i < res.data.data.length; i++) {
+                            this.info={badge:'普通',variant:'info',tid:res.data.data[i].tid,content:res.data.data[i].content,ctime:res.data.data[i].ctime,lo:res.data.data[i].lo,la:res.data.data[i].la,type:'bad'}
                             this.annoucements.push(this.info) //存入json数组
                           }
+                          this.$store.commit('SET_ZDINFO',this.annoucements);
                         },function(){
                     console.log('请求失败处理');
                 });
@@ -73,5 +75,7 @@ name: "painfo",
     background-color: rgba(255,255,255,0);
     border-bottom: 1px solid #eee;
   }
-
+h1,h2,h3,h4,h5,h6{
+    color: #000000
+}
 </style>

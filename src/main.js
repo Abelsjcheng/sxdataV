@@ -10,10 +10,6 @@ import 'element-ui/lib/theme-chalk/index.css';
 import ECharts from 'vue-echarts/components/ECharts'
 import 'echarts/lib/component/toolbox'
 import 'echarts/lib/component/dataZoom'
-import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-// 引入avue的样式文件
 import 'echarts/lib/chart/line'
 import 'echarts/lib/chart/bar'
 import 'echarts/lib/chart/pie'
@@ -22,6 +18,10 @@ import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/polar'
 import 'echarts/lib/component/legend'
 import 'echarts/lib/component/title.js'
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+// 引入拖拽工具
 import BaiduMap from 'vue-baidu-map'
 import store from './store';
 Vue.config.productionTip = false
@@ -31,6 +31,7 @@ Vue.use(BaiduMap, {
   ak: 'XU8pwlyFQKLtGHat8Fb98cbCh3ddCz2w'
 })
 Vue.component('v-chart', ECharts)
+
 Vue.use(ElementUI)
 Vue.use(Resource)
 Vue.use(BootstrapVue);

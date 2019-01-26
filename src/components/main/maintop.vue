@@ -10,6 +10,13 @@
         </div>
 				<div class="heading">融媒体综合数据平台</div>
 				<div class="bar">
+          <el-tooltip effect="dark" :content="isdisplay?'隐藏图表':'显示图表'"  placement="bottom">
+            <div class="top-bar__item">
+              <i @click="handledisplay">
+                <img height="18" width="18" src='../../static/img/display.png' alt="" />
+              </i>
+            </div>
+          </el-tooltip>
           <el-tooltip effect="dark" :content="isFullScren?'退出全屏':'全屏'" placement="bottom">
             <div class="top-bar__item">
               <i :class="isFullScren?'icon-tuichuquanping':'icon-quanping'"
@@ -62,10 +69,15 @@ export default {
     setScreen () {
       this.$store.commit("SET_FULLSCREN");
     },
+    handledisplay(){
+      this.$store.commit("SET_DISPLAY");
+    }
+    
 
   },
   computed:{
     ...mapGetters(["isFullScren"]),
+    ...mapGetters(["isdisplay"]),
   },
   mounted:function(){//页面初始化函数
       this.LopTime();

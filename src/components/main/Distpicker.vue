@@ -312,7 +312,7 @@ export default {
   color: #9caebf;
   display:inline;
   select {
-    background: none;
+    background: rgba(0,0,0,0.3);
     border: #888e9e solid 1px;
     border-radius: 16px;
     color: #f1eaea;

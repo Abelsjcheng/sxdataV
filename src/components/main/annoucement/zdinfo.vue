@@ -38,9 +38,9 @@ name: "zdinfo",
   methods: {
     showcontent (message) {
       //赋值
-      console.log(this.message);
-      this.infocontent={tid:message.tid,content:message.content,ctime:message.ctime}
-      this.$refs.mycontent.show()//显示弹窗
+      this.infocontent={lo:message.lo,la:message.la,type:message.type,tid:message.tid,content:message.content,ctime:message.ctime}
+      this.$store.commit('SET_ZDINFOCONTENT',this.infocontent); //提交至状态库存储用于标注弹窗
+      //this.$refs.mycontent.show()//显示弹窗
     },
     hidecontent () {
       this.$refs.mycontent.hide()//隐藏弹窗

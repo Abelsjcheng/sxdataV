@@ -11,6 +11,8 @@ const common = {
         themeName: getStore({ name: 'themeName' }) || '',
         zdinfo: getStore({ name: 'zdinfo' }) || '',
         selectplace: getStore({ name: 'selectplace' }) || '',
+        zdinfocontent: getStore({ name: 'zdinfocontent' }) || '',
+        
     },
     actions: {
         //获取字典公用类
@@ -63,6 +65,13 @@ const common = {
                 content: state.selectplace,
             })
         },  
+        SET_ZDINFOCONTENT: (state, zdinfocontent) => {
+            state.zdinfocontent = zdinfocontent;
+            setStore({
+                name: 'zdinfocontent',
+                content: state.zdinfocontent,
+            })
+        }, 
     }
 }
 export default common

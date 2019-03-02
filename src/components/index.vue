@@ -12,10 +12,10 @@
   </div>
   <!-- 菜单 -->
   <ScaleDown width="300"  >
-      <router-link to="/mainview">  <!-- 路由跳转 -->
+      <router-link to="/index/mainview">  <!-- 路由跳转 -->
         <span>广播信息展示</span>
       </router-link>
-      <router-link to="/village"> 
+      <router-link to="/index/village"> 
         <span>村务信息展示</span>
       </router-link>
       

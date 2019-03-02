@@ -99,7 +99,6 @@ name: "tabledata",
   watch:{
       listenselectplace:function(vag){//实时监听状态库中值的改变 
         for (let i = 0; i < this.mdata.length; i++) {
-            console.log(this.mdata[i].aname)
             if(vag==this.mdata[i].aname)
             {
               this.terdata={aname:this.mdata[i].aname,run:this.mdata[i].run,down:this.mdata[i].down}

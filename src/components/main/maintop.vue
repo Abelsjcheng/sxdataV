@@ -1,7 +1,7 @@
 <template>
     <div class="app-header">
 				<div class="logo">
-					<img src='../../static/img/hunau.png' alt=""/>
+					<img  src='../../static/img/sixin.png' alt=""/>
           
 				</div>
         <div class="tab-time">

@@ -67,13 +67,12 @@ export default {
   },
   computed: { //计算属性 取存在状态库中的值
      ...mapGetters(["isdisplay"]),
-     listendisplay(){
+     listendisplay(){  //监听显示按钮
        return this.isdisplay;
      }
   },
   watch:{
       listendisplay:function(vag){
-        
         if(vag==true){
           console.log(vag)
           this.activedisplay='block';

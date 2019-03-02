@@ -21,6 +21,8 @@ import 'echarts/lib/component/title.js'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'babel-polyfill'
+import FlatSurfaceShader from 'vue-flat-surface-shader'//磁贴背景组建
 // 引入拖拽工具
 import BaiduMap from 'vue-baidu-map'
 import store from './store';
@@ -35,6 +37,7 @@ Vue.component('v-chart', ECharts)
 Vue.use(ElementUI)
 Vue.use(Resource)
 Vue.use(BootstrapVue);
+Vue.use(FlatSurfaceShader)
 /* eslint-disable no-new */
 new Vue({
   router,

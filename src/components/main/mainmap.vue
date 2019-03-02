@@ -4,6 +4,7 @@
           <!-- 地区选择器-->
           <v-distpicker @selected="onSelected" :province="temp.address__province" :city="temp.address__city" :area="temp.address__dist" ></v-distpicker>
           <button class="clearall-btn" v-on:click="clear"> 清空</button>
+          <button class="clearall-btn" type="primary"  v-on:click="addallspot"> 加载所有终端</button>
         </div> 
         <baidu-map class="bm-view" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true"  :mapStyle="bmapStyle" >
            <!-- 加载标注-->
@@ -68,9 +69,36 @@ name: "mainmap",
       this.temp.address__dist = ''
       
     },
+    addallspot:function(){
+      const loading=this.$loading({
+        lock:true,
+        text:'努力加载所有终端...',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      });
+      if(this.get()==true){
+          setTimeout(() => {
+          loading.close();
+        }, 500);
+      }
+     
+    },
     get:function(){ //3000个终端点
             //发送get请求
             this.$http.get('http://www.teavamc.com/api/gps/all').then(function(res){
+                          
+                          for (let i = 0; i < res.data.data.length; i++) {
+                            const position = {lng: res.data.data[i].longitude, lat: res.data.data[i].latitude}
+                            this.markers.push(position)
+                          }
+                        },function(){
+                    console.log('请求失败处理');
+                });
+            return true;
+    },
+    getrspot:function(){ //随机100个终端点
+            //发送get请求
+            this.$http.get('http://www.teavamc.com/api/gps/random').then(function(res){
                           
                           for (let i = 0; i < res.data.data.length; i++) {
                             const position = {lng: res.data.data[i].longitude, lat: res.data.data[i].latitude}
@@ -125,7 +153,7 @@ name: "mainmap",
       }
   },
    mounted:function(){//页面初始化函数
-        this.get();
+        this.getrspot();
         this.listenzdinfo();
     }
 

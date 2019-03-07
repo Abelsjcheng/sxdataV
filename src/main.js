@@ -22,6 +22,7 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'babel-polyfill'
+import axios from 'axios'
 import FlatSurfaceShader from 'vue-flat-surface-shader'//磁贴背景组建
 // 引入拖拽工具
 import BaiduMap from 'vue-baidu-map'
@@ -38,6 +39,7 @@ Vue.use(ElementUI)
 Vue.use(Resource)
 Vue.use(BootstrapVue);
 Vue.use(FlatSurfaceShader)
+Vue.prototype.axios = axios;
 /* eslint-disable no-new */
 new Vue({
   router,

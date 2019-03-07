@@ -5,6 +5,7 @@ import loginview from '@/components/login/loginview'
 Vue.use(Router)
 
 export default new Router({
+  //base:'/dist/',//部署到tomcat
   routes: [
     
     {

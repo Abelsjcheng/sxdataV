@@ -16,7 +16,7 @@ name: "linechart",
                 }
             },
             legend: {
-                data:['雨量'],
+                data:['电压'],
                 x: 'left'
             },
             tooltip: {
@@ -84,7 +84,25 @@ name: "linechart",
        }
     }
   },
-  
+  methods:{
+      get:function(){ //
+              //发送get请求
+
+                  this.axios.get('http://47.94.238.110/RiverVis/api/newpow?',{id:862105024039301})
+                    .then(function (response) {
+
+                      console.log(response.charge);
+                    })
+                    .catch(function (error) {
+                      console.log(error);
+                    });
+             
+      }
+  },
+  mounted:function(){//页面初始化函数
+        this.get();
+
+    }
   
 }
 </script>

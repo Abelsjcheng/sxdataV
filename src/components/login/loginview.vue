@@ -2,6 +2,7 @@
 <div>
     <flat-surface-shader class="shader" type="webgl" :light="{ambient: '#22bc9e', diffuse: '#2b7c6b'}">
     </flat-surface-shader>
+    
     <div class="mask">
       <div class="centermain">
       
@@ -9,7 +10,7 @@
           <span style="font-size:25px;position:absolute;left:21%;top:30%">{{ndata.year}}</span>
           <span style="font-size:25px;position:absolute;left:32%;top:55%">{{ndata.week}}</span>
         </div>
-        <div class="top2" :style="weatherbackground" >
+        <div class="top2" v-bind:class="{ weatherbackgroundsun: sunActive, weatherbackgroundcloud: cloudActive }" >
           <a class="op_weather_day" style="width:115px">
              <p class="op_weather_date1">{{weather.f1.day}} 周{{weather.f1.weekday}}</p>
             <div class="op_weather_pic1" :style="weather_pic1"></div>
@@ -109,7 +110,8 @@ export default {
       weather_pic3:{background:'','background-size':'60px 60px'},
       weather_pic4:{background:'','background-size':'60px 60px'},
       weather_pic5:{background:'','background-size':'60px 60px'},
-      weatherbackground:{}
+      sunActive:false,
+      cloudActive:false
     };
   },
   methods:{
@@ -129,9 +131,11 @@ export default {
                       
                       if(/小雨|阴|阵雨|雷阵雨|雷阵雨伴有冰雹|雨夹雪|中雨|大雨|暴雨|大暴雨|特大暴雨/.test(this.weather.f1.day_weather))
                       {
-                        this.weatherbackground={'background-image':'-webkit-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202))'}
+                        //this.weatherbackground={'background-image':'-webkit-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202))','background-image': '-moz-linear-gradient(top,#485663,#a1b8ca)','background-image':' -o-linear-gradient(top,#485663,#a1b8ca)','background-image':'--ms-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202))',filter:' progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr=#485663,EndColorStr=#a1b8ca)'}//兼容各浏览器
+                        this.cloudActive=true;
                       }else if(/晴|多云/.test(this.weather.f1.day_weather)){
-                        this.weatherbackground={'background-image':'-webkit-linear-gradient(top, rgb(13, 104, 188), rgb(114, 173, 224))'}
+                        //this.weatherbackground={'background-image':'-webkit-linear-gradient(top, rgb(13, 104, 188), rgb(114, 173, 224))','background-image':' -moz-linear-gradient(top,#0d68bc,#72ade0)','background-image': '-o-linear-gradient(top,#0d68bc,#72ade0)','background-image':'--ms-linear-gradient(top, rgb(13, 104, 188), rgb(114, 173, 224))',filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr=#0d68bc,EndColorStr=#72ade0)'}
+                        this.sunActive=true;
                       }
                       console.log(this.weather_pic1);
                       
@@ -150,20 +154,28 @@ export default {
       LopTime(){
         setInterval(this.getTime,1000)   //对获取的时间，用定时器让它动起来，定时器中调用getTime方法，注意不能加（），调用函数
       },
-      enter:function(weather){
-          if(/小雨|阴|阵雨|雷阵雨|雷阵雨伴有冰雹|雨夹雪|中雨|大雨|暴雨|大暴雨|特大暴雨/.test(weather))
+      enter:function(weather){ //鼠标移入<a标签触发事件
+          if(/小雨|阴|阵雨|雷阵雨|雷阵雨伴有冰雹|雨夹雪|中雨|大雨|暴雨|大暴雨|特大暴雨/.test(weather))  //正则判断
           {
-              this.weatherbackground={'background-image':'-webkit-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202))'}
+              //this.weatherbackground={'background-image':'-webkit-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202))','background-image': '-moz-linear-gradient(top,#485663,#a1b8ca)','background-image':' -o-linear-gradient(top,#485663,#a1b8ca)','background-image':'--ms-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202))',filter:' progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr=#485663,EndColorStr=#a1b8ca)'}
+              this.cloudActive=true;
+              this.sunActive=false;
               }else if(/晴|多云/.test(weather)){
-                this.weatherbackground={'background-image':'-webkit-linear-gradient(top, rgb(13, 104, 188), rgb(114, 173, 224))'}
+                //this.weatherbackground={'background-image':'-webkit-linear-gradient(top, rgb(13, 104, 188), rgb(114, 173, 224))','background-image':' -moz-linear-gradient(top,#0d68bc,#72ade0)','background-image': '-o-linear-gradient(top,#0d68bc,#72ade0)','background-image':'--ms-linear-gradient(top, rgb(13, 104, 188), rgb(114, 173, 224))',filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr=#0d68bc,EndColorStr=#72ade0)'}
+                this.sunActive=true;
+                this.cloudActive=false;
           }
       },
-      leave:function(){
+      leave:function(){ //鼠标移出<a标签触发事件
         if(/小雨|阴|阵雨|雷阵雨|雷阵雨伴有冰雹|雨夹雪|中雨|大雨|暴雨|大暴雨|特大暴雨/.test(this.weather.f1.day_weather))
         {
-            this.weatherbackground={'background-image':'-webkit-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202))'}
+            //this.weatherbackground={'background-image':'-webkit-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202))','background-image': '-moz-linear-gradient(top,#485663,#a1b8ca)','background-image':' -o-linear-gradient(top,#485663,#a1b8ca)','background-image':'--ms-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202))',filter:' progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr=#485663,EndColorStr=#a1b8ca)'}
+            this.cloudActive=true;
+            this.sunActive=false;
             }else if(/晴|多云/.test(this.weather.f1.day_weather)){
-                this.weatherbackground={'background-image':'-webkit-linear-gradient(top, rgb(13, 104, 188), rgb(114, 173, 224))'}
+                //this.weatherbackground={'background-image':'-webkit-linear-gradient(top, rgb(13, 104, 188), rgb(114, 173, 224))','background-image':' -moz-linear-gradient(top,#0d68bc,#72ade0)','background-image': '-o-linear-gradient(top,#0d68bc,#72ade0)','background-image':'--ms-linear-gradient(top, rgb(13, 104, 188), rgb(114, 173, 224))',filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr=#0d68bc,EndColorStr=#72ade0)'}
+                this.sunActive=true;
+                this.cloudActive=false;
             }
       }
   },
@@ -182,23 +194,21 @@ export default {
   }
 .centermain{
     
-    margin: auto;
+    margin: auto ;
     overflow: hidden;
     position: relative;
-    
     height: 490px;
     width: 740px;
-
+    transform: translateY(50%);
 }
 .mask {
         width: 100%;
         height: 100vh;
         position: absolute;
         top: 0;
-        display: flex;
-        justify-content: center;
+        justify-content: center;//元素水平居中
         flex-direction: column;
-
+        
       }
 .top1{
       position: absolute;
@@ -209,6 +219,7 @@ export default {
       margin: 0 7.5px 15px 7.5px;//上，右，下，左边距
       background-color: rgba(62, 126, 191, 1);
       color: rgba(255, 255, 255,0.9);
+      
       z-index:2;
 }
 
@@ -220,10 +231,6 @@ export default {
       height: 225px;
       z-index:2;
       margin: 0 7.5px 15px 7.5px;
-      //background-color: rgba(62, 126, 191, 1);
-      //background-image: -webkit-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202));
-      //background-image: -webkit-linear-gradient(top, rgb(13, 104, 188), rgb(114, 173, 224));
-       //background-image: -webkit-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202));  
 	    box-shadow: 0 2px 2px rgba(0,0,0,.1);
       color: rgba(255, 255, 255,0.9)
       
@@ -241,7 +248,7 @@ export default {
       color: rgba(255, 255, 255,0.9)
       
 }
-.top3:hover{ width:223px;height:223px;border:2px solid rgba(255, 255, 255,0.9);
+.top3:hover{ width:227px;height:227px;border:2px solid rgba(255, 255, 255,0.9);
 }
 .top4{
       position: absolute;
@@ -254,7 +261,7 @@ export default {
       background-color: rgba(62, 126, 191, 1);
       color: rgba(255, 255, 255,0.9)
 }
-.top4:hover{ width:223px;height:223px;border:2px solid rgba(255, 255, 255,0.9);
+.top4:hover{ width:227px;height:227px;border:2px solid rgba(255, 255, 255,0.9);
 }
 .top5{
       position: absolute;
@@ -269,7 +276,7 @@ export default {
       background-color: rgba(62, 126, 191, 1);
       color: rgba(255, 255, 255,0.9)
 }
-.top5:hover{ width:223px;height:223px;border:2px solid rgba(255, 255, 255,0.9);
+.top5:hover{ width:227px;height:227px;border:2px solid rgba(255, 255, 255,0.9);
 }
 .op_weather_split{
     position: absolute;
@@ -299,6 +306,7 @@ export default {
     font-size: 12px;
     text-shadow: 1px 1px 1px #555;
     line-height: 1em;
+    margin-bottom: 0;
 }
 .op_weather_date1{
     text-align: left;
@@ -307,12 +315,14 @@ export default {
     font-size: 12px;
     text-shadow: 1px 1px 1px #555;
     line-height: 1em;
+    margin-bottom: 0;
 }
 .op_weather_date_day{
     text-align: center;
     margin-top: 8px;
     opacity: 0.5;
     font-size: 12px;
+    margin-bottom: 0;
     
 }
 .op_weather_pic{
@@ -332,6 +342,7 @@ export default {
       font-size: 12px;
       text-shadow: 1px 1px 1px #555;
       line-height: 1em;
+      margin-bottom: 0;
 }
 .op_weather_weath{
       font-size: 13px;
@@ -339,6 +350,7 @@ export default {
       line-height: 1em;
       text-shadow: 1px 1px 1px #555;
       margin-top: 12px;
+      margin-bottom: 0;
 }
 .op_weather_wind{
   text-align: center;
@@ -346,6 +358,7 @@ export default {
     text-shadow: 1px 1px 1px #555;
     line-height: 1em;
     margin-top: 11px;
+    margin-bottom: 0;
 }
 .op_weather_text{
   text-align: center;
@@ -380,6 +393,22 @@ export default {
     font-style: normal;
     text-shadow: 1px 1px 1px #555;
 }
+.weatherbackgroundsun{
+       //css渐变各浏览器兼容方法
+  background-image:-moz-linear-gradient(top,#0d68bc,#72ade0);
+  background-image:-o-linear-gradient(top,#0d68bc,#72ade0);
+  background-image:-ms-linear-gradient(top, rgb(13, 104, 188), rgb(114, 173, 224));
+  filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr=#0d68bc,EndColorStr=#72ade0);
+  background-image:-webkit-linear-gradient(top, rgb(13, 104, 188), rgb(114, 173, 224));
+}
+.weatherbackgroundcloud{
+  
+  background-image:-moz-linear-gradient(top,#485663,#a1b8ca);
+  background-image:-o-linear-gradient(top,#485663,#a1b8ca);
+  background-image:-ms-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202));
+  filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr=#485663,EndColorStr=#a1b8ca);
+  background-image:-webkit-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202));
+}
 .loginimg{
   width: 25%;height: 25%;margin:38% 38%;
 }
@@ -390,7 +419,5 @@ export default {
     
     background: rgba(0, 0, 0, 0);
   }
-p{
-  margin-bottom: 0;
-}
+
 </style>

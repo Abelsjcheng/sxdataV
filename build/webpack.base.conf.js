@@ -13,7 +13,7 @@ function resolve (dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: ["babel-polyfill", "./src/main.js"] //IE浏览器下运行
+    app: ["babel-polyfill", "./src/main.js"]
   },
   externals:{
     "BMap":"BMap"
@@ -42,7 +42,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client'),resolve('node_modules/vue-echarts'),resolve('node_modules/_resize-detector@0.1.10@resize-detector')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

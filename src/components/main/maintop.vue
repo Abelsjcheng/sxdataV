@@ -5,15 +5,18 @@
           
 				</div>
         <div class="tab-time">
-          <span >{{ndata.day}} </span>
-          <span style="font-size:16px;">{{ndata.year}} {{ndata.week}}</span>
+                <span >{{ndata.day}} </span>
+                <span class="time_data">
+                    <i class="time_week">{{ndata.week}}</i>
+                    <i class="time_year">{{ndata.year}}</i>
+                </span>
         </div>
 				<div class="heading">融媒体综合数据平台</div>
 				<div class="bar">
           <el-tooltip effect="dark" :content="isdisplay?'隐藏图表':'显示图表'"  placement="bottom">
             <div class="top-bar__item">
               <i @click="handledisplay">
-                <img height="18" width="18" src='../../static/img/display.png' alt="" />
+                <img height="20" width="20" src='../../static/img/display.png' alt="" />
               </i>
             </div>
           </el-tooltip>
@@ -21,11 +24,11 @@
             <div class="top-bar__item">
               <i :class="isFullScren?'icon-tuichuquanping':'icon-quanping'"
                 @click="handleScreen">
-                <img height="18" width="18" src='../../static/img/quanping.png' alt="" />
+                <img height="20" width="20" src='../../static/img/quanping.png' alt="" />
               </i>
             </div>
           </el-tooltip>
-          <el-tooltip effect="dark" content="特色主题" style="font-size: 22px;" placement="bottom">
+          <el-tooltip effect="dark" content="特色主题" style="font-size: 25px;" placement="bottom">
             <div class="top-bar__item top-bar__item--show">
               <mapTheme></mapTheme>
             </div>

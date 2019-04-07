@@ -8,7 +8,7 @@
         <baidu-map class="bm-view" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true"  :mapStyle="bmapStyle" >
            <!-- 加载标注-->
           <bml-marker-clusterer :averageCenter="true">
-                <bm-marker v-for="(marker,index) of markers" :key="index" animation="BMAP_ANIMATION_BOUNCE" :position="{lng: marker.lng, lat: marker.lat}" v-on:click="Opencontent(marker)">
+                <bm-marker v-for="(marker,index) of markers" :key="index"  :position="{lng: marker.lng, lat: marker.lat}" v-on:click="Opencontent(marker)">
                 </bm-marker>
           </bml-marker-clusterer>     
            <!--地图类型控件-->

@@ -9,28 +9,40 @@
 	align-items: center;
 	.logo{
 		padding-left: 30px;	
-		padding-bottom: 7px	
+		padding-bottom: 6px	;
+		width: 150px;
 	}
 	.tab-time{
 		color: #05d2e2;
-		line-height: 7vh;
 		font-size:2rem;
-		position: absolute;
-		left: 150px;
+		.time_data{
+			position: relative;
+			display: inline-block;
+			font-size: 14px;
+			.time_week{
+				display: block;
+				font-style: normal;
+			}
+			.time_year{
+				display: block;
+				font-style: normal;
+			}
 		}
+	}
 	.heading{
 		font-size: 24px;
-		margin-left: 30px;
+		margin: auto;
+		
 	}
 	
 	.bar{
 		display: flex;
 		align-items: center;
-		font-size: 12px;
 		padding-top: 20px;
 		padding-right: 10px;
 		color: #d1d3d7;
 		align-self: flex-start;
+		
 		i{
 			margin-right: 8px;
 			img{

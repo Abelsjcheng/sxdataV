@@ -40,7 +40,7 @@ export default {
           name: '原味',
           value: ''
         }, {
-          name: '绿野迷踪',
+          name: '午夜蓝',
           value: 'GreenField',
         }, {
           name: '黑夜风格',

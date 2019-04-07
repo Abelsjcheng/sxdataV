@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <div class="zdinfo">
       <h2 style="color:#ffffff;text-align:center;">公告</h2>
       <!--公告列表框 -->
       <virtual-list :size="60" :remain="8">
            <b-list-group >
-            <b-list-group-item v-for="(item, index) in annoucements" :key="index" @click="showcontent(item)">
+            <b-list-group-item v-for="(item, index) in annoucements" :key="index" @click="showcontent(item)" style="background-color: rgba(255,255,255,0);border-bottom: 1px solid #eee;">
               <b-badge :variant="item.variant" style="float: left;" pill class="px-3 py-2">{{item.badge}}</b-badge> 
               <span style="color:#ffffff;" class="pl-4">{{item.content}}</span> 
             </b-list-group-item>
@@ -50,7 +50,7 @@ name: "zdinfo",
             this.$http.get('http://www.teavamc.com/api/device/mlal').then(function(res){
                         
                           for (let i = 0; i < res.data.data.length; i++) {
-                            this.info={badge:'普通',variant:'info',tid:res.data.data[i].tid,content:res.data.data[i].content,ctime:res.data.data[i].ctime,lo:res.data.data[i].lo,la:res.data.data[i].la,type:'bad'}
+                            this.info={badge:'普通',variant:'info',tid:res.data.data[i].tid,content:res.data.data[i].content,ctime:res.data.data[i].ctime,lo:res.data.data[i].lo,la:res.data.data[i].la,type:'停止'}
                             this.annoucements.push(this.info) //存入json数组
                           }
                           this.$store.commit('SET_ZDINFO',this.annoucements);
@@ -66,16 +66,10 @@ name: "zdinfo",
   
 }
 </script>
-
-<style>
-.app-warpper /deep/ .modal-dialog {
+<style >
+.zdinfo /deep/ .modal-dialog {
     top: 271.5px;
   }
-.app-warpper /deep/ .list-group-item {
-    background-color: rgba(255,255,255,0);
-    border-bottom: 1px solid #eee;
-  }
-h1,h2,h3,h4,h5,h6{
-    color: #000000
-}
+
+
 </style>

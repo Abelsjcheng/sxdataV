@@ -6,10 +6,10 @@
           <button class="clearall-btn" v-on:click="clear"> 清空</button>
           <button class="clearall-btn" type="primary"  v-on:click="addallspot"> 加载所有终端</button>
         </div> 
-        <baidu-map class="bm-view" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true"  :mapStyle="bmapStyle" >
+        <baidu-map class="bm-view" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true" :mapStyle="bmapStyle" >
            <!-- 加载标注-->
           <bml-marker-clusterer :averageCenter="true">
-                <bm-marker v-for="(marker,index) of markers" :key="index" :animation="isActive(marker.type)" :position="{lng: marker.lng, lat: marker.lat}" v-on:click="Opencontent(marker)">
+                <bm-marker v-for="(marker,index) of markers" :key="index"  :icon="markerIcon(marker.type)" :position="{lng: marker.lng, lat: marker.lat}" v-on:click="Opencontent(marker)">
                 </bm-marker>
           </bml-marker-clusterer>     
            <!--地图类型控件-->
@@ -79,7 +79,7 @@ name: "mainmap",
       if(this.get()==true){
           setTimeout(() => {
           loading.close();
-        }, 500);
+        }, 5000);
       }
      
     },
@@ -117,9 +117,16 @@ name: "mainmap",
     Opencontent:function (message) {//打开点信息窗口传值
       this.infowindow={lng:message.lng,lat:message.lat,tid:message.tid,type:message.type,content:message.content,ctime:message.ctime,show:true}
     },
-    isActive:function(judge){ //v-bind绑定属性用函数进行判断 标注是否执行跳动动画
-        if(judge=="bad") //judage==warning/danger
-        return 'BMAP_ANIMATION_BOUNCE';
+    // isActive:function(judge){ //v-bind绑定属性用函数进行判断 标注是否执行跳动动画 :animation="isActive(marker.type)"
+    //     if(judge=="bad") //judage==warning/danger
+    //     return 'BMAP_ANIMATION_BOUNCE';
+    // },
+    markerIcon:function(type){ //v-bind绑定属性用函数进行判断 标注是否更换颜色
+        if(type=="停止") //judage==warning/danger
+        {
+          const icon={url:"http://api.map.baidu.com/img/markers.png", size: {width: 23, height: 25},opts:{offset:{width:12,height:25},imageOffset:{width:0,height:-250}}};
+          return icon;
+        }
     },
     listenzdinfo(){
         for (let i = 0; i < this.zdinfo.length; i++) {  //加载故障终端标注

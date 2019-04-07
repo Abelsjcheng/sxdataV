@@ -111,19 +111,5 @@ div {
   background: rgba(0,0,0,0.5);
 }
 
-.app-warpper /deep/ .drag-container {
-    margin:auto auto;
-  }
-.app-warpper /deep/ .drag-column {
-    margin:0 0;
-    z-index:2;
-    h2{
-      font-size:2rem;
-    }
-  }
-.app-warpper /deep/ .drag-item {
-    padding: 0;
-    margin: 0;
-    height:auto;
-  }
+
 </style>

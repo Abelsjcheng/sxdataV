@@ -28,7 +28,12 @@ export default new Router({
           name: 'mainview',
           component: () =>
               import (  '@/components/main/mainview')
-      }]
+      }, {
+        path: 'Iotview',
+        name: 'Iotmain',
+        component: () =>
+            import (  '@/components/Iot/Iotmain')
+    }]
     },
     
   ]

@@ -199,7 +199,8 @@ export default {
     position: relative;
     height: 490px;
     width: 740px;
-    transform: translateY(50%);
+    top:50%;
+    transform: translateY(-50%);
 }
 .mask {
         width: 100%;

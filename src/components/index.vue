@@ -18,7 +18,9 @@
       <router-link to="/index/village"> 
         <span>村务信息展示</span>
       </router-link>
-      
+      <router-link to="/index/Iotview"> 
+        <span>物联网信息展示</span>
+      </router-link>
   </ScaleDown>  
   
 </div>

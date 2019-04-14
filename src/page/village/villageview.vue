@@ -23,7 +23,7 @@
       </div>
       <div class="m_right2" :slot="2" :key="2">
         <!-- 公告与政策 -->
-        <Iotinfo/>
+        <painfo/>
       </div>
       </Kanban>
     </div>
@@ -39,19 +39,19 @@
 </template>
 
 <script>
-import piechart from './charts/piechart'//饼图
-import tabledata from './charts/tabledata' //table数据组
-import mainmap from './mainmap' //百度地图层
-import barchart from './charts/barchart'//柱状图
-import radarchart from './charts/radarchart'//雷达图
-import linechart from './charts/linechart'//折线图
-import Iotinfo from './annoucement/Iotinfo'//公告信息列表
-import Kanban from '../main/Kanban';
+import piechart from '../../components/village/charts/piechart'//饼图
+import tabledata from '../../components/village/charts/tabledata' //table数据组
+import mainmap from './villagemap' //百度地图层
+import barchart from '../../components/village/charts/barchart'//柱状图
+import radarchart from '../../components/village/charts/radarchart'//雷达图
+import linechart from '../../components/village/charts/linechart'//折线图
+import painfo from '../../components/village/annoucement/painfo'//公告信息列表
+import Kanban from '../../components/main/Kanban';
 import { mapGetters } from 'vuex';
 export default {
-  components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,Iotinfo,Kanban
+  components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,painfo,Kanban
     },
-  name: 'Iotmain',
+  name: 'villagemain',
   data () {
     return {
       stages: ['on-hold'],

@@ -35,7 +35,7 @@
           </el-tooltip>
 					<i><img  src='../../static/img/uesrname.png' alt="" /></i>
 					<span>欢迎您</span><em>|</em><span>施景程</span>
-					<button class="logout_btn" v-on:click="login">登录</button>
+					<button class="logout_btn" ><router-link to="/">首页</router-link></button>
 				</div>
     </div>
 </template>

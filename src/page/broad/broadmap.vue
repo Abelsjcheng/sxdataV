@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import VDistpicker from './Distpicker' //地区选择器组件
+import VDistpicker from '../../components/main/Distpicker' //地区选择器组件
 import { mapGetters } from 'vuex';
 import mapStyle from '../../static/json/mapstyle.json';//地区json
 import {BmlMarkerClusterer} from 'vue-baidu-map'
@@ -124,7 +124,7 @@ name: "mainmap",
     markerIcon:function(type){ //v-bind绑定属性用函数进行判断 标注是否更换颜色
         if(type=="停止") //judage==warning/danger
         {
-          const icon={url:"http://api.map.baidu.com/img/markers.png", size: {width: 23, height: 25},opts:{offset:{width:12,height:25},imageOffset:{width:0,height:-250}}};
+          const icon={url:"http://api.map.baidu.com/img/markers.png", size: {width: 23, height: 25},opts:{imageOffset:{width:0,height:-250}}};
           return icon;
         }
     },

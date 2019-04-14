@@ -28,8 +28,8 @@
 
 <script>
 import { ScaleDown } from 'vue-burger-menu'
-import mainview from './main/mainview'
-import maintop from "./main/maintop";
+import mainview from '../broad/broadview'
+import maintop from "../../components/main/maintop";
 export default {
   name: 'index',
   components: {ScaleDown,mainview,maintop},//注册组件

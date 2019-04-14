@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import VDistpicker from '../main/Distpicker' //地区选择器组件
+import VDistpicker from '../../components/main/Distpicker' //地区选择器组件
 import { mapGetters } from 'vuex';
 import mapStyle from '../../static/json/mapstyle.json';//地区json
 import {BmlMarkerClusterer} from 'vue-baidu-map'

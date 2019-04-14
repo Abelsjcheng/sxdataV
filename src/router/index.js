@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/components/index'
-import loginview from '@/components/login/loginview'
+import index from '@/page/index/index'
+import login from '@/page/index/login'
 Vue.use(Router)
 
 export default new Router({
@@ -11,7 +11,7 @@ export default new Router({
     {
       path: '/',
       name: 'login',
-      component: loginview
+      component: login
     },
     {
       path: '/index',
@@ -22,17 +22,17 @@ export default new Router({
           path: 'village',
           name: 'villagemain',
           component: () =>
-              import (  '@/components/village/villagemain')  //路由跳转
+              import (  '@/page/village/villageview')  //路由跳转
       }, {
           path: 'mainview',
           name: 'mainview',
           component: () =>
-              import (  '@/components/main/mainview')
+              import (  '@/page/broad/broadview')
       }, {
         path: 'Iotview',
         name: 'Iotmain',
         component: () =>
-            import (  '@/components/Iot/Iotmain')
+            import (  '@/page/iot/iotview')
     }]
     },
     

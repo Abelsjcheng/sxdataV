@@ -85,7 +85,7 @@ name: "barchart",
                 ],
                 yAxis: [
                     {
-                        type: 'value', //坐标轴类型：连续数据。
+                        type: 'value', //坐标轴类型：根据data自动设置连续数据。
                         name: '水量',
                         min: 0, //最小
                         max: 250,  //最大

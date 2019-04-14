@@ -1,5 +1,5 @@
 <template>
-    <div >
+  <div >
     <!-- 左视图层 -->
     <div class="m_left" v-bind:style="{ display: activedisplay}">
       <Kanban style="height: 92vh;" :stages="stages" :blocks="block1" @update-block="updateBlock">
@@ -23,7 +23,7 @@
       </div>
       <div class="m_right2" :slot="2" :key="2">
         <!-- 公告与政策 -->
-        <painfo/>
+        <zdinfo/>
       </div>
       </Kanban>
     </div>
@@ -36,22 +36,23 @@
     <!-- 地图层 -->
     <mainmap />
   </div>
+  
 </template>
 
 <script>
-import piechart from './charts/piechart'//饼图
-import tabledata from './charts/tabledata' //table数据组
-import mainmap from './mainmap' //百度地图层
-import barchart from './charts/barchart'//柱状图
-import radarchart from './charts/radarchart'//雷达图
-import linechart from './charts/linechart'//折线图
-import painfo from './annoucement/painfo'//公告信息列表
-import Kanban from '../main/Kanban';
+import piechart from '../../components/broad/charts/piechart'//饼图
+import tabledata from '../../components/broad/charts/tabledata' //table数据组
+import mainmap from './broadmap' //百度地图层
+import barchart from '../../components/broad/charts/barchart'//柱状图
+import radarchart from '../../components/broad/charts/radarchart'//雷达图
+import linechart from '../../components/broad/charts/linechart'//折线图
+import zdinfo from '../../components/broad/annoucement/zdinfo'//公告信息列表
+import Kanban from '../../components/main/Kanban';
 import { mapGetters } from 'vuex';
-export default {
-  components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,painfo,Kanban
+export default { //注册组件
+components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,zdinfo,Kanban
     },
-  name: 'villagemain',
+name: "mianview",
   data () {
     return {
       stages: ['on-hold'],
@@ -67,12 +68,13 @@ export default {
   },
   computed: { //计算属性 取存在状态库中的值
      ...mapGetters(["isdisplay"]),
-     listendisplay(){  //监听显示按钮
+     listendisplay(){
        return this.isdisplay;
      }
   },
   watch:{
       listendisplay:function(vag){
+        
         if(vag==true){
           console.log(vag)
           this.activedisplay='block';
@@ -81,9 +83,11 @@ export default {
         }
       }
   }
-
+  
+  
 }
 </script>
+
 <style lang="scss" >
 .m_left{
   width: 23vw;
@@ -105,7 +109,7 @@ div {
   margin:0 2px;
   bottom: 5px;
   left: 23vw;
-  width: 53.5vw;
+  width: 53.8vw;
   position: absolute;
   z-index:2;
   background: rgba(0,0,0,0.5);

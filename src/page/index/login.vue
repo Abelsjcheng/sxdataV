@@ -1,6 +1,6 @@
 <template>
 <div>
-    <flat-surface-shader class="shader" type="webgl" :light="{ambient: '#22bc9e', diffuse: '#2b7c6b'}">
+    <flat-surface-shader class="shader" type="webgl" :light="{ambient: '#22bc9e', diffuse: '#2b7c6b'}" >
     </flat-surface-shader>
     
     <div class="mask">

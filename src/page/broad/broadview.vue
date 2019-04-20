@@ -47,33 +47,33 @@ import barchart from '../../components/broad/charts/barchart'//柱状图
 import radarchart from '../../components/broad/charts/radarchart'//雷达图
 import linechart from '../../components/broad/charts/linechart'//折线图
 import zdinfo from '../../components/broad/annoucement/zdinfo'//公告信息列表
-import Kanban from '../../components/main/Kanban';
+import Kanban from '../../components/main/Kanban';//拖拽组件
 import { mapGetters } from 'vuex';
-export default { //注册组件
-components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,zdinfo,Kanban
-    },
-name: "mianview",
-  data () {
+export default { 
+  components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,zdinfo,Kanban
+      },//注册组件
+  name: "mianview",
+  data () { //局内数据
     return {
       stages: ['on-hold'],
       block1: [{id:1,status:'on-hold'},{id:2,status:'on-hold'},{id:3,status:'on-hold'}],
       block2: [{id:1,status:'on-hold'},{id:2,status:'on-hold'}],
-      activedisplay:true
+      activedisplay:true    //图表显示判断
     };
   },
-  methods:{
+  methods:{ //方法函数
     updateBlock(id, status) {
       this.blocks.find(b => b.id === Number(id)).status = status;
     },
   },
   computed: { //计算属性 取存在状态库中的值
-     ...mapGetters(["isdisplay"]),
-     listendisplay(){
+     ...mapGetters(["isdisplay"]), //图表显示判断值
+     listendisplay(){     //返回isdisplay的值    类似java构造函数
        return this.isdisplay;
      }
   },
   watch:{
-      listendisplay:function(vag){
+      listendisplay:function(vag){    //函数实现   vag为computed方法中listendisplay函数的返回值
         
         if(vag==true){
           console.log(vag)

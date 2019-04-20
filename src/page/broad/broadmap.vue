@@ -48,16 +48,16 @@ name: "mainmap",
   },
    methods: {//方法函数
       handler ({BMap, map}) { //地图初始化函数
-      this.center.lng = 113.195699
-      this.center.lat = 28.240956
-      this.zoom = 13
+      this.center.lng = 113.195699      //中心点经度
+      this.center.lat = 28.240956       //中心点纬度
+      this.zoom = 13                    //地图缩放值
     },
     onSelected(data) { //地区选择器函数
       this.temp.address__province = data.province.value,
       this.temp.address__city = data.city.value,
       this.temp.address__dist = data.area.value,
 
-      this.$store.commit('SET_SELECTPLACE',this.temp.address__dist[0]);
+      this.$store.commit('SET_SELECTPLACE',this.temp.address__dist[0]); //提交村名 至状态库中存储 
       this.center.lng = this.temp.address__dist[1],
       this.center.lat = this.temp.address__dist[2],
       this.zoom = 16
@@ -76,7 +76,7 @@ name: "mainmap",
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.7)'
       });
-      if(this.get()==true){
+      if(this.get()==true){       //延迟等待是否加载完毕
           setTimeout(() => {
           loading.close();
         }, 5000);
@@ -124,7 +124,7 @@ name: "mainmap",
     markerIcon:function(type){ //v-bind绑定属性用函数进行判断 标注是否更换颜色
         if(type=="停止") //judage==warning/danger
         {
-          const icon={url:"http://api.map.baidu.com/img/markers.png", size: {width: 23, height: 25},opts:{imageOffset:{width:0,height:-250}}};
+          const icon={url:"http://api.map.baidu.com/img/markers.png", size: {width: 23, height: 25},opts:{imageOffset:{width:0,height:-250}}};    //修改标注样式 以便区分
           return icon;
         }
     },
@@ -137,22 +137,22 @@ name: "mainmap",
     
    },
   computed: { //计算属性 取存在状态库中的值
-     ...mapGetters(["themeName"]),
-     ...mapGetters(["zdinfo"]),
-     ...mapGetters(["zdinfocontent"]),
-     listenstage(){ //返回状态库中的值
+     ...mapGetters(["themeName"]),  //取地图主题样式
+     ...mapGetters(["zdinfo"]),     //取终端公告信息
+     ...mapGetters(["zdinfocontent"]),  //取终端公告具体信息
+     listenstage(){ //返回themeName中的值    类似java构造函数
        return this.themeName;
      },
-     listenzdinfocontent(){
+     listenzdinfocontent(){ //返回zdinfocontent中的值
        return this.zdinfocontent;
      }
      
   },
-  watch:{
-      listenstage:function(vag){//实时监听状态库中值的改变 
+  watch:{ //监听方法
+      listenstage:function(vag){//实时监听状态库中值的改变  vag为computed方法中listenstage函数的返回值
         this.bmapStyle={styleJson:vag}
       },
-      listenzdinfocontent:function(message){
+      listenzdinfocontent:function(message){ //同上
         this.infowindow={lng:message.lo,lat:message.la,tid:message.tid,type:message.type,content:message.content,ctime:message.ctime,show:true}
         this.center.lng = message.lo
         this.center.lat = message.la

@@ -2,11 +2,13 @@
 
 > A Vue.js project
 
-#项目结构
+# 项目结构
 
-|-- build                            	// 项目构建相关代码
-|-- config                           	// 项目开发环境配置
-|-- dist                          		// 项目打包文件夹
+|-- build     // 项目构建相关代码
+
+|-- config    // 项目开发环境配置
+
+|-- dist      // 项目打包文件夹
 |-- node_modules                    	// 项目依赖资源包安装路径
 |-- src                               // 源码目录
 |   |-- components                   //  vue自定义组件文件夹

@@ -8,28 +8,29 @@ export default new Router({
   //base:'/dist/',//部署到tomcat
   routes: [
     
-    {
+    {                     //一级url路径
       path: '/',
       name: 'login',
       component: login
     },
     {
-      path: '/index',
+      path: '/index',    //一级url路径
       name: 'index',
       redirect: '/index/mainview', //登录加载mainview
       component: index,
-      children: [{
-          path: 'village',
+      children: [
+        {       
+          path: 'village',  //二级url路径
           name: 'villagemain',
           component: () =>
               import (  '@/page/village/villageview')  //路由跳转
       }, {
-          path: 'mainview',
+          path: 'mainview', //二级url路径
           name: 'mainview',
           component: () =>
               import (  '@/page/broad/broadview')
       }, {
-        path: 'Iotview',
+        path: 'Iotview',  //二级url路径
         name: 'Iotmain',
         component: () =>
             import (  '@/page/iot/iotview')

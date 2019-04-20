@@ -3,6 +3,7 @@
 > A Vue.js project
 
 # 项目结构
+``` bash
 
 |-- build     // 项目构建相关代码
 
@@ -60,7 +61,7 @@
 
 |-- .gitignore          //  git上传需要忽略的文件格式
 
-|--。postcssrc.js		// 配置浏览器私缀
+|-- .postcssrc.js		// 配置浏览器私缀
 
 |-- index.html          // 入口页面
 
@@ -68,6 +69,7 @@
 
 |-- README.md           // 项目说明
 
+```
 ## Build Setup
 
 ``` bash

@@ -2,7 +2,8 @@
 
 > A Vue.js project
 
-项目结构：
+#项目结构
+
 |-- build                            	// 项目构建相关代码
 |-- config                           	// 项目开发环境配置
 |-- dist                          		// 项目打包文件夹
@@ -35,6 +36,7 @@
 |-- index.html                       	// 入口页面
 |-- package.json                     	// 项目资源包配置相关信息
 |-- README.md                       // 项目说明
+
 ## Build Setup
 
 ``` bash

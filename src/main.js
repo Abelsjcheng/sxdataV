@@ -44,5 +44,5 @@ Vue.prototype.axios = axios;
 new Vue({
   router,
   store,
-  render: h => h(App)
-}).$mount('#app')
+  render: h => h(App) //渲染首视图
+}).$mount('#app') //挂载

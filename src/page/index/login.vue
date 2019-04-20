@@ -101,7 +101,7 @@ let moment = require("moment");//直接引入组件
 
 export default {
   name: 'loginview',
-  data () {
+  data () { //局内数据
     return {
      ndata:{year:'',day:'',week:''},
       weather:{},
@@ -114,8 +114,8 @@ export default {
       cloudActive:false
     };
   },
-  methods:{
-      get:function(){ //3000个终端点
+  methods:{   //方法函数
+      get:function(){ 
               //发送get请求
              
                  

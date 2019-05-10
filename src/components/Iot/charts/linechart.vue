@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
 name: "linechart",
   data () {
@@ -16,7 +17,7 @@ name: "linechart",
                 }
             },
             legend: {
-                data:['温度','湿度','PH','空气质量'],
+                data:['温度','湿度'],
                 x: 'left', 
                     textStyle: {  //组件每项颜色
                         color: ['#1FC06E','#396CC0']
@@ -29,10 +30,7 @@ name: "linechart",
                     animation: false
                 }
             },
-            grid: {
-                
-                height: '65%'
-            },
+            
             toolbox: {
                 show: true,
                  right: 20, //toolbox的定位位置
@@ -52,16 +50,13 @@ name: "linechart",
             axisPointer: {
                 link: {xAxisIndex: 'all'}
             },
-            dataZoom: [
-                {
-                    type: 'inside',//时间轴缩放
-                    show : true,
-                    realtime : true,
-                    start : 80,
-                    end : 100,
-                    backgroundColor:'#ffffff'
-                }
-            ],
+            dataZoom: {
+                show : true,
+                realtime : true,
+                start : 0,
+                end : 100,
+                backgroundColor:'#ffffff'
+            },
             
             xAxis: {
                 type: 'category',
@@ -113,22 +108,6 @@ name: "linechart",
                     hoverAnimation: false,
                     data: [],
                     type: 'line'
-                },
-                {
-                    name:'PH',
-                    yAxisIndex:1,
-                    symbolSize: 8,
-                    hoverAnimation: false,
-                    data: [],
-                    type: 'line'
-                },
-                {
-                    name:'空气质量',
-                    yAxisIndex:1,
-                    symbolSize: 8,
-                    hoverAnimation: false,
-                    data: [],
-                    type: 'line'
                 }
             ]
        },
@@ -136,41 +115,49 @@ name: "linechart",
     }
   },
   methods:{
-      getcoldata:function(){ //
+      getcoldata:function(btime,etime,lim){ //
               //发送get请求
-                  var datalength;
                   this.polar.series[0].data=[];
                   this.polar.series[1].data=[];
                   this.polar.xAxis.data=[];
-                  this.$http.get('http://localhost:8081/RiverVis/api/envdata').then(function (res) {
-                   /* datalength=res.data.data.length;
-                    console.log(res.data.data.length)
-                    if(res.data.data.length>20)
-                        datalength=20;
-                    else{
-                        datalength=res.data.data.length;
-                    }*/
-                     console.log(res.data.length)
-                      for (let i = res.data.length-1; i >=0; i--) {
-                            this.polar.series[0].data.push(res.data[i].temp);
-                            this.polar.series[1].data.push(res.data[i].hum);
-                            this.polar.series[2].data.push(res.data[i].ph);
-                            this.polar.series[3].data.push(res.data[i].pm);
-                            this.polar.xAxis.data.push(res.data[i].time);
+                  this.$http.get('http://www.teavamc.com/api/rivervis/envbytl',{params :{begintime:btime,endtime:etime,limit:lim}}).then(function (res) {
+                  
+                    
+                      for (let i = 0; i<res.data.data.length; i++) {
+                            this.polar.series[0].data.push(res.data.data[i].temp);
+                            this.polar.series[1].data.push(res.data.data[i].hum);
+                            this.polar.xAxis.data.push(res.data.data[i].time);
                           }
+                       
                     })
                     .catch(function (error) {
                       console.log(error);
                     });
+               
              
       },
       LopTime(){
         setInterval(this.getcoldata,10000)   //目前用定时器进行ajax轮询 ，后期用websocket
       },
   },
+  computed: { //计算属性 取存在状态库中的值
+     ...mapGetters(["chartSet"]),
+     listenchartSet(){  //监听 chartSet值的变化
+       return this.chartSet;
+     }
+  },
+  watch:{
+      listenchartSet:{
+          handler(vag){  //handler执行具体方法
+            this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit);
+        },
+        deep: true//是否深度监听设置deep: true  则可以监听到vag.timeframe的变化，此时会给vag的所有属性都加上这个监听器，
+        //immediate: true 代表如果在 wacth 里声明了 变量 之后，就会立即先去执行里面的handler方法
+      }
+  },
   mounted:function(){//页面初始化函数
-        this.getcoldata();
-        this.LopTime();
+        this.getcoldata("2019-03-17 13:02:31","2019-03-22 15:18:55",20);
+        //this.LopTime();
     }
   
   

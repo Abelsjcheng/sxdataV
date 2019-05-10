@@ -2,30 +2,34 @@
     <div >
     <!-- 左视图层 -->
     <div class="m_left" v-bind:style="{ display: activedisplay}">
-      <Kanban style="height: 92vh;" :stages="stages" :blocks="block1" @update-block="updateBlock">
-        <div class="m_left1" :slot="1" :key="1">
+      <div class="m_left1" >
           <tabledata />
         </div>
-        <div class="m_left1" :slot="2" :key="2">
+      <!--
+        
+        
+        <div class="m_left1" >
           <barchart />
         </div>
-        <div class="m_left1"   :slot="3" :key="3">
+        <div class="m_left1" >
           <radarchart />
-        </div>
-      </Kanban>
+        </div> 
+      -->
+      <ChartControl />
     </div>
     <!-- 右视图层 -->
     <div class="m_right" v-bind:style="{ display: activedisplay}">
-      <Kanban style="height: 92vh;" :stages="stages" :blocks="block2" @update-block="updateBlock">
-      <div class="m_right1" :slot="1" :key="1">
-        <!-- 饼图 -->
-        <piechart />   
+      
+      <div class="mlot_right">
+        <!-- 饼图 <piechart />  -->
+         <!-- 待重新开发-->
       </div>
-      <div class="m_right2" :slot="2" :key="2">
-        <!-- 公告与政策 -->
-        <Iotinfo/>
+      <!-- 待重新开发 公告与政策 
+      <div class="m_right2">
+         <Iotinfo/> 
+         
       </div>
-      </Kanban>
+      -->
     </div>
     <div class="m_bottom" v-bind:style="{ display: activedisplay}">
       <div class="m_bottom1">
@@ -46,33 +50,27 @@ import barchart from '../../components/Iot/charts/barchart'//柱状图
 import radarchart from '../../components/Iot/charts/radarchart'//雷达图
 import linechart from '../../components/Iot/charts/linechart'//折线图
 import Iotinfo from '../../components/Iot/annoucement/Iotinfo'//公告信息列表
-import Kanban from '../../components/main/Kanban';
+import ChartControl from '../../components/Iot/ChartControl/ChartControl' //图表控制器
 import { mapGetters } from 'vuex';
 export default {
-  components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,Iotinfo,Kanban
+  components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,Iotinfo,ChartControl
     },
   name: 'Iotmain',
   data () {
     return {
-      stages: ['on-hold'],
-      block1: [{id:1,status:'on-hold'},{id:2,status:'on-hold'},{id:3,status:'on-hold'}],
-      block2: [{id:1,status:'on-hold'},{id:2,status:'on-hold'}],
       activedisplay:true
     };
   },
   methods:{
-    updateBlock(id, status) {
-      this.blocks.find(b => b.id === Number(id)).status = status;
-    },
   },
   computed: { //计算属性 取存在状态库中的值
      ...mapGetters(["isdisplay"]),
-     listendisplay(){  //监听显示按钮
+     listendisplay(){  //监听显示按钮 
        return this.isdisplay;
      }
   },
   watch:{
-      listendisplay:function(vag){
+      listendisplay:function(vag){ //实现监听方法 ：图表显示
         if(vag==true){
           console.log(vag)
           this.activedisplay='block';

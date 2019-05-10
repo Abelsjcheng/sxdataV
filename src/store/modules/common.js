@@ -12,7 +12,7 @@ const common = {
         zdinfo: getStore({ name: 'zdinfo' }) || '',
         selectplace: getStore({ name: 'selectplace' }) || '',
         zdinfocontent: getStore({ name: 'zdinfocontent' }) || '',
-        
+        chartSet: getStore({ name: 'chartSet' }) || '',
     },
     actions: {
         //获取字典公用类
@@ -72,6 +72,13 @@ const common = {
                 content: state.zdinfocontent,
             })
         }, 
+        SET_CHARTSET: (state, chartSet) => {
+            state.chartSet = chartSet;
+            setStore({
+                name: 'chartSet',
+                content: state.chartSet,
+            })
+        },
     }
 }
 export default common

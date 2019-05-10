@@ -1,0 +1,36 @@
+.chartplane{
+    position: relative;
+    height:60vh;
+    margin:4.5px 0;
+    padding:5px 10px;
+    background-color: rgb(00,25,49);
+    z-index:2;
+    .chartplane_head{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        .title{
+            color: #05d2e2;
+            font-size: 14px;
+            font-style: normal;
+        }
+    }
+    .chartblock{
+        background:rgba(65, 52, 162, 0.3);;
+        border-radius: 16px;
+        color: #f1eaea;
+        padding: 1px 15px;
+        width: 280px;
+        height: 30px;
+        margin:4.5px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .chart_title{
+            font-family:"Hiragino Sans GB";
+            font-size: 10px;
+            
+        }
+    }
+    
+}

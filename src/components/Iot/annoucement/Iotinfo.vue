@@ -40,7 +40,7 @@ name: "Iotinfo",
       //赋值
       this.infocontent={type:message.type,reldate:message.reldate,title:message.title,content:message.content,adduname:message.adduname,pic:''}
       this.$refs.mycontent.show()//显示弹窗
-    },
+    },//123154
     hidecontent () {
       this.$refs.mycontent.hide()//隐藏弹窗
     },

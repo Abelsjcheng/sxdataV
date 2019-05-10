@@ -15,7 +15,7 @@
 		background-size: 100% 100%;
 		box-shadow: inset 0px 0px 20px #038d98;
 		
-	  }
+	}
 	.m_center{
 		position: absolute;
 		left: 48%;
@@ -28,6 +28,18 @@
 	.m_right1{
 		position: relative;
 		height:30vh;
+		margin:4.5px 0;
+		padding:5px 10px;
+		text-align:center;
+		z-index:2;
+		background: url(../static/img/bgbg1.png) no-repeat;
+		background-size: 100% 100%;
+		box-shadow: inset 0px 0px 20px #038d98;
+		
+	  }
+	  .mlot_right{ //用于lot页面
+		position: relative;
+		height:90vh;
 		margin:4.5px 0;
 		padding:5px 10px;
 		text-align:center;

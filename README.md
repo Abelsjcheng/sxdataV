@@ -17,17 +17,17 @@
 
 |   |-- components       //  vue自定义组件文件夹
 
-|   		|--broad	// 应急广播页面组件
+|   	|--broad	// 应急广播页面组件
 
-|   		|--iot		// 物联网页面组件
+|   	|--iot		// 物联网页面组件
 
-|   		|--main		// 公共组件
+|   	|--main		// 公共组件
 
-|   		|--village	// 村务页面组件
+|   	|--village	// 村务页面组件
 
-|	|--filters			// 过滤器
+|   |--filters			// 过滤器
 
-|	|-- page			// vue页面目录
+|   |-- page			// vue页面目录
 
 |		|-- broad		// 应急广播页面
 
@@ -37,9 +37,9 @@
 
 |		|-- village		// 村务页面
 
-|	|-- router			// 路由配置
+|   |-- router			// 路由配置
 
-|	|-- static			// 静态文件目录
+|   |-- static			// 静态文件目录
 
 |		|-- img			// 静态图片目录
 

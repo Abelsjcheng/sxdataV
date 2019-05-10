@@ -35,7 +35,7 @@ export default {
     },
     methods:{
         formatTooltip(val) {
-            return val / 100;
+             return val / 100;
         },
         submit(){
             this.popvisible=false;

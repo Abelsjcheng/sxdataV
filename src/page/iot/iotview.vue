@@ -21,8 +21,9 @@
     <div class="m_right" v-bind:style="{ display: activedisplay}">
       
       <div class="mlot_right">
-        <!-- 饼图 <piechart />  -->
+        <piechart /> 
          <!-- 待重新开发-->
+         
       </div>
       <!-- 待重新开发 公告与政策 
       <div class="m_right2">

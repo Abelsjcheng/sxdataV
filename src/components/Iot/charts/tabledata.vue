@@ -72,13 +72,13 @@ name: "tabledata",
   methods: {
     get:function(){ 
             //发送get请求 获取终端总数
-            this.$http.get('http://www.teavamc.com/api/iot/devicecount').then(function(res){   
+            this.$http.get('http://110.53.162.165:5050/api/iot/devicecount').then(function(res){   
                                      
                                      this.devicecount=res.data.data;            
                         },function(){
                     console.log('请求失败处理');
                 });
-            this.$http.get('http://www.teavamc.com/api/iot/countall').then(function(res){   
+            this.$http.get('http://110.53.162.165:5050/api/iot/countall').then(function(res){   
                                      
                                      this.countall=res.data.data;            
                         },function(){

@@ -4,13 +4,13 @@
     <div class="m_left" v-bind:style="{ display: activedisplay}">
       <Kanban style="height: 92vh;" :stages="stages" :blocks="block1" @update-block="updateBlock">
         <div class="m_left1" :slot="1" :key="1">
-          <tabledata />
+          <!--重做 <tabledata /> -->
         </div>
         <div class="m_left1" :slot="2" :key="2">
-          <barchart />
+          <!--重做 <barchart />-->
         </div>
         <div class="m_left1"   :slot="3" :key="3">
-          <radarchart />
+          <!--重做 <radarchart />-->
         </div>
       </Kanban>
     </div>
@@ -19,18 +19,18 @@
       <Kanban style="height: 92vh;" :stages="stages" :blocks="block2" @update-block="updateBlock">
       <div class="m_right1" :slot="1" :key="1">
         <!-- 饼图 -->
-        <piechart />   
+        <!--重做 <piechart />   -->
       </div>
       <div class="m_right2" :slot="2" :key="2">
         <!-- 公告与政策 -->
-        <zdinfo/>
+       <!--重做 <zdinfo/> -->
       </div>
       </Kanban>
     </div>
     <div class="m_bottom" v-bind:style="{ display: activedisplay}">
       <div class="m_bottom1">
         <!-- 折线图 -->
-          <linechart />
+       <!--重做   <linechart /> -->
       </div>
     </div>
     <!-- 地图层 -->

@@ -47,7 +47,7 @@ name: "zdinfo",
     },
     get:function(){ 
             //发送get请求
-            this.$http.get('http://www.teavamc.com/api/device/mlal').then(function(res){
+            this.$http.get('http://110.53.162.165:5050/api/device/mlal').then(function(res){
                         
                           for (let i = 0; i < res.data.data.length; i++) {
                             this.info={badge:'普通',variant:'info',tid:res.data.data[i].tid,content:res.data.data[i].content,ctime:res.data.data[i].ctime,lo:res.data.data[i].lo,la:res.data.data[i].la,type:'停止'}

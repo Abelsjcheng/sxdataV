@@ -21,11 +21,16 @@
     <div class="m_right" v-bind:style="{ display: activedisplay}">
       
       <div class="mlot_right">
+<<<<<<< HEAD
         <!-- 饼图 <piechart />  -->
          <cartesianchart />
 
 
 
+=======
+        <piechart /> 
+         <!-- 待重新开发-->
+>>>>>>> c75ffcc814458f420bda0e31d71f226c7d805533
          
       </div>
       <!-- 待重新开发 公告与政策 

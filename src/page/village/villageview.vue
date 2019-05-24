@@ -1,6 +1,6 @@
 <template>
     <div >
-    <!-- 左视图层 -->
+    <!-- 左视图层 
     <div class="m_left" v-bind:style="{ display: activedisplay}">
       <Kanban style="height: 92vh;" :stages="stages" :blocks="block1" @update-block="updateBlock">
         <div class="m_left1" :slot="1" :key="1">
@@ -13,28 +13,58 @@
           <radarchart />
         </div>
       </Kanban>
-    </div>
-    <!-- 右视图层 -->
+    </div>-->
+    <!-- 右视图层 
     <div class="m_right" v-bind:style="{ display: activedisplay}">
       <Kanban style="height: 92vh;" :stages="stages" :blocks="block2" @update-block="updateBlock">
-      <div class="m_right1" :slot="1" :key="1">
-        <!-- 饼图 -->
+      <div class="m_right1" :slot="1" :key="1">-->
+        <!-- 饼图 
         <piechart />   
       </div>
-      <div class="m_right2" :slot="2" :key="2">
-        <!-- 公告与政策 -->
+      <div class="m_right2" :slot="2" :key="2">-->
+        <!-- 公告与政策 
         <painfo/>
       </div>
       </Kanban>
     </div>
     <div class="m_bottom" v-bind:style="{ display: activedisplay}">
-      <div class="m_bottom1">
-        <!-- 折线图 -->
+      <div class="m_bottom1">-->
+        <!-- 折线图 
           <linechart />
       </div>
-    </div>
-    <!-- 地图层 -->
-    <mainmap />
+    </div>-->
+    <!-- 地图层 
+    <mainmap />-->
+    <el-container>
+      <el-aside width="300px">Aside</el-aside>
+      <el-container>
+        
+        <el-main>
+          <el-row :gutter="10">
+            <el-col :span="10"><div class="grid-village-map">地图模块</div></el-col> <!-- css 自行修改-->
+            <el-col :span="14">
+              <div class="grid-village-databox">
+                <el-row >
+                  <el-col :span="24"><div class="grid-village-onlydata">单数据展示模块</div></el-col>
+                </el-row>
+                <el-row :gutter="5">
+                  <el-col :span="12"><div class="grid-village-annou">村务模块</div></el-col>
+                  <el-col :span="12"><div class="grid-village-annou">村务模块</div></el-col>
+
+                </el-row>
+              </div>
+            </el-col>
+          </el-row>
+          <el-row :gutter="10">
+            <el-col :span="6"><div class="grid-village-echart1">党建模块</div></el-col>
+            <el-col :span="7"><div class="grid-village-echart2">图表模块</div></el-col>
+            <el-col :span="7"><div class="grid-village-echart3">图表模块</div></el-col>
+            <el-col :span="4"><div class="grid-village-echart4"></div></el-col>
+          </el-row>
+        </el-main>
+        
+      </el-container>
+    </el-container>
   </div>
 </template>
 
@@ -110,6 +140,93 @@ div {
   z-index:2;
   background: rgba(0,0,0,0.5);
 }
+.el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+  
+  .el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+    border-right:3px solid  #3fa6cb;
+   
+  }
+  
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+  }
+  
+.el-container {
+    height:92vh;
+  }
+  
+  .el-container:nth-child(5) .el-aside,
+  .el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+  }
+  
+  .el-container:nth-child(7) .el-aside {
+    line-height: 320px;
+  }
+ .el-row {
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-col {
+    border-radius: 4px;
+  }
 
-
+  .row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+  }
+  .grid-village-map{
+    border-radius: 4px;
+    height: 60vh;
+    background: #d3dce6;
+  }
+  .grid-village-databox{
+    border-radius: 4px;
+    height: 60vh;
+    background: #d3dce6;
+    .grid-village-onlydata{
+      border-radius: 4px;
+      height: 30vh;
+      background:#738fad;
+    }
+    .grid-village-annou{
+      border-radius: 4px;
+      height: 30vh;
+      background:#738fad;
+    }
+  }
+  .grid-village-echart1{
+    border-radius: 4px;
+    height: 31vh;
+    background: #d3dce6;
+  }
+  .grid-village-echart2{
+    border-radius: 4px;
+    height: 31vh;
+    background: #d3dce6;
+  }
+  .grid-village-echart3{
+    border-radius: 4px;
+    height: 31vh;
+    background: #d3dce6;
+  }
+  .grid-village-echart4{
+    border-radius: 4px;
+    height: 31vh;
+    background: #d3dce6;
+  }
 </style>

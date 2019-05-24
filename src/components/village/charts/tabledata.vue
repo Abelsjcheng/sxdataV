@@ -74,7 +74,7 @@ name: "tabledata",
   methods: {
     get:function(){ 
             //发送get请求 获取终端总数
-            this.$http.get('http://www.teavamc.com/api/count/m').then(function(res){   
+            this.$http.get('http://110.53.162.165:5050/api/count/m').then(function(res){   
                             for (let i = 0; i < res.data.data.length; i++) {
                               console.log(res.data.data[i].marea)
                             const cdata={marea:res.data.data[i].marea,msum:res.data.data[i].msum,man:res.data.data[i].man,woman:res.data.data[i].woman}
@@ -84,7 +84,7 @@ name: "tabledata",
                     console.log('请求失败处理');
                 });
             //发送get请求 获取某村终端数信息
-            this.$http.get('http://www.teavamc.com/api/count/pm').then(function(res){
+            this.$http.get('http://110.53.162.165:5050/api/count/pm').then(function(res){
                         for (let i = 0; i < res.data.data.length; i++) {
                           
                             const pdata={parea:res.data.data[i].parea,psum:res.data.data[i].psum,man:res.data.data[i].man,woman:res.data.data[i].woman}

@@ -73,13 +73,13 @@ name: "tabledata",
   methods: {
     get:function(){ 
             //发送get请求 获取终端总数
-            this.$http.get('http://www.teavamc.com/api/device/sumters').then(function(res){   
+            this.$http.get('http://110.53.162.165:5050/api/device/sumters').then(function(res){   
                             this.sumdata={sum:res.data.data.sum,run:res.data.data.run,down:res.data.data.down}
                         },function(){
                     console.log('请求失败处理');
                 });
             //发送get请求 获取某村终端数信息
-            this.$http.get('http://www.teavamc.com/api/device/tersga').then(function(res){
+            this.$http.get('http://110.53.162.165:5050/api/device/tersga').then(function(res){
                         for (let i = 0; i < res.data.data.length; i++) {
                             const tersdata={aname:res.data.data[i].aname,run:res.data.data[i].run,down:res.data.data[i].down}
                             this.mdata.push(tersdata)

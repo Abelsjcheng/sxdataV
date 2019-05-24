@@ -120,8 +120,10 @@ name: "linechart",
                   this.polar.series[0].data=[];
                   this.polar.series[1].data=[];
                   this.polar.xAxis.data=[];
-                  this.$http.get('http://www.teavamc.com/api/rivervis/envbytl',{params :{begintime:btime,endtime:etime,limit:lim}}).then(function (res) {
-                  
+                  this.$http.get('http://110.53.162.165:5050/api/rivervis/envbytl',
+                  {params :{begintime:btime,endtime:etime,limit:lim}}).then(function (res) {
+                      
+                     // console.log(res.data.data[0].temp);
                     
                       for (let i = 0; i<res.data.data.length; i++) {
                             this.polar.series[0].data.push(res.data.data[i].temp);
@@ -132,9 +134,7 @@ name: "linechart",
                     })
                     .catch(function (error) {
                       console.log(error);
-                    });
-               
-             
+                    });  
       },
       LopTime(){
         setInterval(this.getcoldata,10000)   //目前用定时器进行ajax轮询 ，后期用websocket

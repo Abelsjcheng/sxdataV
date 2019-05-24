@@ -22,7 +22,11 @@
       
       <div class="mlot_right">
         <!-- 饼图 <piechart />  -->
-         <!-- 待重新开发-->
+         <cartesianchart />
+
+
+
+         
       </div>
       <!-- 待重新开发 公告与政策 
       <div class="m_right2">
@@ -43,6 +47,7 @@
 </template>
 
 <script>
+import cartesianchart from '../../components/Iot/charts/cartesianchart'//雨量图
 import piechart from '../../components/Iot/charts/piechart'//饼图
 import tabledata from '../../components/Iot/charts/tabledata' //table数据组
 import mainmap from './iotmap' //百度地图层
@@ -53,7 +58,7 @@ import Iotinfo from '../../components/Iot/annoucement/Iotinfo'//公告信息列�
 import ChartControl from '../../components/Iot/ChartControl/ChartControl' //图表控制器
 import { mapGetters } from 'vuex';
 export default {
-  components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,Iotinfo,ChartControl
+  components: {cartesianchart,piechart,tabledata,mainmap,barchart,radarchart,linechart,Iotinfo,ChartControl
     },
   name: 'Iotmain',
   data () {

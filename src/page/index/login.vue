@@ -1,11 +1,42 @@
 <template>
-    <div >
+    <div style="height:100vh">
         <canvas id="space"></canvas>
+        
+        <div class="drag_div" id="drag_div">
+           
+            <div class="one" v-if="broaddisplay==0">
+                <router-link class="one" style="height: 150px;width: 200px;" to="/index/mainview"  >
+                </router-link>
+                <div class="text_center">应急广播信息展示 </div>
+            </div>
+            
+            <div class="two" v-if="villagedisplay==0">
+                <router-link class="welcome" to="/index/village"> 
+                    <span>欢迎进入</span>
+                 </router-link>
+                <div class="text_center">村务信息展示</div>
+            </div>
+           
+           <div class="twodisplay" v-if="villagedisplay==1">
+                <div class="welcomedisplay" > 
+                    <span>欢迎进入</span>
+                 </div>
+            </div>
+
+            <div class="three" v-if="iotdisplay==0">
+                <router-link class="three" to="/index/Iotview" style="height: 150px;width: 200px;" >
+                </router-link>
+                <div class="text_center">物联网信息展示</div>
+            </div>
+
+            
+            
+        </div> 
+        <!-- 
         <div style="height: 100vh;">
-            <div class="all">
-            <!--  <div class="lefter">
-                <div class="text">Hosting</div>
-                </div>-->
+            
+           <div class="all" >
+           
                 <div class="left">
                 <router-link class="left" to="/index/mainview"  >
                 </router-link>
@@ -25,22 +56,39 @@
                 </router-link>
                 <div class="text">物联网信息展示</div>
                 </div>
-            <!--  <div class="righter">
-                <div class="text">SEO</div>
-                </div>-->
+            
             </div>
-        </div>
+          
+        </div>  -->
     </div>
 </template>
 
 <script>
+import weather from '../../components/main/weather'
+import {tuozhuai} from '../../static/js/tuozhuai.js'
 export default {
     name: 'login',
+    components: {weather},
     data(){
         return{
-
+            broaddisplay:0,
+            villagedisplay:0,
+            iotdisplay:0
         }
     },
+    methods:{
+        logindisplay:function(){
+            this.$http.get('http://localhost/api/forePage_col/pagestatus').then(function(res){
+                          this.broaddisplay=res.data.data[0].status;
+                          this.villagedisplay=res.data.data[1].status;
+                          this.iotdisplay=res.data.data[2].status;
+
+                        },function(){
+                    console.log('请求失败处理');
+                });
+        }
+    },
+    
     watch:{
         
     },
@@ -132,15 +180,15 @@ export default {
         
 
         executeFrame();
-    },
-    methods:{
-        
+
+        this.logindisplay();
     }
 }
 
 </script>
 
 <style lang="scss">
-
+@import '../../styles/login.scss';
+  
 </style>
 

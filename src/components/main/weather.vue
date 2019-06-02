@@ -1,16 +1,5 @@
 <template>
-<div>
-    <flat-surface-shader class="shader" type="webgl" :light="{ambient: '#22bc9e', diffuse: '#2b7c6b'}" >
-    </flat-surface-shader>
-    
-    <div class="mask">
-      <div class="centermain">
-      
-        <div class="top1" >
-          <span style="font-size:25px;position:absolute;left:21%;top:30%">{{ndata.year}}</span>
-          <span style="font-size:25px;position:absolute;left:32%;top:55%">{{ndata.week}}</span>
-        </div>
-        <div class="top2" v-bind:class="{ weatherbackgroundsun: sunActive, weatherbackgroundcloud: cloudActive }" >
+    <div class="top2" v-bind:class="{ weatherbackgroundsun: sunActive, weatherbackgroundcloud: cloudActive }" >
           <a class="op_weather_day" style="width:115px">
              <p class="op_weather_date1">{{weather.f1.day}} 周{{weather.f1.weekday}}</p>
             <div class="op_weather_pic1" :style="weather_pic1"></div>
@@ -66,55 +55,25 @@
             <p class="op_weather_wind">{{weather.f5.night_wind_direction}} </p>
             <span class="op_weather_text"> </span>
           </a>
-        </div>
-        <router-link class="top3"    to="/index/mainview" > 
-        
-          <img class="loginimg" src="../../static/img/broad.png"/>
-          <span class="loginspan">应急广播信息展示</span>
-        
-        </router-link>
-        <router-link class="top4"  to="/index/village"> 
-       
-          <img class="loginimg" src="../../static/img/village.png"/>
-            <span class="loginspan">村务信息展示</span>
-        </router-link>
-        <router-link to="/index/Iotview"  >
-         
-        <div class="top5" >
-          <img class="loginimg" src="../../static/img/iot.png"/>
-          <span class="loginspan" >物联网信息展示</span>
-        </div>
-        </router-link>
-        
-       
-      </div>
-     
     </div>
-
-  </div>
 </template>
 
 <script>
-
-
-let moment = require("moment");//直接引入组件
-
 export default {
-  name: 'loginview',
-  data () { //局内数据
-    return {
-     ndata:{year:'',day:'',week:''},
-      weather:{},
-      weather_pic1:{background:'','background-size':'60px 60px'},
-      weather_pic2:{background:'','background-size':'60px 60px'},
-      weather_pic3:{background:'','background-size':'60px 60px'},
-      weather_pic4:{background:'','background-size':'60px 60px'},
-      weather_pic5:{background:'','background-size':'60px 60px'},
-      sunActive:false,
-      cloudActive:false
-    };
-  },
-  methods:{   //方法函数
+    name: 'weather',
+    data () { //局内数据
+        return {
+        weather:{},
+        weather_pic1:{background:'','background-size':'60px 60px'},
+        weather_pic2:{background:'','background-size':'60px 60px'},
+        weather_pic3:{background:'','background-size':'60px 60px'},
+        weather_pic4:{background:'','background-size':'60px 60px'},
+        weather_pic5:{background:'','background-size':'60px 60px'},
+        sunActive:false,
+        cloudActive:false
+        };
+    },
+    methods:{   //方法函数
       get:function(){ 
               //发送get请求
              
@@ -145,15 +104,6 @@ export default {
                     });
              
       },
-      getTime(){
-        let week = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六']//把一周七天用数组的形式方便获取时间索引
-        this.ndata.year = moment().format(" YYYY-MM-DD")    //这里是库中已经声明好了的时间格式，具体的可以去官方文档查看
-        this.ndata.day = moment().format("HH:mm:ss")
-        this.ndata.week = week[moment().format("d")]        //因为需求要展示的是中文的星期几，所以这里对week进行了处理，加了个索引
-      },
-      LopTime(){
-        setInterval(this.getTime,1000)   //对获取的时间，用定时器让它动起来，定时器中调用getTime方法，注意不能加（），调用函数
-      },
       enter:function(weather){ //鼠标移入<a标签触发事件
           if(/小雨|阴|阵雨|雷阵雨|雷阵雨伴有冰雹|雨夹雪|中雨|大雨|暴雨|大暴雨|特大暴雨/.test(weather))  //正则判断
           {
@@ -181,49 +131,12 @@ export default {
   },
   mounted:function(){//页面初始化函数
         this.get();
-        this.LopTime();
-    }
+        
+   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-.shader {
-      width: 100vw;
-      height: 100vh;
-  }
-.centermain{
-    
-    margin: auto ;
-    overflow: hidden;
-    position: relative;
-    height: 490px;
-    width: 740px;
-    top:50%;
-    transform: translateY(-50%);
-}
-.mask {
-        width: 100%;
-        height: 100vh;
-        position: absolute;
-        top: 0;
-        justify-content: center;//元素水平居中
-        flex-direction: column;
-        
-      }
-.top1{
-      position: absolute;
-      top: 5px;
-      left: 0px;
-      width: 225px;
-      height: 225px;
-      margin: 0 7.5px 15px 7.5px;//上，右，下，左边距
-      background-color: rgba(62, 126, 191, 1);
-      color: rgba(255, 255, 255,0.9);
-      
-      z-index:2;
-}
-
 .top2{
       position: absolute;
       top: 5px;
@@ -235,49 +148,6 @@ export default {
 	    box-shadow: 0 2px 2px rgba(0,0,0,.1);
       color: rgba(255, 255, 255,0.9)
       
-}
-
-.top3{
-      position: absolute;
-      top: 240px;
-      left: 0px;
-      width: 225px;
-      height: 225px;
-      z-index:2;
-      margin: 0 7.5px 15px 7.5px;
-      background-color: rgba(62, 126, 191, 1);
-      color: rgba(255, 255, 255,0.9)
-      
-}
-.top3:hover{ width:227px;height:227px;border:2px solid rgba(255, 255, 255,0.9);
-}
-.top4{
-      position: absolute;
-      top: 240px;
-      left: 240px;
-      width: 225px;
-      height: 225px;
-      z-index:2;
-      margin: 0 7.5px 15px 7.5px;
-      background-color: rgba(62, 126, 191, 1);
-      color: rgba(255, 255, 255,0.9)
-}
-.top4:hover{ width:227px;height:227px;border:2px solid rgba(255, 255, 255,0.9);
-}
-.top5{
-      position: absolute;
-      top: 240px;
-      left: 480px;
-      width: 225px;
-      height: 225px;
-      z-index:2;
-      margin: 0 7.5px 15px 7.5px;
-     // background: url(../../static/img/wall8.jpg) no-repeat;
-     // background-size: 225px 225px;
-      background-color: rgba(62, 126, 191, 1);
-      color: rgba(255, 255, 255,0.9)
-}
-.top5:hover{ width:227px;height:227px;border:2px solid rgba(255, 255, 255,0.9);
 }
 .op_weather_split{
     position: absolute;
@@ -410,15 +280,6 @@ export default {
   filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr=#485663,EndColorStr=#a1b8ca);
   background-image:-webkit-linear-gradient(top, rgb(72, 86, 99), rgb(161, 184, 202));
 }
-.loginimg{
-  width: 25%;height: 25%;margin:38% 38%;
-}
-.loginspan {
-  color:white;position:absolute;left:5px;bottom:10px;
-}
-.mask /deep/ .drag-item {
-    
-    background: rgba(0, 0, 0, 0);
-  }
-
 </style>
+
+

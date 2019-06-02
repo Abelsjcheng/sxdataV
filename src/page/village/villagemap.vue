@@ -1,18 +1,18 @@
 <template>  
     <div class="m_center2">     
-        <div class="m_center">
+        <div class="vm_center">
           <!-- 地区选择器-->
           <v-distpicker @selected="onSelected" :province="temp.address__province" :city="temp.address__city" :area="temp.address__dist" ></v-distpicker>
-          <button class="clearall-btn" v-on:click="clear"> 清空</button>
+          <el-button type="primary" size="mini" style="background-color: #1968ab;border: #1968ab solid 1px;" v-on:click="clear" round>清空</el-button>
         </div> 
-        <baidu-map class="bm-view" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true"  :mapStyle="bmapStyle" >
+        <baidu-map class="vm-view" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true"  :mapStyle="bmapStyle" >
            <!-- 加载标注-->
           <bml-marker-clusterer :averageCenter="true">
                 <bm-marker v-for="(marker,index) of markers" :key="index"  :position="{lng: marker.lng, lat: marker.lat}" v-on:click="Opencontent(marker)">
                 </bm-marker>
           </bml-marker-clusterer>     
            <!--地图类型控件-->
-          <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP', 'BMAP_HYBRID_MAP']" :offset="{width:450,height:8}" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
+          <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP', 'BMAP_HYBRID_MAP']"  anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
           <!-- 信息窗体-->
           <bm-info-window :position="{lng: infowindow.lng, lat: infowindow.lat}" :show="infowindow.show" @close="infoWindowClose" @open="infoWindowOpen">党员值班人:{{infowindow.uname}} <br>组别:{{infowindow.grouptype}}<br>值班地点:{{infowindow.address}}<br>值班时间:{{infowindow.worktime}}<br>值班口号:{{infowindow.content}}  </bm-info-window>>
           <bm-boundary name="长沙县" :strokeWeight="2" strokeColor="blue" fillColor=""  ></bm-boundary>
@@ -48,9 +48,9 @@ name: "mainmap",
   },
    methods: {//方法函数
       handler ({BMap, map}) { //地图初始化函数
-      this.center.lng = 113.1
-      this.center.lat = 28.240956
-      this.zoom = 11
+      this.center.lng = 113.01247
+      this.center.lat = 27.993507
+      this.zoom = 13
     },
     onSelected(data) { //地区选择器函数
       this.temp.address__province = data.province.value,
@@ -64,6 +64,7 @@ name: "mainmap",
     },
     
     clear:function(event){ //地区清除按钮
+      this.$store.commit('SET_SELECTPLACE','');
       this.temp.address__province=''
       this.temp.address__city = ''
       this.temp.address__dist = ''
@@ -121,9 +122,9 @@ name: "mainmap",
 }
 </script>
 <style lang="scss">
-.bm-view {
+.vm-view {
   width: 100%;
-  height: 92vh;
+  height: 52vh;
 
 }
 .m_center2{
@@ -131,19 +132,17 @@ name: "mainmap",
   overflow: hidden;
   z-index:0;
 }
+.vm_center{
+		position: absolute;
+		margin: auto;
+    left: 0;
+    right: 0;
+    top:5px;
+		z-index:1;
+		width:500px;
+		height:50px;
+	}
 
-.clearall-btn{
-    font-size: 12px;
-    height: 24px;
-    border: #1968ab solid 1px;
-    border-radius: 15px;
-    padding: 1px 15px;
-    color: #ffffff;
-    background: #1968ab;
-    margin: 0;
-    text-align: center;
-    
-}
 .anchorBL{
 display:none;
 }

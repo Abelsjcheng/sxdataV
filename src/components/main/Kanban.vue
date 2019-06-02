@@ -73,7 +73,7 @@
 
 <style lang="scss">
 .drag-itemlist{
-background: rgba(0, 0, 0, 0.4);
+//background: rgba(0, 0, 0, 0.4);
 transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .drag-column{
@@ -82,7 +82,7 @@ transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     -webkit-box-flex: 1;
     flex: 1;
     position: relative;
-    background: rgba(0, 0, 0, 0.2);
+    
     overflow: hidden;
     h2{
       font-size:2rem;

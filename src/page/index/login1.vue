@@ -69,19 +69,19 @@
         </div>
         <router-link class="top3"    to="/index/mainview" > 
         
-          <img class="loginimg" src="../../static/img/广播.png"/>
+          <img class="loginimg" src="../../static/img/broad.png"/>
           <span class="loginspan">应急广播信息展示</span>
         
         </router-link>
         <router-link class="top4"  to="/index/village"> 
        
-          <img class="loginimg" src="../../static/img/村务公开.png"/>
+          <img class="loginimg" src="../../static/img/village.png"/>
             <span class="loginspan">村务信息展示</span>
         </router-link>
         <router-link to="/index/Iotview"  >
          
         <div class="top5" >
-          <img class="loginimg" src="../../static/img/后台管理.png"/>
+          <img class="loginimg" src="../../static/img/iot.png"/>
           <span class="loginspan" >物联网信息展示</span>
         </div>
         </router-link>

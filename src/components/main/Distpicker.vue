@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import DISTRICTS from '../../static/json/districts';
+import DISTRICTS from '@/static/json/districts';
 
 const DEFAULT_CODE = 100000;
 

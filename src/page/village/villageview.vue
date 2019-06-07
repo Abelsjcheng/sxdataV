@@ -76,8 +76,8 @@
 <script>
 
 import mainmap from './villagemap' //百度地图层
-import partymdata from '../../components/village/partymdata'//党员数显示
-import painfo from '../../components/village/annoucement/painfo'//公告信息列表
+import partymdata from '@/components/village/partymdata'//党员数显示
+import painfo from '@/components/village/annoucement/painfo'//公告信息列表
 
 import { mapGetters } from 'vuex';
 export default {

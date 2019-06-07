@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/page/index/index'
-import login from '@/page/index/login'
+import login from '@/page/index/login2'//登录页面（测试页）
 Vue.use(Router)
 
 export default new Router({

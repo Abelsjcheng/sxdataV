@@ -31,7 +31,7 @@
         <div id="midground" class="wall"></div>
         <div id="foreground" class="wall"></div>
         <div id="top" class="wall"></div>
-        <audio controls autoplay>
+        <audio controls autoplay loop="loop">
             <source src="@/static/you.mp3">
         </audio>
     </div>

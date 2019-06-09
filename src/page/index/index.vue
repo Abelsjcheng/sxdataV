@@ -10,9 +10,9 @@
       </keep-alive>  
     </div>
   </div>
-  <!-- 菜单 -->
+  <!-- 菜单 
   <ScaleDown width="300"  >
-      <router-link to="/index/mainview">  <!-- 路由跳转 -->
+      <router-link to="/index/mainview">  路由跳转 
         <span>广播信息展示</span>
       </router-link>
       <router-link to="/index/village"> 
@@ -22,6 +22,7 @@
         <span>物联网信息展示</span>
       </router-link>
   </ScaleDown>  
+  -->
   
 </div>
 </template>

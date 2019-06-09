@@ -29,7 +29,7 @@ export default {
         return {
             popvisible: this.chart.timevisible,//图表控制器弹窗显示初始化
             chartvisible:this.chart.chartshow,//图表显示初始化
-            chartSet:{name:this.chart.temp,limit:20,timeframe:["2019-02-01 10:10:00", "2019-04-18 10:10:00"]}
+            chartSet:{name:this.chart.value,limit:20,timeframe:["2019-02-01 10:10:00", "2019-04-18 10:10:00"],chartvisible:this.chart.chartshow}
         }
     },
     props:['chart'],//定义父组件向子组件传递的对象
@@ -44,6 +44,8 @@ export default {
         deletechart(){
             this.chartvisible=false;
             this.$emit('deletechart', false); //向父组件传值
+            this.chartSet.chartvisible=this.chartvisible;
+            this.$store.commit("SET_CHARTSET",this.chartSet);
         }
     },
     computed:{
@@ -54,6 +56,7 @@ export default {
     watch:{
         listenchartvisible(vag){ //监听父组件事件 并更新父组件向子组件传递的值
             this.chartvisible=vag;
+            this.chartSet.chartvisible=vag;
 
         }
     }

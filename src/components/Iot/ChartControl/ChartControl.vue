@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import chartitem from './chartitem';//
 export default {
     components: {chartitem
@@ -45,11 +46,18 @@ export default {
             this.options.forEach(element => { //遍历查找
                 if(element.id==vag.id){
                     element.chartshow=true;
+                    this.$store.commit("SET_CHARTSET",{name:element.value,limit:20,timeframe:["2019-02-01 10:10:00", "2019-04-18 10:10:00"],chartvisible:element.chartshow});
                 }
                 
             });
             
         }
+        
+    },
+    computed: { //计算属性 取存在状态库中的值
+        ...mapGetters(["chartSet"]),  //取地图主题样式
+
+
         
     },
     watch:{

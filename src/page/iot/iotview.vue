@@ -19,19 +19,17 @@
     </div>
     <!-- 右视图层 -->
     <div class="m_right" v-bind:style="{ display: activedisplay}">
-      
       <div class="mlot_right">
-<<<<<<< HEAD
         <!-- 饼图 <piechart />  -->
-         <cartesianchart />
-
-
-
-=======
-        <piechart /> 
+        <!--<piechart /> -->
+        <!-- 雨量图 <cartesianchart />  -->
+        <!--<cartesianchart /> -->
+        <!-- 水位图 <basicareachart />  -->
+        <!--<basicareachart /> -->
+        <!-- 流量图 <lineitemstylechart />  -->
+        <lineitemstylechart />
+        
          <!-- 待重新开发-->
->>>>>>> c75ffcc814458f420bda0e31d71f226c7d805533
-         
       </div>
       <!-- 待重新开发 公告与政策 
       <div class="m_right2">
@@ -52,6 +50,8 @@
 </template>
 
 <script>
+import lineitemstylechart from '../../components/Iot/charts/lineitemstylechart'//流量图
+import basicareachart from '../../components/Iot/charts/basicareachart'//水位图
 import cartesianchart from '../../components/Iot/charts/cartesianchart'//雨量图
 import piechart from '../../components/Iot/charts/piechart'//饼图
 import tabledata from '../../components/Iot/charts/tabledata' //table数据组
@@ -63,7 +63,7 @@ import Iotinfo from '../../components/Iot/annoucement/Iotinfo'//公告信息列�
 import ChartControl from '../../components/Iot/ChartControl/ChartControl' //图表控制器
 import { mapGetters } from 'vuex';
 export default {
-  components: {cartesianchart,piechart,tabledata,mainmap,barchart,radarchart,linechart,Iotinfo,ChartControl
+  components: {lineitemstylechart,basicareachart,cartesianchart,piechart,tabledata,mainmap,barchart,radarchart,linechart,Iotinfo,ChartControl
     },
   name: 'Iotmain',
   data () {

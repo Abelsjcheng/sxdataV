@@ -1,6 +1,6 @@
 # sjcvue
 
-> A Vue.js project
+> 基于Vue框架的融媒体综合数据展示平台
 
 # 项目结构
 ``` bash

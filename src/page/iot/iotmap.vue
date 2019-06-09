@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import VDistpicker from '../../components/main/Distpicker' //地区选择器组件
+import VDistpicker from '@/components/main/Distpicker' //地区选择器组件
 import { mapGetters } from 'vuex';
-import mapStyle from '../../static/json/mapstyle.json';//地区json
+import mapStyle from '@/static/json/mapstyle.json';//地区json
 import {BmlMarkerClusterer} from 'vue-baidu-map'
-import mapvillage from '../../static/json/mapvillage';
+import mapvillage from '@/static/json/mapvillage';
 export default {
 
 components: { VDistpicker,BmlMarkerClusterer },//注册组件

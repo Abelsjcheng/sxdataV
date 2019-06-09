@@ -36,7 +36,9 @@
     <!-- 地图层 
     <mainmap />-->
     <el-container>
-      <el-aside width="250px">Aside</el-aside>
+      <el-aside width="250px">
+        <partywork/>
+      </el-aside>
       <el-container>
         
         <el-main>
@@ -53,8 +55,8 @@
                   <el-col :span="24"><div class="grid-village-onlydata">单数据展示模块</div></el-col>
                 </el-row>
                 <el-row :gutter="5">
-                  <el-col :span="12"><div class="grid-village-annou">村务模块</div></el-col>
-                  <el-col :span="12"><div class="grid-village-annou">村务模块</div></el-col>
+                  <el-col :span="12"><div class="grid-village-annou"><partyhd/></div></el-col>
+                  <el-col :span="12"><div class="grid-village-annou"><painfo/></div></el-col>
 
                 </el-row>
               </div>
@@ -77,11 +79,12 @@
 
 import mainmap from './villagemap' //百度地图层
 import partymdata from '@/components/village/partymdata'//党员数显示
-import painfo from '@/components/village/annoucement/painfo'//公告信息列表
-
+import partywork from '@/components/village/partywork'
+import partyhd from '@/components/village/partyhd'
+import painfo from '@/components/village/painfo'
 import { mapGetters } from 'vuex';
 export default {
-  components: {mainmap,painfo,partymdata
+  components: {mainmap,partymdata,partywork,partyhd,painfo
     },
   name: 'villagemain',
   data () {
@@ -104,7 +107,7 @@ export default {
 <style lang="scss" >
 
 .el-header, .el-footer {
-    background-color: #B3C0D1;
+    background-color: #06094a;
     color: #333;
     text-align: center;
     line-height: 60px;
@@ -113,8 +116,6 @@ export default {
   .el-aside {
     background-color: #D3DCE6;
     color: #333;
-    text-align: center;
-    line-height: 200px;
     border-right:3px solid  #3fa6cb;
    
   }

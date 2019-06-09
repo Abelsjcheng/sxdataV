@@ -40,14 +40,14 @@
 </template>
 
 <script>
-import piechart from '../../components/broad/charts/piechart'//饼图
-import tabledata from '../../components/broad/charts/tabledata' //table数据组
+import piechart from '@/components/broad/charts/piechart'//饼图
+import tabledata from '@/components/broad/charts/tabledata' //table数据组
 import mainmap from './broadmap' //百度地图层
-import barchart from '../../components/broad/charts/barchart'//柱状图
-import radarchart from '../../components/broad/charts/radarchart'//雷达图
-import linechart from '../../components/broad/charts/linechart'//折线图
-import zdinfo from '../../components/broad/annoucement/zdinfo'//公告信息列表
-import Kanban from '../../components/main/Kanban';//拖拽组件
+import barchart from '@/components/broad/charts/barchart'//柱状图
+import radarchart from '@/components/broad/charts/radarchart'//雷达图
+import linechart from '@/components/broad/charts/linechart'//折线图
+import zdinfo from '@/components/broad/annoucement/zdinfo'//公告信息列表
+import Kanban from '@/components/main/Kanban';//拖拽组件
 import { mapGetters } from 'vuex';
 export default { 
   components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,zdinfo,Kanban

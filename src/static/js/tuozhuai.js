@@ -1,10 +1,11 @@
-window.onload = function() {
-	var oUl= document.getElementById("drag_div");
-	var aLi = oUl.getElementsByTagName('div');
+	var aLi =null;
 	var disX = 0;
 	var disY = 0;
 	var minZindex = 1;
 	var aPos =[];
+	export default function draginit(){
+	var oUl= document.getElementById("drag_div");
+	 aLi = oUl.getElementsByTagName('div');
 	for(var i=0;i<aLi.length;i++){
 		var t = aLi[i].offsetTop;
 		var l = aLi[i].offsetLeft;
@@ -18,6 +19,7 @@ window.onload = function() {
 		aLi[i].style.margin = 0;
 		setDrag(aLi[i]);
 	}
+}
 	//拖拽
 	function setDrag(obj){
 		obj.onmouseover = function(){
@@ -63,9 +65,6 @@ window.onload = function() {
 					var height1=oNear.clientHeight;
 					var width2=obj.clientWidth;
 					var height2=obj.clientHeight;
-					console.log(width1+width2)
-					console.log(oNear.className);
-					 console.log(obj.className)
 					 var className1=obj.className;
 					 var className2=oNear.className;
 					obj.className=className2;
@@ -189,4 +188,3 @@ window.onload = function() {
 			}
 		},30);
 	}
-}

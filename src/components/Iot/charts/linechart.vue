@@ -1,5 +1,5 @@
 <template>
-      <v-chart  :options="polar" style="width:54vw;height:29vh"/>    
+      <v-chart v-show="chartvisible" :options="polar" style="width:54vw;height:29vh"/>    
 </template>
 
 <script>
@@ -111,7 +111,7 @@ name: "linechart",
                 }
             ]
        },
-        
+       chartvisible:false 
     }
   },
   methods:{
@@ -136,9 +136,7 @@ name: "linechart",
                       console.log(error);
                     });  
       },
-      LopTime(){
-        setInterval(this.getcoldata,10000)   //目前用定时器进行ajax轮询 ，后期用websocket
-      },
+
   },
   computed: { //计算属性 取存在状态库中的值
      ...mapGetters(["chartSet"]),
@@ -149,7 +147,11 @@ name: "linechart",
   watch:{
       listenchartSet:{
           handler(vag){  //handler执行具体方法
-            this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit);
+            if(vag.name=='temp') //温度表
+            {
+                this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit);
+                this.chartvisible=vag.chartvisible;
+            }
         },
         deep: true//是否深度监听设置deep: true  则可以监听到vag.timeframe的变化，此时会给vag的所有属性都加上这个监听器，
         //immediate: true 代表如果在 wacth 里声明了 变量 之后，就会立即先去执行里面的handler方法
@@ -157,7 +159,7 @@ name: "linechart",
   },
   mounted:function(){//页面初始化函数
         this.getcoldata("2019-03-17 13:02:31","2019-03-22 15:18:55",20);
-        //this.LopTime();
+
     }
   
   

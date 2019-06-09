@@ -21,9 +21,10 @@
     <div class="m_right" v-bind:style="{ display: activedisplay}">
       
       <div class="mlot_right">
-        <piechart /> 
+        
          <!-- 待重新开发-->
-         
+        <barchart /> 
+
       </div>
       <!-- 待重新开发 公告与政策 
       <div class="m_right2">
@@ -44,14 +45,14 @@
 </template>
 
 <script>
-import piechart from '../../components/Iot/charts/piechart'//饼图
-import tabledata from '../../components/Iot/charts/tabledata' //table数据组
+import piechart from '@/components/Iot/charts/piechart'//饼图
+import tabledata from '@/components/Iot/charts/tabledata' //table数据组
 import mainmap from './iotmap' //百度地图层
-import barchart from '../../components/Iot/charts/barchart'//柱状图
-import radarchart from '../../components/Iot/charts/radarchart'//雷达图
-import linechart from '../../components/Iot/charts/linechart'//折线图
-import Iotinfo from '../../components/Iot/annoucement/Iotinfo'//公告信息列表
-import ChartControl from '../../components/Iot/ChartControl/ChartControl' //图表控制器
+import barchart from '@/components/Iot/charts/barchart'//柱状图
+import radarchart from '@/components/Iot/charts/radarchart'//雷达图
+import linechart from '@/components/Iot/charts/linechart'//折线图
+import Iotinfo from '@/components/Iot/annoucement/Iotinfo'//公告信息列表
+import ChartControl from '@/components/Iot/ChartControl/ChartControl' //图表控制器
 import { mapGetters } from 'vuex';
 export default {
   components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,Iotinfo,ChartControl

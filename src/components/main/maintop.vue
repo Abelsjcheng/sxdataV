@@ -1,16 +1,20 @@
 <template>
     <div class="app-header">
-				<div class="logo">
-					<img  src='../../static/img/sixin.png' alt=""/>
-          
-				</div>
-        <div class="tab-time">
-                <span >{{ndata.day}} </span>
-                <span class="time_data">
-                    <i class="time_week">{{ndata.week}}</i>
-                    <i class="time_year">{{ndata.year}}</i>
-                </span>
-        </div>
+				<el-menu default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color= "rgb(00,25,49)" text-color="#fff" active-text-color="#409EFF">
+          <el-menu-item index="1">
+            <router-link  to="/index/mainview">  <!-- 路由跳转 -->
+              <span>广播信息展示</span>
+            </router-link>
+          </el-menu-item>
+          <el-menu-item index="2">
+            <router-link  to="/index/village"> 
+              <span>村务信息展示</span>
+            </router-link></el-menu-item>
+          <el-menu-item index="3">
+            <router-link  to="/index/Iotview"> 
+              <span>物联网信息展示</span>
+            </router-link></el-menu-item>
+        </el-menu>
 				<div class="heading">融媒体综合数据平台</div>
 				<div class="bar">
           <el-tooltip effect="dark" :content="isdisplay?'隐藏图表':'显示图表'"  placement="bottom">

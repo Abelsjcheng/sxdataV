@@ -47,7 +47,8 @@ exports.cssLoaders = function (options) {
     if (options.extract) {
       return ExtractTextPlugin.extract({
         use: loaders,
-        fallback: 'vue-style-loader'
+        fallback: 'vue-style-loader',
+        publicPath: '../../' //输出解析文件的目录，url 相对于 HTML 页面0
       })
     } else {
       return ['vue-style-loader'].concat(loaders)

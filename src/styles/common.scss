@@ -18,7 +18,7 @@
 @import './Overview.scss';
 @import './kanban.scss';
 @import './chartcolplane.scss';
-
+@import './iotstyle.scss';
 
 .h1,
 .h2,
@@ -136,12 +136,12 @@ a {
 
 
 /*a:visited{color:#800080;}*/
-/*
+
 a:hover,
 a:active,
 a:focus {
     text-decoration: underline;
-}*/
+}
 
 table {
     border-collapse: collapse;

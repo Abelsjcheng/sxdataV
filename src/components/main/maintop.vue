@@ -1,19 +1,21 @@
 <template>
     <div class="app-header">
-				<el-menu default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color= "rgb(00,25,49)" text-color="#fff" active-text-color="#409EFF">
-          <el-menu-item index="1">
-            <router-link  to="/index/mainview">  <!-- 路由跳转 -->
-              <span>广播信息展示</span>
-            </router-link>
+				<el-menu default-active="1" class="el-menu-demo" mode="horizontal"  background-color= "transparent" text-color="#fff" active-text-color="#409EFF">
+          <router-link style="text-decoration: none;" to="/index/mainview">  <!-- 路由跳转 -->
+          <el-menu-item index="1" >
+                <span>广播信息展示</span>
           </el-menu-item>
-          <el-menu-item index="2">
-            <router-link  to="/index/village"> 
-              <span>村务信息展示</span>
-            </router-link></el-menu-item>
-          <el-menu-item index="3">
-            <router-link  to="/index/Iotview"> 
-              <span>物联网信息展示</span>
-            </router-link></el-menu-item>
+          </router-link>
+          <router-link style="text-decoration: none;" to="/index/village"> 
+            <el-menu-item index="2">
+                  <span>村务信息展示</span>
+            </el-menu-item>
+          </router-link>
+          <router-link style="text-decoration: none;" to="/index/Iotview"> 
+            <el-menu-item index="3">
+                  <span>山洪灾害信息展示</span>
+            </el-menu-item>
+          </router-link>
         </el-menu>
 				<div class="heading">融媒体综合数据平台</div>
 				<div class="bar">
@@ -92,3 +94,5 @@ export default {
   }
 }
 </script>
+
+

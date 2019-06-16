@@ -1,18 +1,18 @@
 <template>  
-    <div class="m_center2">     
+    <div class="iot_map">     
         <div class="m_center">
           <!-- 地区选择器-->
           <v-distpicker @selected="onSelected" :province="temp.address__province" :city="temp.address__city" :area="temp.address__dist" ></v-distpicker>
           <button class="clearall-btn" v-on:click="clear"> 清空</button>
         </div> 
-        <baidu-map class="bm-view" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true"  :mapStyle="bmapStyle" >
+        <baidu-map class="iot_mapview" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true"  :mapStyle="bmapStyle" >
            <!-- 加载标注-->
           <bml-marker-clusterer :averageCenter="true">
                 <bm-marker v-for="(marker,index) of markers" :key="index"  :position="{lng: marker.lng, lat: marker.lat}" v-on:click="Opencontent(marker)">
                 </bm-marker>
           </bml-marker-clusterer>     
            <!--地图类型控件-->
-          <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP', 'BMAP_HYBRID_MAP']" :offset="{width:450,height:8}" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
+          <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP', 'BMAP_HYBRID_MAP']"  anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
           <!-- 信息窗体-->
           <bm-info-window :position="{lng: infowindow.lng, lat: infowindow.lat}" :show="infowindow.show" @close="infoWindowClose" @open="infoWindowOpen">党员值班人:{{infowindow.uname}} <br>组别:{{infowindow.grouptype}}<br>值班地点:{{infowindow.address}}<br>值班时间:{{infowindow.worktime}}<br>值班口号:{{infowindow.content}}  </bm-info-window>>
           <bm-boundary name="长沙县" :strokeWeight="2" strokeColor="blue" fillColor=""  ></bm-boundary>
@@ -115,18 +115,18 @@ name: "mainmap",
       }
   },
    mounted:function(){//页面初始化函数
-        this.get();
+        //this.get();
     }
 
 }
 </script>
 <style lang="scss">
-.bm-view {
+.iot_mapview {
   width: 100%;
-  height: 92vh;
+  height: 59.5vh;
 
 }
-.m_center2{
+.iot_map{
   position: relative;
   overflow: hidden;
   z-index:0;

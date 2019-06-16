@@ -29,9 +29,9 @@ export default {
         return {
            options: [ //子组件初始化 属性
                {id:1,value: 'rain',label: '雨量折线图',chartshow:true,timevisible:false}, 
-               {id:2,value: 'temp',label: '温度柱状图',chartshow:false,timevisible:false}, 
+               {id:2,value: 'temp',label: '温度湿度柱状图',chartshow:false,timevisible:false}, 
                {id:3,value: 'flow',label: '流量数据关系图',chartshow:true,timevisible:false}, 
-               {id:4,value: 'wlevel',label: '水位数据关系图',chartshow:true,timevisible:false}, 
+               {id:4,value: 'wlevel',label: '水位数据关系图',chartshow:false,timevisible:false}, 
                {id:5,value: 'ph',label: '酸碱度数据关系图',chartshow:false,timevisible:false}, 
                {id:6,value: 'pm',label: 'pm2.5数据关系图',chartshow:false,timevisible:false}, 
                {id:7,value: 'iot',label: '物联网终端数据关系图',chartshow:true,timevisible:false}, 

@@ -13,8 +13,8 @@
             <el-col :span="8"><div class="iot_char_col"><ChartControl /></div></el-col>
           </el-row>
           <el-row :gutter="10">
-            <el-col :span="12"><div class="iot_info"><warninfo/></div></el-col>
-            <el-col :span="12"><div class="iot_camera"></div></el-col>
+            <el-col :span="12"><div class="iot_info"><warninfo/></div></el-col> <!-- 预警模块 -->
+            <el-col :span="12"><div class="iot_camera"></div></el-col> <!-- 终端信息模块 -->
 
           </el-row>
         </el-main>
@@ -31,14 +31,14 @@
 <script>
 import tabledata from '@/components/Iot/charts/tabledata' //table数据组
 import mainmap from './iotmap' //百度地图层
-import linechart from '@/components/Iot/charts/linechart'//折线图
+import linechart from '@/components/Iot/charts/linechart'//温湿度折线图
 import cartesianchart from '@/components/Iot/charts/cartesianchart' //雨量图
 import lineitemstylechart from '@/components/Iot/charts/lineitemstylechart' //流量图
 import basicareachart from '@/components/Iot/charts/basicareachart'//水位图
 import ChartControl from '@/components/Iot/ChartControl/ChartControl' //图表控制器
-import piechart from '@/components/Iot/charts/piechart'
-import radarchart from '@/components/Iot/charts/radarchart'
-import warninfo from '@/components/Iot/warninfo'
+import piechart from '@/components/Iot/charts/piechart' //河水酸碱度
+import radarchart from '@/components/Iot/charts/radarchart' //PM2.5浓度变化图
+import warninfo from '@/components/Iot/warninfo' //预警模块
 import { mapGetters } from 'vuex';
 export default {
   components: {tabledata,mainmap,linechart,ChartControl,cartesianchart,lineitemstylechart,basicareachart,piechart,radarchart,warninfo

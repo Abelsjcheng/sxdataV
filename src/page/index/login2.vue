@@ -24,7 +24,7 @@
             <div class="three" v-if="iotdisplay==0">
                 <router-link class="three" to="/index/Iotview" style="height: 150px;width: 200px;" >
                 </router-link>
-                <div class="text_center">物联网信息展示</div>
+                <div class="text_center">山洪灾害信息展示</div>
             </div>
 
         </div> 

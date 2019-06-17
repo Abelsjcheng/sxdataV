@@ -4,7 +4,7 @@
     <div class="m_left" v-bind:style="{ display: activedisplay}">
       <Kanban style="height: 92vh;" :stages="stages" :blocks="block1" @update-block="updateBlock">
         <div class="m_left1" :slot="1" :key="1">
-          <!--重做 <tabledata /> -->
+          <tabledata />
         </div>
         <div class="m_left1" :slot="2" :key="2">
           <!--重做 <barchart />-->

@@ -18,6 +18,11 @@ export default new Router({
       name: 'index',
       redirect: '/index/mainview', //登录加载mainview
       component: index,
+      props: (route)=>{ //接收参数
+        return {
+        id: route.query.id
+        }
+      },
       children: [
         {       
           path: 'village',  //二级url路径

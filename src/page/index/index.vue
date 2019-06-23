@@ -2,7 +2,7 @@
 <div class="app-warpper">
   <div id="page-wrap">
     <!-- 头 -->
-     <maintop /> 
+     <maintop :id="id"/> 
      <!-- 主体视图层 -->
     <div class="main overview">
       <keep-alive>
@@ -34,6 +34,7 @@ import maintop from "../../components/main/maintop";
 export default {
   name: 'index',
   components: {ScaleDown,mainview,maintop},//注册组件
+  props:['id'] //接收参数 并传递给子组件
 }
 </script>
 

@@ -45,14 +45,13 @@
           <el-row >
             <el-col :span="11">
               <div class="grid-village-map">
-                <partymdata/>
                 <mainmap />
               </div>
             </el-col> <!-- css 自行修改-->
             <el-col :span="13">
               <div class="grid-village-databox">
                 <el-row >
-                  <el-col :span="24"><div class="grid-village-onlydata">人口总数，男人总数，女人总数，党员总数，党员男性数，党员女性数</div></el-col>
+                  <el-col :span="24"><div class="grid-village-onlydata"><partymdata/></div></el-col>
                 </el-row>
                 <el-row :gutter="5">
                   <el-col :span="12"><div class="grid-village-annou"><partyhd/></div></el-col>
@@ -63,7 +62,7 @@
             </el-col>
           </el-row>
           <el-row :gutter="10">
-            <el-col :span="6"><div class="grid-village-echart1">党建模块 党务信息 实时政事</div></el-col>
+            <el-col :span="6"><div class="grid-village-echart1"><partymessage/></div></el-col>
             <el-col :span="7"><div class="grid-village-echart2">村重大项目信息</div></el-col>
             <el-col :span="7"><div class="grid-village-echart3">图表模块</div></el-col>
             <el-col :span="4"><div class="grid-village-echart4"></div></el-col>
@@ -78,13 +77,14 @@
 <script>
 
 import mainmap from './villagemap' //百度地图层
-import partymdata from '@/components/village/partymdata'//党员数显示
+import partymdata from '@/components/village/partymdata'//党员及村民数显示
 import partywork from '@/components/village/partywork'
 import partyhd from '@/components/village/partyhd'
 import painfo from '@/components/village/painfo'
+import partymessage from '@/components/village/partymessage'
 import { mapGetters } from 'vuex';
 export default {
-  components: {mainmap,partymdata,partywork,partyhd,painfo
+  components: {mainmap,partymdata,partywork,partyhd,painfo,partymessage
     },
   name: 'villagemain',
   data () {
@@ -171,7 +171,6 @@ export default {
     .grid-village-annou{
       border-radius: 4px;
       height: 30vh;
-      background:#738fad;
     }
   }
   .grid-village-echart1{

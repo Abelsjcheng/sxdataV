@@ -7,16 +7,15 @@
       prop="date"
       width="150">
     </el-table-column>
-    <el-table-column prop="title" label="党员活动" >
+    <el-table-column prop="title" label="党建信息" >
       <template slot-scope="scope">
         <el-popover trigger="hover" placement="top" width="300">
-          <p>活动标题: {{ scope.row.title }}</p>
-          <p>活动类别: {{ scope.row.hdtype }}</p>
-          <p>活动地点: {{ scope.row.hdloc }}</p>
-          <p>活动人数: {{ scope.row.hdnum }}</p>
-          <p>活动开始时间: {{ scope.row.hdbtime }}</p>
-          <p>活动结束日期: {{ scope.row.hdetime }}</p>
-          <p v-html="'活动简介:'+scope.row.hdsum"> </p>
+          <p>文章标题: {{ scope.row.title }}</p>
+          <p>类型: {{ scope.row.hdtype }}</p>
+          <p>添加日期: {{ scope.row.shishitime }}</p>
+          <p>文章内容: {{ scope.row.shishinum }}</p>
+          <p>发送人姓名: {{ scope.row.shishibname }}</p>
+          <p v-html="'信息简介:'+scope.row.shishisum"> </p>
           <div slot="reference" class="name-wrapper">
             <span size="medium">{{ scope.row.title }}</span>
           </div>
@@ -38,9 +37,9 @@
         
         getPhddata:function(){ 
 
-                this.$http.get('http://www.teavamc.com/api/policy/ten').then(function(res){  
+                this.$http.get('http://www.teavamc.com/api/party/shishi').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
-                                    const info={date:res.data.data[i].hdadddate,title:res.data.data[i].hdtitle,hdtype:res.data.data[i].hdtype,hdloc:res.data.data[i].hdloc,hdnum:res.data.data[i].hdnum,hdbtime:res.data.data[i].hdbtime,hdetime:res.data.data[i].hdetime,hdsum:res.data.data[i].hdsum,hdpic:res.data.data[i].hdpic}
+                                    const info={date:res.data.data[i].shishitime,title:res.data.data[i].shishititle,shishitype:res.data.data[i].shishitype,shishinum:res.data.data[i].shishinum,shishitime:res.data.data[i].shishitime,shishisum:res.data.data[i].shishisum,shishipic:res.data.data[i].shishipic}
                                     this.tableData.push(info) //存入json数组
                                 }
                             },function(){

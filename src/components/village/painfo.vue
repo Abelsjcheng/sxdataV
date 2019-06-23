@@ -37,7 +37,7 @@
         
         getpainfo:function(){ 
 
-                this.$http.get('http://110.53.162.165:5050/api/policy/ten').then(function(res){  
+                this.$http.get('http://www.teavamc.com/api/policy/ten').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
                                     const info={title:res.data.data[i].title,type:res.data.data[i].type,date:res.data.data[i].reldate,content:res.data.data[i].content,adduname:res.data.data[i].adduname,pic:res.data.data[i].pic}
                                     this.tableData.push(info) //存入json数组

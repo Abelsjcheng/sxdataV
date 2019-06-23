@@ -1,5 +1,29 @@
 <template>
-    <div class="party-data"> 
+<div>
+    <div class="party-data1"> 
+        <div> 
+            <img height="50" width="50" style="position: relative;top: -10px;" src='../../static/img/party.png'/>
+            <span class="partytable">
+                    <i class="partyd_name">村民总数</i>
+                    <i class="partyd_num">{{pmdata.msum}}</i>
+            </span>
+        </div>
+        <div>
+            <img height="50" width="50" style="position: relative;top: -10px;" src='../../static/img/partym.png'/>
+            <span class="partytable">
+                    <i class="partyd_name">男性村民数</i>
+                    <i class="partyd_num">{{pmdata.mman}}</i>
+            </span>
+        </div>
+        <div> 
+            <img height="50" width="50" style="position: relative;top: -10px;" src='../../static/img/partywm.png'/>
+            <span class="partytable">
+                    <i class="partyd_name">女性村民数</i>
+                    <i class="partyd_num">{{pmdata.mwoman}}</i>
+            </span>
+        </div>
+        </div>
+    <div class="party-data2"> 
         <div> 
             <img height="50" width="50" style="position: relative;top: -10px;" src='../../static/img/party.png'/>
             <span class="partytable">
@@ -22,6 +46,7 @@
             </span>
         </div>
     </div>
+    </div>
 
 </template>
 <script>
@@ -31,23 +56,26 @@ export default {
     data () {
         return {
         pmdatas:[],
-        pmdata:{parea:'',psum:0,pman:0,pwoman:0}
+        pmdata:{parea:'',psum:0,pman:0,pwoman:0,mman:0,mwoman:0,msum:0}
         }
     },
     methods: {
         
-        getPartydata:function(){ 
+        getVillagerdata:function(){ 
 
-                this.$http.get('http://110.53.162.165:5050/api/count/p_m').then(function(res){  
+                this.$http.get('http://www.teavamc.com/api/count/p_m').then(function(res){  
                                 this.pmdata.psum=res.data.data[0].psum;
                                 this.pmdata.pman=res.data.data[0].pman;
                                 this.pmdata.pwoman=res.data.data[0].pwoman;
+                                this.pmdata.mman=res.data.data[0].mman;
+                                this.pmdata.mwoman=res.data.data[0].mwoman;
+                                this.pmdata.msum=res.data.data[0].msum;
 
                                                     
                             },function(){
                         console.log('请求失败处理');
                     });
-                this.$http.get('http://110.53.162.165:5050/api/count/pm').then(function(res){
+                this.$http.get('http://www.teavamc.com/api/count/pm').then(function(res){
                         for (let i = 0; i < res.data.data.length; i++) {
                           
                             const pdata={parea:res.data.data[i].parea,psum:res.data.data[i].psum,pman:res.data.data[i].man,pwoman:res.data.data[i].woman}
@@ -73,23 +101,32 @@ export default {
                         this.pmdata.psum =this.pmdatas[i].psum
                         this.pmdata.pman =this.pmdatas[i].pman
                         this.pmdata.pwoman =this.pmdatas[i].pwoman
+                        this.pmdata.mman =this.pmdatas[i].mman
+                        this.pmdata.mwoman =this.pmdatas[i].mwoman
+                        this.mmdata.psum =this.pmdatas[i].msum
                     }
                                 
                 } 
                 if(vag==''){
-                    this.getPartydata();
+                    this.getVillagerdata();
                 }
             }      
     },
      mounted:function(){//页面初始化函数
-        this.getPartydata();
+        this.getVillagerdata();
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.party-data{
+.party-data1{
     height: 8vh;
+    display: flex;
+    justify-content: space-between;//定义对齐方式：两端对齐，项目之间的间隔都相等。
+    align-items: center;//交叉轴的中点对齐。
+}
+.party-data2{
+    height: 16vh;
     display: flex;
     justify-content: space-between;//定义对齐方式：两端对齐，项目之间的间隔都相等。
     align-items: center;//交叉轴的中点对齐。

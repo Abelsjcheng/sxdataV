@@ -38,7 +38,7 @@
         
         getPhddata:function(){ 
 
-                this.$http.get('http://localhost/api/party/hdall').then(function(res){  
+                this.$http.get('http://localhost/api/party/hdAll').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
                                     const info={date:res.data.data[i].hdadddate,title:res.data.data[i].hdtitle,hdtype:res.data.data[i].hdtype,hdloc:res.data.data[i].hdloc,hdnum:res.data.data[i].hdnum,hdbtime:res.data.data[i].hdbtime,hdetime:res.data.data[i].hdetime,hdsum:res.data.data[i].hdsum,hdpic:res.data.data[i].hdpic}
                                     this.tableData.push(info) //存入json数组

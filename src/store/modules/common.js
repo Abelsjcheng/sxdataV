@@ -13,6 +13,7 @@ const common = {
         selectplace: getStore({ name: 'selectplace' }) || '',
         zdinfocontent: getStore({ name: 'zdinfocontent' }) || '',
         chartSet: getStore({ name: 'chartSet' }) || '',
+        warnlocate:getStore({name:'warnlocate'}) || '',
     },
     actions: {
         //获取字典公用类
@@ -77,6 +78,13 @@ const common = {
             setStore({
                 name: 'chartSet',
                 content: state.chartSet,
+            })
+        },
+        SET_WARNLOCATE:(state,warnlocate) =>{
+            state.warnlocate=warnlocate;
+            setStore({
+                name:'warnlocate',
+                content:state.warnlocate,
             })
         },
     }

@@ -1,6 +1,6 @@
 <template>  
     <el-container>
-      <el-aside width="400px" class="aside_left">
+      <el-aside width="21.2vw" class="aside_left">
         <cartesianchart/>
         <basicareachart/>
         <lineitemstylechart/>
@@ -19,7 +19,7 @@
           </el-row>
         </el-main>
       </el-container>
-      <el-aside width="400px" class="aside_right">
+      <el-aside width="21.2vw" class="aside_right">
         <linechart />
         <radarchart/>
         <piechart/>
@@ -38,7 +38,7 @@ import basicareachart from '@/components/Iot/charts/basicareachart'//水位图
 import ChartControl from '@/components/Iot/ChartControl/ChartControl' //图表控制器
 import piechart from '@/components/Iot/charts/piechart' //河水酸碱度
 import radarchart from '@/components/Iot/charts/radarchart' //PM2.5浓度变化图
-import warninfo from '@/components/Iot/warninfo' //预警模块
+import warninfo from '@/components/Iot/annoucement/warninfo' //预警模块
 import { mapGetters } from 'vuex';
 export default {
   components: {tabledata,mainmap,linechart,ChartControl,cartesianchart,lineitemstylechart,basicareachart,piechart,radarchart,warninfo

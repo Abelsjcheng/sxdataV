@@ -3,13 +3,13 @@
         <div class="drag_div" id="drag_div">
            
             <div class="one" v-if="broaddisplay==0">
-                <router-link class="one" style="height: 150px;width: 200px;" to="/index/mainview"  >
+                <router-link class="one" style="height: 150px;width: 200px;" :to="{path:'/index/mainview',query:{id:1}}"  >
                 </router-link>
                 <div class="text_center">应急广播信息展示 </div>
             </div>
             
             <div class="two" v-if="villagedisplay==0">
-                <router-link class="welcome" to="/index/village"> 
+                <router-link class="welcome" :to="{path:'/index/village',query:{id:2}}"> 
                     <span>欢迎进入</span>
                  </router-link>
                 <div class="text_center">村务信息展示</div>
@@ -22,7 +22,7 @@
             </div>
 
             <div class="three" v-if="iotdisplay==0">
-                <router-link class="three" to="/index/Iotview" style="height: 150px;width: 200px;" >
+                <router-link class="three" :to="{path:'/index/Iotview',query:{id:3}}" style="height: 150px;width: 200px;" >
                 </router-link>
                 <div class="text_center">山洪灾害信息展示</div>
             </div>

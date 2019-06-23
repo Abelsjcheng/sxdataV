@@ -1,6 +1,6 @@
 <template>
     <div class="app-header">
-				<el-menu default-active="1" class="el-menu-demo" mode="horizontal"  background-color= "transparent" text-color="#fff" active-text-color="#409EFF">
+				<el-menu :default-active="pid" class="el-menu-demo" mode="horizontal"  background-color= "transparent" text-color="#fff" active-text-color="#409EFF">
           <router-link style="text-decoration: none;" to="/index/mainview">  <!-- 路由跳转 -->
           <el-menu-item index="1" >
                 <span>广播信息展示</span>
@@ -55,9 +55,11 @@ export default {
   name: 'maintop',
   data () {
     return {
-      ndata:{year:'',day:'',week:''}
+      ndata:{year:'',day:'',week:''},
+      pid:this.id+"" //菜单栏定位
     }
   },
+  props:['id'],
   components: {mapTheme},//注册组件
   methods:{
     login:function(){
@@ -70,7 +72,7 @@ export default {
       this.ndata.week = week[moment().format("d")]        //因为需求要展示的是中文的星期几，所以这里对week进行了处理，加了个索引
     },
     LopTime(){
-      setInterval(this.getTime,1000)   //对获取的时间，用定时器让它动起来，定时器中调用getTime方法，注意不能加（），调用函数
+      //setInterval(this.getTime,1000)   //对获取的时间，用定时器让它动起来，定时器中调用getTime方法，注意不能加（），调用函数
     },
     handleScreen () { //全屏
       fullscreenToggel();
@@ -89,7 +91,7 @@ export default {
     ...mapGetters(["isdisplay"]),
   },
   mounted:function(){//页面初始化函数
-      this.LopTime();
+      //this.LopTime();
       listenfullscreen(this.setScreen); 
   }
 }

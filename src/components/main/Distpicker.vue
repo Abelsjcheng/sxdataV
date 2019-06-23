@@ -315,11 +315,11 @@ export default {
     background: rgba(0,0,0,0.3);
     border: #888e9e solid 1px;
     border-radius: 16px;
-    color: #f1eaea;
+    color: #ffffff;
     padding: 1px 15px;
     cursor: not-allowed;
     margin-right: 10px;
-    width: 130px;
+    width: 7vw;
     height: 30px;
     top:5px;
     

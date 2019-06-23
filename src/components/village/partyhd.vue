@@ -2,14 +2,14 @@
   <el-table
     :data="tableData"
     height="30vh"
-    style="width: 100%">
+    style="width: 100%;">
     <el-table-column
       prop="date"
       width="150">
     </el-table-column>
     <el-table-column prop="title" label="党员活动" >
       <template slot-scope="scope">
-        <el-popover trigger="hover" placement="top" width="300">
+        <el-popover trigger="hover" placement="top" width="300" >
           <p>活动标题: {{ scope.row.title }}</p>
           <p>活动类别: {{ scope.row.hdtype }}</p>
           <p>活动地点: {{ scope.row.hdloc }}</p>
@@ -61,3 +61,13 @@
     }
 }
 </script>
+
+<style lang="scss">
+/*
+.el-table th, .el-table tr{
+  background-color:rgb(14, 59, 78);
+  color: #fff;
+
+}
+*/
+</style>

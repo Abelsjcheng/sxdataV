@@ -104,15 +104,24 @@ name: "mainmap",
    },
   computed: { //计算属性 取存在状态库中的值
      ...mapGetters(["themeName"]),
+     ...mapGetters(["warnlocate"]),
      listenstage(){ //返回状态库中的值
        return this.themeName;
      },
+     listenwarnlocate(){ 
+       return this.warnlocate;
+     }
      
   },
   watch:{
       listenstage:function(vag){//实时监听状态库中值的改变 
         this.bmapStyle={styleJson:vag}
-      }
+      },
+      listenwarnlocate:function(vag){//监听状态库 灾害预警地理定位
+            this.zoom = 17;
+            this.center.lng = vag.wlng;
+            this.center.lat = vag.wlat;
+        },
   },
    mounted:function(){//页面初始化函数
         //this.get();

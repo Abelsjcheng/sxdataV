@@ -2,14 +2,14 @@
   <el-table
     :data="tableData"
     height="30vh"
-    style="width: 100%">
+    style="width: 100%;">
     <el-table-column
       prop="date"
       width="150">
     </el-table-column>
     <el-table-column prop="title" label="党员活动" >
       <template slot-scope="scope">
-        <el-popover trigger="hover" placement="top" width="300">
+        <el-popover trigger="hover" placement="top" width="300" >
           <p>活动标题: {{ scope.row.title }}</p>
           <p>活动类别: {{ scope.row.hdtype }}</p>
           <p>活动地点: {{ scope.row.hdloc }}</p>
@@ -38,7 +38,7 @@
         
         getPhddata:function(){ 
 
-                this.$http.get('http://localhost/api/party/all').then(function(res){  
+                this.$http.get('http://localhost/api/party/hdAll').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
                                     const info={date:res.data.data[i].hdadddate,title:res.data.data[i].hdtitle,hdtype:res.data.data[i].hdtype,hdloc:res.data.data[i].hdloc,hdnum:res.data.data[i].hdnum,hdbtime:res.data.data[i].hdbtime,hdetime:res.data.data[i].hdetime,hdsum:res.data.data[i].hdsum,hdpic:res.data.data[i].hdpic}
                                     this.tableData.push(info) //存入json数组
@@ -61,3 +61,13 @@
     }
 }
 </script>
+
+<style lang="scss">
+/*
+.el-table th, .el-table tr{
+  background-color:rgb(14, 59, 78);
+  color: #fff;
+
+}
+*/
+</style>

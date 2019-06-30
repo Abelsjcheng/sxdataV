@@ -9,7 +9,7 @@
             </div>
             
             <div class="two" v-if="villagedisplay==0">
-                <router-link class="welcome" :to="{path:'/index/village',query:{id:2}}"> 
+                <router-link class="welcome" :to="{path:'/index/villageindex',query:{id:'2-1'}}"> 
                     <span>欢迎进入</span>
                  </router-link>
                 <div class="text_center">村务信息展示</div>

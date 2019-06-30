@@ -25,11 +25,16 @@ export default new Router({
       },
       children: [
         {       
-          path: 'village',  //二级url路径
-          name: 'villagemain',
+          path: 'villageindex',  //二级url路径
+          name: 'villageindex',
           component: () =>
-              import (  '@/page/village/villageview')  //路由跳转
-      }, {
+              import (  '@/page/village/villageindex')  //路由跳转
+      },{       
+        path: 'villageview',  //二级url路径
+        name: 'villageview',
+        component: () =>
+            import (  '@/page/village/villageview')  //路由跳转
+      },  {
           path: 'mainview', //二级url路径
           name: 'mainview',
           component: () =>

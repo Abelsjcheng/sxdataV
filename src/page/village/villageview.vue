@@ -55,8 +55,8 @@
                   <el-col :span="24"><div class="grid-village-onlydata">人口总数，男人总数，女人总数，党员总数，党员男性数，党员女性数</div></el-col>
                 </el-row>
                 <el-row :gutter="5">
-                  <el-col :span="12"><div class="grid-village-annou"><partyhd/></div></el-col>
-                  <el-col :span="12"><div class="grid-village-annou"><painfo/></div></el-col>
+                  <el-col :span="12"><div class="grid-village-annou"></div></el-col>
+                  <el-col :span="12"><div class="grid-village-annou"></div></el-col>
 
                 </el-row>
               </div>
@@ -80,11 +80,11 @@
 import mainmap from './villagemap' //百度地图层
 import partymdata from '@/components/village/partymdata'//党员数显示
 import partywork from '@/components/village/partywork'
-import partyhd from '@/components/village/partyhd'
-import painfo from '@/components/village/painfo'
+
+
 import { mapGetters } from 'vuex';
 export default {
-  components: {mainmap,partymdata,partywork,partyhd,painfo
+  components: {mainmap,partymdata,partywork
     },
   name: 'villagemain',
   data () {
@@ -106,12 +106,7 @@ export default {
 </script>
 <style lang="scss" >
 
-.el-header, .el-footer {
-    
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
+
   
   .vii_left {
     background-color: #D3DCE6;

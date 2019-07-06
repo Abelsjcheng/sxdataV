@@ -14,6 +14,7 @@ const common = {
         zdinfocontent: getStore({ name: 'zdinfocontent' }) || '',
         chartSet: getStore({ name: 'chartSet' }) || '',
         warnlocate:getStore({name:'warnlocate'}) || '',
+        newpartyaffairs:getStore({name:'newpartyaffairs'}) || '',
     },
     actions: {
         //获取字典公用类
@@ -85,6 +86,13 @@ const common = {
             setStore({
                 name:'warnlocate',
                 content:state.warnlocate,
+            })
+        },
+        SET_NEWPARTYAFFAIRS:(state,newpartyaffairs) =>{
+            state.newpartyaffairs=newpartyaffairs;
+            setStore({
+                name:'newpartyaffairs',
+                content:state.newpartyaffairs,
             })
         },
     }

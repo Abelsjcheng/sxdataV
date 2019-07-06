@@ -8,5 +8,6 @@ const getters = {
     selectplace: state => state.common.selectplace,//地址选择器选择的地点
     chartSet: state => state.common.chartSet,//图表数据配置
     warnlocate:state => state.common.warnlocate,//预警信息定位
+    newpartyaffairs:state => state.common.newpartyaffairs,//党务公开热点新闻，用于轮播
     }
 export default getters

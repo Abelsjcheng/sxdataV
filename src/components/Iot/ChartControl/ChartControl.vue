@@ -55,10 +55,8 @@ export default {
         
     },
     computed: { //计算属性 取存在状态库中的值
-        ...mapGetters(["chartSet"]),  //取地图主题样式
+        ...mapGetters(["chartSet"]),  //
 
-
-        
     },
     watch:{
        options:{
@@ -86,6 +84,7 @@ export default {
 }
 .selected:hover{
         background-color:#f3eaea;
+        cursor:pointer;  //鼠标形状变小手
     }
 
 </style>

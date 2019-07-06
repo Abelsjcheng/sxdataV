@@ -34,7 +34,6 @@
     border: rgba(12,122,200,0.5) 1px solid;
     background-color: rgba(20,66,125,0.12);
     height: 90px;
-    cursor: pointer;
     margin-bottom: 6px;
     color: white;
 }
@@ -54,7 +53,7 @@
     padding: 0 10px;
     border:none;
     margin-left: 8px;
-    margin-top:8px;
+    margin-top:3px;
 }
 .data_title{
     float: left;

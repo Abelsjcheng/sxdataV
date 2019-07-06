@@ -17,7 +17,7 @@
                     <i class="el-icon-setting"  style="color: #05d2e2;" slot="reference"></i>
                 </el-popover>                    
                
-                <i class="el-icon-circle-close-outline" @click="deletechart" style="color: #05d2e2;"></i>
+                <i class="el-icon-circle-close" @click="deletechart" style="color: #05d2e2;"></i>
             </div>
     </div>
 </template>

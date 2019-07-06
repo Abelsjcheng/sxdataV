@@ -1,28 +1,21 @@
 <template>
     <div class="app-header">
 				<el-menu :default-active="pid" class="el-menu-demo" mode="horizontal" background-color="#001931" text-color="#fff" active-text-color="#409EFF">
-          
-          <router-link style="text-decoration: none;" to="/index/mainview">  <!-- 路由跳转 -->
-            <el-menu-item index="1" >
-                  <span>广播信息展示</span>
+            <el-menu-item index="1" @click="open('/index/mainview')" >
+                  <span slot="title">应急广播数据可视化</span>
             </el-menu-item>
-          </router-link>
-
           <el-submenu index="2">
             <template slot="title">村务信息展示</template>
-            <router-link style="text-decoration: none;" to="/index/villageindex"> 
-              <el-menu-item index="2-1">村务宝典</el-menu-item>
-            </router-link>
-            <router-link style="text-decoration: none;" to="/index/villageview"> 
-              <el-menu-item index="2-2">村务数据可视化</el-menu-item>
-            </router-link>
+              <el-menu-item index="2-1" @click="open('/index/villageindex')">
+                <span slot="title">村务宝典 </span>
+              </el-menu-item>
+              <el-menu-item index="2-2" @click="open('/index/villageview')">
+                <span slot="title">村务数据可视化 </span>
+              </el-menu-item>
           </el-submenu>
-
-          <router-link style="text-decoration: none;" to="/index/Iotview"> 
-            <el-menu-item index="3">
-                  <span>山洪灾害信息展示</span>
+            <el-menu-item index="3" @click="open('/index/Iotview')">
+                  <span slot="title">山洪灾害数据可视化</span>
             </el-menu-item>
-          </router-link>
         </el-menu>
 				<div class="heading">融媒体综合数据平台</div>
 				<div class="bar">
@@ -89,6 +82,10 @@ export default {
     },
     handledisplay(){
       this.$store.commit("SET_DISPLAY");
+    },
+    open (menupath) {
+
+      this.$router.push(menupath)
     }
     
 

@@ -27,14 +27,15 @@
                                     {
                                         date:res.data.data[i].pushdate,//项目发布日期
                                         title:res.data.data[i].proname,//项目名称
-                                        protype:res.data.data[i].protype,//项目类别
+                                        type:res.data.data[i].protype,//项目类别
                                         money:res.data.data[i].money,//投资金额
-                                        propic:res.data.data[i].propic,//项目图片路径
+                                        pic:res.data.data[i].propic,//项目图片路径
                                         moneynote:res.data.data[i].moneynote,//开支明细
                                         content:res.data.data[i].content,//项目内容
                                         address:res.data.data[i].address,//项目地址
                                         fname:res.data.data[i].fname,//负责人姓名
                                         fphone:res.data.data[i].fphone,//负责人手机号
+                                        uname:res.data.data[i].uname,//信息发布人
                                     }
                                     
                                     this.tableData.push(info) //存入json数组

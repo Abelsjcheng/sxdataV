@@ -23,7 +23,6 @@
 
             <el-row :gutter="10" class="vii-row">
                 <el-col :span="6">
-                    <div class="vii_modtitle">党员活动 </div>
                     <div class="hd"><partyhd/></div>
                 </el-col>
                 <el-col :span="6">
@@ -87,13 +86,13 @@ export default {
     
     .hd{
         background: #ffffff;
-        height: 32vh;
+        height: 310px;
         border-radius: 4px;
         border: 2px solid #e24617;
     }
     .info{
         background: #ffffff;
-        min-height:50vh;
+        height:425px;
         border: 2px solid #e24617;
     }
 

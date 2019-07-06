@@ -21,10 +21,16 @@
         methods: {
             getPhddata:function(){ 
 
-                this.$http.get('http://localhost/api/party/eduAll').then(function(res){  
+                this.$http.get('http://localhost/api/party/ShiShiAll').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
-                                    const info={date:res.data.data[i].adddate,title:res.data.data[i].courtit,courass:res.data.data[i].courass,coursum:res.data.data[i].coursum,courpic:res.data.data[i].courpic}
-                                    //日期，标题，类型，课程地址，人数，活动开始时间，活动结束日期，活动简介，活动图片
+                                    const info={
+                                        date:res.data.data[i].adddate,//日期
+                                        title:res.data.data[i].title,//标题
+                                        content:res.data.data[i].content,//内容
+                                        type:res.data.data[i].type,//类型
+                                        uname:res.data.data[i].uname,//信息发布人
+                                        pic:res.data.data[i].pic}//图片
+                                    
                                     this.tableData.push(info) //存入json数组
                                 }
                             },function(){

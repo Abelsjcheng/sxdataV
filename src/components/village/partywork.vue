@@ -20,7 +20,7 @@ export default {
         
         getPartywdata:function(){ 
 
-                this.$http.get('http://www.teavamc.com/api/pwork/five').then(function(res){  
+                this.$http.get('http://110.53.162.165:5050/api/pwork/five').then(function(res){  
                                 this.pwdata.grouptype=res.data.data[0].grouptype;
                                 this.pwdata.uname=res.data.data[0].uname;
                                 this.pwdata.worktime=res.data.data[0].worktime;                    

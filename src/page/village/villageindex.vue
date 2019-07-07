@@ -16,9 +16,9 @@
                     </div>
                 </el-col>
                 <el-col :span="6">
-                    <div class="info"><painfo/></div>
+                    <div class="info"><policyinfo/></div>
                 </el-col>
-                <el-col :span="6"><div class="info"><painfo/></div></el-col>
+                <el-col :span="6"><div class="info"><politics/></div></el-col>
             </el-row>
 
             <el-row :gutter="10" class="vii-row">
@@ -38,15 +38,16 @@
     </el-container>
 </template>
 <script>
-import partyhd from '@/components/village/villagebook/partyhd'
-import painfo from '@/components/village/villagebook/painfo'
-import partyedu from '@/components/village/villagebook/partyedu'
-import shishi from '@/components/village/villagebook/shishi'
-import viiproject from '@/components/village/villagebook/viiproject'
-import Carousel from '@/components/village/villagebook/Carousel'
-import partyaffairs from '@/components/village/villagebook/partyaffairs'
+import partyhd from '@/components/village/villagebook/partyhd' //党员活动组件
+import policyinfo from '@/components/village/villagebook/policyinfo' //公告组件
+import partyedu from '@/components/village/villagebook/partyedu' //在线学习组件
+import shishi from '@/components/village/villagebook/shishi'  //实时政事组件
+import viiproject from '@/components/village/villagebook/viiproject' //村重大项目组件
+import Carousel from '@/components/village/villagebook/Carousel' //图片轮播组件
+import partyaffairs from '@/components/village/villagebook/partyaffairs' //村务公开组件
+import politics from '@/components/village/villagebook/politics'  //政策组件
 export default {
-    components: {partyhd,painfo,partyedu,viiproject,shishi,Carousel,partyaffairs
+    components: {partyhd,policyinfo,partyedu,viiproject,shishi,Carousel,partyaffairs,politics
     },
     name: 'villageindex',
     data () {
@@ -69,10 +70,12 @@ export default {
 <style lang="scss">
     .el-container{
         height: 92vh;
+        
     }
     .vii-main {
         background-color: rgb(233, 233, 196);
         padding-top: 15px;
+
     }
 
     .vii-row {

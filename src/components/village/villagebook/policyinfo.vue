@@ -1,6 +1,6 @@
 <template>
 <div style="position: relative;">
-  <div class="vii_modtitle">政策公告 </div>
+  <div class="vii_modtitle">公告 </div>
   <el-table
     :data="tableData"
     height="420">
@@ -8,7 +8,7 @@
       prop="date"
       width="150">
     </el-table-column>
-    <el-table-column prop="title" label="政策公告" >
+    <el-table-column prop="title" label="公告" >
       <template slot-scope="scope">
         <el-popover trigger="hover" placement="top" width="300">
           <p>{{ scope.row.type }}</p>
@@ -37,16 +37,16 @@
     },
     methods: {
         
-        getpainfo:function(){ 
+        getpolicyinfo:function(){ 
 
-                this.$http.get('http://110.53.162.165:5050/api/policy/ten').then(function(res){  
+                this.$http.get('http://localhost/api/policy/infoAll').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
                                     const info={
                                       title:res.data.data[i].title,
                                       type:res.data.data[i].type,
                                       date:res.data.data[i].reldate,
                                       content:res.data.data[i].content,
-                                      uname:res.data.data[i].adduname,
+                                      uname:res.data.data[i].uname,
                                       pic:res.data.data[i].pic
                                       }
                                     this.tableData.push(info) //存入json数组
@@ -65,7 +65,7 @@
             
     },
      mounted:function(){//页面初始化函数
-        this.getpainfo();
+        this.getpolicyinfo();
     }
 }
 </script>

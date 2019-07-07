@@ -35,6 +35,7 @@
                 this.$http.get('http://localhost/api/party/hdAll').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
                                     const info={
+                                        id:'hd',
                                         date:res.data.data[i].hdadddate,//日期
                                         title:res.data.data[i].hdtitle,//标题
                                         hdtype:res.data.data[i].hdtype,//类型

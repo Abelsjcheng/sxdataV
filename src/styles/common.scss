@@ -101,7 +101,9 @@ textarea {
     outline: none;
     color: inherit;
 }
-
+button:hover{
+    cursor:pointer;
+}
 textarea {
     resize: none;
 }

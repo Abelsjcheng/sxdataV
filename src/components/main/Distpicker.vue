@@ -322,7 +322,7 @@ export default {
     width: 7vw;
     height: 30px;
     top:5px;
-    
+    cursor:pointer;
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;

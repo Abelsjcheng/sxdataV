@@ -20,7 +20,7 @@
 <script>
     import item from './item.vue'
     import virtualList from 'vue-virtual-scroll-list'
-    import infocontent from './infocontent.vue';
+    import infocontent from './dialog/infocontent.vue';
     export default {
         name: 'partyedu',
         data () {
@@ -96,7 +96,6 @@
 <style lang="scss">
 .newaffairs{
     margin-top:20px;
-    height: 170px;
     border-bottom: 1px solid #d8dbdd !important;
 }
 .newaffairs_title{

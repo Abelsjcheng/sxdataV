@@ -1,7 +1,7 @@
 <template>
   
   <div class="block">
-    <el-carousel   indicator-position="none">
+    <el-carousel   >
       <el-carousel-item v-for="item in imaglist"  v-bind:key="item.id" >
         <a><el-image :src="item.pic"  style="height: 250px" fit="cover" @click="openDialogVisible(item) "></el-image> </a>
         <p><a class="pa_title" @click="openDialogVisible(item) ">{{ item.title }}</a> </p>
@@ -16,7 +16,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import infocontent from './infocontent.vue';
+import infocontent from './dialog/infocontent.vue';
 export default {
   components: {infocontent },
     data () {

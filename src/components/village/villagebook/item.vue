@@ -1,21 +1,23 @@
 <template>
     <div>
     <li class="list-li"> 
-        <a class="list-title" @click="centerDialogVisible =true ">{{item.title|ellipsis}} </a>
+        <a class="list-title" @click="opendialog()">{{item.title|ellipsis}} </a>
         <em class="list-data">{{item.date}} </em>
     </li>
     <!--自定义组件 弹出窗口用于显示具体信息 v-bind： 动态赋值-->
     <infocontent v-bind:item="item" v-bind:centerDialogVisible="centerDialogVisible" v-on:dialogClose="centerDialogVisible =$event" />
-                                                                                    <!-- v-on: 用于监听子组件的传值并做处理（监听器） $event为传递的参数-->
+    <hdcontent  v-bind:item="item" v-bind:centerDialogVisible="hdcenterDialogVisible" v-on:dialogClose="hdcenterDialogVisible =$event"/>                                                                                <!-- v-on: 用于监听子组件的传值并做处理（监听器） $event为传递的参数-->
     </div>
 </template>
 <script>
-    import infocontent from './infocontent.vue';
+    import infocontent from './dialog/infocontent.vue';
+    import hdcontent from './dialog/hdcontent.vue';
     export default {
-        components: { infocontent },
+        components: { infocontent,hdcontent },
         data () {
             return {
                 centerDialogVisible: false, //传入子组件的dialog是否显示参数
+                hdcenterDialogVisible:false,
             }
         },
         props:['item'],
@@ -36,6 +38,15 @@
              }
 
         },
+        methods:{
+            opendialog(){
+                if(this.item.id=='hd'){
+                    this.hdcenterDialogVisible =true;
+                }else{
+                    this.centerDialogVisible =true;
+                }
+            }
+        }
         
     }
 </script>

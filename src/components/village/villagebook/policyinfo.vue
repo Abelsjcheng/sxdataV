@@ -1,22 +1,22 @@
 <template>
+<div style="position: relative;">
+  <div class="vii_modtitle">公告 </div>
   <el-table
     :data="tableData"
-    height="30vh"
-    style="width: 100%">
+    height="420">
     <el-table-column
       prop="date"
       width="150">
     </el-table-column>
-    <el-table-column prop="title" label="党员活动" >
+    <el-table-column prop="title" label="公告" >
       <template slot-scope="scope">
         <el-popover trigger="hover" placement="top" width="300">
-          <p>活动标题: {{ scope.row.title }}</p>
-          <p>活动类别: {{ scope.row.hdtype }}</p>
-          <p>活动地点: {{ scope.row.hdloc }}</p>
-          <p>活动人数: {{ scope.row.hdnum }}</p>
-          <p>活动开始时间: {{ scope.row.hdbtime }}</p>
-          <p>活动结束日期: {{ scope.row.hdetime }}</p>
-          <p v-html="'活动简介:'+scope.row.hdsum"> </p>
+          <p>{{ scope.row.type }}</p>
+          <p>{{ scope.row.title }}</p>
+          <div class="d-block text-center">
+            <h4 v-html="scope.row.content"></h4> 
+          </div>
+          <h6 style="text-align:right;">{{scope.row.date}} {{scope.row.adduname}}</h6>
           <div slot="reference" class="name-wrapper">
             <span size="medium">{{ scope.row.title }}</span>
           </div>
@@ -24,6 +24,7 @@
       </template>
     </el-table-column>
   </el-table>
+</div>
 </template>
 
 <script>
@@ -36,11 +37,18 @@
     },
     methods: {
         
-        getPhddata:function(){ 
+        getpolicyinfo:function(){ 
 
-                this.$http.get('http://localhost/api/phd/all').then(function(res){  
+                this.$http.get('http://localhost/api/policy/infoAll').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
-                                    const info={date:res.data.data[i].hdadddate,title:res.data.data[i].hdtitle,hdtype:res.data.data[i].hdtype,hdloc:res.data.data[i].hdloc,hdnum:res.data.data[i].hdnum,hdbtime:res.data.data[i].hdbtime,hdetime:res.data.data[i].hdetime,hdsum:res.data.data[i].hdsum,hdpic:res.data.data[i].hdpic}
+                                    const info={
+                                      title:res.data.data[i].title,
+                                      type:res.data.data[i].type,
+                                      date:res.data.data[i].reldate,
+                                      content:res.data.data[i].content,
+                                      uname:res.data.data[i].uname,
+                                      pic:res.data.data[i].pic
+                                      }
                                     this.tableData.push(info) //存入json数组
                                 }
                             },function(){
@@ -57,7 +65,8 @@
             
     },
      mounted:function(){//页面初始化函数
-        this.getPhddata();
+        this.getpolicyinfo();
     }
 }
 </script>
+

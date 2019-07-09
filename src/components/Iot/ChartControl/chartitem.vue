@@ -3,6 +3,7 @@
             <div class="chart_title">{{chart.label}} </div>
             <div>
                 <el-popover   placement="bottom-start" width="420" v-model="popvisible">
+                    <div>查询时间</div>
                     <el-date-picker v-model="chartSet.timeframe" type="datetimerange" value-format="yyyy-MM-dd HH:mm:ss" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"  align="right"  >
                     </el-date-picker>
                     <div class="block">
@@ -16,7 +17,7 @@
                     <i class="el-icon-setting"  style="color: #05d2e2;" slot="reference"></i>
                 </el-popover>                    
                
-                <i class="el-icon-circle-close-outline" @click="deletechart" style="color: #05d2e2;"></i>
+                <i class="el-icon-circle-close" @click="deletechart" style="color: #05d2e2;"></i>
             </div>
     </div>
 </template>

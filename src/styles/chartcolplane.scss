@@ -3,7 +3,7 @@
     height:60vh;
     margin:4.5px 0;
     padding:5px 10px;
-    background-color: rgb(00,25,49);
+    background: rgba(0,0,0,.2);
     z-index:2;
     .chartplane_head{
         display: flex;
@@ -30,6 +30,9 @@
             font-family:"Hiragino Sans GB";
             font-size: 14px;
             
+        }
+        i:hover{
+            cursor:pointer;  //鼠标形状变小手
         }
     }
     

@@ -179,7 +179,7 @@ name: "barchart",
   watch:{
       listenchartSet:{
           handler(vag){  //handler执行具体方法
-            if(vag.name=='rain') //温度表
+            if(vag.name=='rain') //
             {
                 this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit);
                 this.chartvisible=vag.chartvisible;

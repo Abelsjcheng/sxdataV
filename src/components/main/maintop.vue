@@ -1,19 +1,21 @@
 <template>
     <div class="app-header">
-				<el-menu default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color= "rgb(00,25,49)" text-color="#fff" active-text-color="#409EFF">
-          <el-menu-item index="1">
-            <router-link  to="/index/mainview">  <!-- 路由跳转 -->
-              <span>广播信息展示</span>
-            </router-link>
-          </el-menu-item>
-          <el-menu-item index="2">
-            <router-link  to="/index/village"> 
-              <span>村务信息展示</span>
-            </router-link></el-menu-item>
-          <el-menu-item index="3">
-            <router-link  to="/index/Iotview"> 
-              <span>物联网信息展示</span>
-            </router-link></el-menu-item>
+				<el-menu :default-active="pid" class="el-menu-demo" mode="horizontal" background-color="#001931" text-color="#fff" active-text-color="#409EFF">
+            <el-menu-item index="1" @click="open('/index/mainview')" >
+                  <span slot="title">应急广播数据可视化</span>
+            </el-menu-item>
+          <el-submenu index="2">
+            <template slot="title">村务信息展示</template>
+              <el-menu-item index="2-1" @click="open('/index/villageindex')">
+                <span slot="title">村务宝典 </span>
+              </el-menu-item>
+              <el-menu-item index="2-2" @click="open('/index/villageview')">
+                <span slot="title">村务数据可视化 </span>
+              </el-menu-item>
+          </el-submenu>
+            <el-menu-item index="3" @click="open('/index/Iotview')">
+                  <span slot="title">山洪灾害数据可视化</span>
+            </el-menu-item>
         </el-menu>
 				<div class="heading">融媒体综合数据平台</div>
 				<div class="bar">
@@ -53,9 +55,11 @@ export default {
   name: 'maintop',
   data () {
     return {
-      ndata:{year:'',day:'',week:''}
+      ndata:{year:'',day:'',week:''},
+      pid:this.id+"" //菜单栏定位
     }
   },
+  props:['id'],
   components: {mapTheme},//注册组件
   methods:{
     login:function(){
@@ -68,7 +72,7 @@ export default {
       this.ndata.week = week[moment().format("d")]        //因为需求要展示的是中文的星期几，所以这里对week进行了处理，加了个索引
     },
     LopTime(){
-      setInterval(this.getTime,1000)   //对获取的时间，用定时器让它动起来，定时器中调用getTime方法，注意不能加（），调用函数
+      //setInterval(this.getTime,1000)   //对获取的时间，用定时器让它动起来，定时器中调用getTime方法，注意不能加（），调用函数
     },
     handleScreen () { //全屏
       fullscreenToggel();
@@ -78,6 +82,10 @@ export default {
     },
     handledisplay(){
       this.$store.commit("SET_DISPLAY");
+    },
+    open (menupath) {
+
+      this.$router.push(menupath)
     }
     
 
@@ -87,8 +95,10 @@ export default {
     ...mapGetters(["isdisplay"]),
   },
   mounted:function(){//页面初始化函数
-      this.LopTime();
+      //this.LopTime();
       listenfullscreen(this.setScreen); 
   }
 }
 </script>
+
+

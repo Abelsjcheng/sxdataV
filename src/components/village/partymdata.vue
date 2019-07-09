@@ -1,21 +1,21 @@
 <template>
     <div class="party-data"> 
         <div> 
-            <img height="50" width="50" style="position: relative;top: -10px;" src='../../static/img/party.png'/>
+            <img height="50" width="50"  src='../../static/img/party.png'/>
             <span class="partytable">
                     <i class="partyd_name">党员总数</i>
                     <i class="partyd_num">{{pmdata.psum}}</i>
             </span>
         </div>
         <div>
-            <img height="50" width="50" style="position: relative;top: -10px;" src='../../static/img/partym.png'/>
+            <img height="50" width="50"  src='../../static/img/partym.png'/>
             <span class="partytable">
                     <i class="partyd_name">男性党员数</i>
                     <i class="partyd_num">{{pmdata.pman}}</i>
             </span>
         </div>
         <div> 
-            <img height="50" width="50" style="position: relative;top: -10px;" src='../../static/img/partywm.png'/>
+            <img height="50" width="50"  src='../../static/img/partywm.png'/>
             <span class="partytable">
                     <i class="partyd_name">女性党员数</i>
                     <i class="partyd_num">{{pmdata.pwoman}}</i>
@@ -98,7 +98,6 @@ export default {
 .partytable{
 			position: relative;
             display: inline-block;
-            top:5px;
 			.partyd_name{
 				display: block;
 				font-style: normal;

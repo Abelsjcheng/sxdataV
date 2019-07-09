@@ -1,0 +1,41 @@
+.iot_char{
+    position: relative;
+    height:29vh;
+    width: 96%;
+    margin:4.5px 0;
+    padding:5px 10px;	
+    color:#fff;
+    text-align:center;
+    z-index:2;
+    background: url(../static/img/bgbg1.png) no-repeat;
+    background-size: 100% 100%;
+    box-shadow: inset 0px 0px 20px #038d98;
+    
+}
+.iot_char_right{
+    position: relative;
+    height:29vh;
+    width: 96%;
+    margin:4.5px 15px;
+    padding:5px 10px;	
+    color:#fff;
+    text-align:center;
+    z-index:2;
+    background: url(../static/img/bgbg1.png) no-repeat;
+    background-size: 100% 100%;
+    box-shadow: inset 0px 0px 20px #038d98;
+}
+.div_any_title{
+    background-color: #034c6a;
+    border-radius: 18px;
+    position: absolute;
+    height: 35px;
+    width: 60%;
+    top: -15px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    left: 20%;
+    line-height: 35px;
+    text-align: center;
+}

@@ -1,7 +1,7 @@
 .overview{
 	//min-height: 824px;
-	height: 100%;
-	background-color: #242b42;
+	height: 92vh;
+	background-color: #040f3c;
 	
 	.m_left1{
 		position: relative;
@@ -18,10 +18,10 @@
 	}
 	.m_center{
 		position: absolute;
-		left: 48%;
-		margin-left: -200px;
+		left: 50%;
+    	transform: translateX(-35%);
 		z-index:2;
-		width:600px;
+		width:32.5vw;
 		height:50px;
 		top:5px;
 	}

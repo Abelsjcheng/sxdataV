@@ -32,7 +32,9 @@
 	}
 	.heading{
 		font-size: 24px;
-		margin: auto;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-108px);
 		
 	}
 	
@@ -81,4 +83,7 @@
     	background: linear-gradient(to top right, #3fa6cb,#c2625c);
 	}
 
+}
+.top-bar__item{
+	cursor:pointer;
 }

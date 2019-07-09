@@ -1,61 +1,47 @@
-<template>
-    <div >
-    <!-- 左视图层 -->
-    <div class="m_left" v-bind:style="{ display: activedisplay}">
-      <div class="m_left1" >
-          <tabledata />
-        </div>
-      <!--
+<template>  
+    <el-container>
+      <el-aside width="21.2vw" class="aside_left">
+        <cartesianchart/>
+        <basicareachart/>
+        <lineitemstylechart/>
         
-        
-        <div class="m_left1" >
-          <barchart />
-        </div>
-        <div class="m_left1" >
-          <radarchart />
-        </div> 
-      -->
-      <ChartControl />
-    </div>
-    <!-- 右视图层 -->
-    <div class="m_right" v-bind:style="{ display: activedisplay}">
-      
-      <div class="mlot_right">
-        
-         <!-- 待重新开发-->
-        <barchart /> 
+      </el-aside>
+      <el-container>
+        <el-main class="iot_main">
+          <el-row :gutter="10">
+            <el-col :span="16"><div class="iot_map"><mainmap /></div></el-col>
+            <el-col :span="8"><div class="iot_char_col"><ChartControl /></div></el-col>
+          </el-row>
+          <el-row :gutter="10">
+            <el-col :span="12"><div class="iot_info"><warninfo/></div></el-col> <!-- 预警模块 -->
+            <el-col :span="12"><div class="iot_camera"></div></el-col> <!-- 终端信息模块 -->
 
-      </div>
-      <!-- 待重新开发 公告与政策 
-      <div class="m_right2">
-         <Iotinfo/> 
-         
-      </div>
-      -->
-    </div>
-    <div class="m_bottom" v-bind:style="{ display: activedisplay}">
-      <div class="m_bottom1">
-        <!-- 折线图 -->
-          <linechart />
-      </div>
-    </div>
-    <!-- 地图层 -->
-    <mainmap />
-  </div>
+          </el-row>
+        </el-main>
+      </el-container>
+      <el-aside width="21.2vw" class="aside_right">
+        <linechart />
+        <radarchart/>
+        <piechart/>
+      </el-aside>
+    </el-container>
+
 </template>
 
 <script>
-import piechart from '@/components/Iot/charts/piechart'//饼图
 import tabledata from '@/components/Iot/charts/tabledata' //table数据组
 import mainmap from './iotmap' //百度地图层
-import barchart from '@/components/Iot/charts/barchart'//柱状图
-import radarchart from '@/components/Iot/charts/radarchart'//雷达图
-import linechart from '@/components/Iot/charts/linechart'//折线图
-import Iotinfo from '@/components/Iot/annoucement/Iotinfo'//公告信息列表
+import linechart from '@/components/Iot/charts/linechart'//温湿度折线图
+import cartesianchart from '@/components/Iot/charts/cartesianchart' //雨量图
+import lineitemstylechart from '@/components/Iot/charts/lineitemstylechart' //流量图
+import basicareachart from '@/components/Iot/charts/basicareachart'//水位图
 import ChartControl from '@/components/Iot/ChartControl/ChartControl' //图表控制器
+import piechart from '@/components/Iot/charts/piechart' //河水酸碱度
+import radarchart from '@/components/Iot/charts/radarchart' //PM2.5浓度变化图
+import warninfo from '@/components/Iot/annoucement/warninfo' //预警模块
 import { mapGetters } from 'vuex';
 export default {
-  components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,Iotinfo,ChartControl
+  components: {tabledata,mainmap,linechart,ChartControl,cartesianchart,lineitemstylechart,basicareachart,piechart,radarchart,warninfo
     },
   name: 'Iotmain',
   data () {
@@ -85,31 +71,50 @@ export default {
 }
 </script>
 <style lang="scss" >
-.m_left{
-  width: 23vw;
-  height: 92vh;  
-  position: absolute;
-  left: 0;
-}
-.m_right{
-  width: 23vw;
-  height: 92vh;  
-  position: absolute;
-  right: 0;
-}
-div {
-    display: block;
-}
-.m_bottom{
-  height:29vh;
-  margin:0 2px;
-  bottom: 5px;
-  left: 23vw;
-  width: 53.5vw;
-  position: absolute;
-  z-index:2;
-  background: rgba(0,0,0,0.5);
-}
 
+.aside_left {
+    background: url(../../static/img/line_img.png) top right repeat-y;
+   
+  }
+.aside_right {
+    background: url(../../static/img/line_img.png) top left repeat-y;
+   
+  }
+.el-container {
+    height:92vh;
+  }
+.iot_main{
+  margin-top: 5px;
+}
+.el-row {
+    margin-bottom: 5px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 
+  .iot_map{
+    border-radius: 4px;
+    height: 60vh;
+    box-sizing: border-box;
+    border: 2px solid #016ae0;
+  }
+  .iot_char_col{
+    border-radius: 4px;
+    height: 60vh;
+    box-sizing: border-box;
+    border: 2px solid #016ae0;
+  }
+  .iot_info{
+    height: 30vh;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 2px solid #016ae0;
+  }
+  .iot_camera{
+    height: 30vh;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 2px solid #016ae0;
+  }
 </style>

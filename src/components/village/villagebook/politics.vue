@@ -6,7 +6,7 @@
     height="420">
     <el-table-column
       prop="date"
-      width="150">
+      width="160">
     </el-table-column>
     <el-table-column prop="title" label="政策" >
       <template slot-scope="scope">

@@ -1,5 +1,5 @@
 <template>
-    <div >
+  <div class="partyview_main">
     <!-- 左视图层 
     <div class="m_left" v-bind:style="{ display: activedisplay}">
       <Kanban style="height: 92vh;" :stages="stages" :blocks="block1" @update-block="updateBlock">
@@ -36,28 +36,25 @@
     <!-- 地图层 
     <mainmap />-->
     <el-container>
-      <el-aside class="vii_left" width="250px">
+      <el-aside class="vii_left" width="350px">
         <partywork/>
       </el-aside>
       <el-container>
         
         <el-main class="vii_main">
           <el-row >
-            <el-col :span="11">
+            <el-col :span="12">
               <div class="grid-village-map">
-                <partymdata/>
+                
                 <mainmap />
+                <villagemdata />
               </div>
             </el-col> <!-- css 自行修改-->
-            <el-col :span="13">
+            <el-col :span="12">
               <div class="grid-village-databox">
                 <el-row >
-                  <el-col :span="24"><div class="grid-village-onlydata">人口总数，男人总数，女人总数，党员总数，党员男性数，党员女性数</div></el-col>
-                </el-row>
-                <el-row :gutter="5">
-                  <el-col :span="12"><div class="grid-village-annou"></div></el-col>
-                  <el-col :span="12"><div class="grid-village-annou"></div></el-col>
-
+                  <el-col :span="8"><div class="grid-village-annou"> <partymdata/></div></el-col>
+                  <el-col :span="16"><div class="grid-village-char" > <partychart/><villagerchar/></div></el-col>
                 </el-row>
               </div>
             </el-col>
@@ -72,19 +69,20 @@
         
       </el-container>
     </el-container>
-  </div>
+</div>
 </template>
 
 <script>
 
 import mainmap from './villagemap' //百度地图层
-import partymdata from '@/components/village/partymdata'//党员数显示
-import partywork from '@/components/village/partywork'
-
-
+import partymdata from '@/components/village/villageview/partymdata'//党员数显示
+import partywork from '@/components/village/villageview/partywork'
+import villagemdata from '@/components/village/villageview/villagemdata'
+import partychart from '@/components/village/charts/partychart'
+import villagerchar from '@/components/village/charts/villagerchar'
 import { mapGetters } from 'vuex';
 export default {
-  components: {mainmap,partymdata,partywork
+  components: {mainmap,partymdata,partywork,villagemdata,partychart,villagerchar
     },
   name: 'villagemain',
   data () {
@@ -106,23 +104,27 @@ export default {
 </script>
 <style lang="scss" >
 
-
+.partyview_main{
+  background-image:url(../../static/img/partybackground.jpg);
+  background-size: cover;
+  opacity: 0.9;
+}
   
   .vii_left {
-    background-color: #D3DCE6;
+   // background-color: #D3DCE6;
     color: #333;
-    border-right:3px solid  #3fa6cb;
    
   }
   
   .vii_main {
-    background-color: #E9EEF3;
+   // background-color: #E9EEF3;
     color: #333;
-    text-align: center;
+   
   }
   
 .el-container {
     height:92vh;
+    
   }
   
   .el-container:nth-child(5) .el-aside,
@@ -145,48 +147,56 @@ export default {
 
   .row-bg {
     padding: 10px 0;
-    background-color: #f9fafc;
+
   }
   .grid-village-map{
     border-radius: 4px;
     height: 60vh;
-    background: #d3dce6;
-    border-right:3px solid  #3fa6cb;
+
+    
   }
   
   .grid-village-databox{
     border-radius: 4px;
     height: 60vh;
-    background: #d3dce6;
+
     .grid-village-onlydata{
       border-radius: 4px;
       height: 30vh;
-      background:#738fad;
+
     }
     .grid-village-annou{
-      border-radius: 4px;
-      height: 30vh;
-      background:#738fad;
+      position: relative;
+
+      height: 60vh;
+
     }
+    
   }
+  .grid-village-char{
+      display: flex;
+      flex-direction:column;
+      justify-content: space-around;
+      height: 60vh;
+    }
   .grid-village-echart1{
     border-radius: 4px;
     height: 31vh;
-    background: #d3dce6;
+
   }
   .grid-village-echart2{
     border-radius: 4px;
     height: 31vh;
-    background: #d3dce6;
+
   }
   .grid-village-echart3{
     border-radius: 4px;
     height: 31vh;
-    background: #d3dce6;
+
   }
   .grid-village-echart4{
     border-radius: 4px;
     height: 31vh;
-    background: #d3dce6;
+
   }
 </style>

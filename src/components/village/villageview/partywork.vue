@@ -48,17 +48,19 @@ export default {
 <style lang="scss">
 .partywork{
     position: relative;
-    left: 0;
-    height: 50px;
+    width: 95%;
+    height: 250px;
+    background: rgba(0,0,0,.2);
 }
 .pwtitle{
-    color: #ff0000;
+    color: #ffffff;
     font-size: 18px;
-    font-weight: bold;
-    text-align: center;
+    padding: 10px;
+    
 }
 .pwitem{
-    margin-top: 10px;
+    color: #ffffff;
+    margin: 10px 0 0 10px;
 }
 </style>
 

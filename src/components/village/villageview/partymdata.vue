@@ -1,26 +1,28 @@
 <template>
     <div class="party-data"> 
-        <div> 
-            <img height="50" width="50"  src='../../static/img/party.png'/>
-            <span class="partytable">
-                    <i class="partyd_name">党员总数</i>
-                    <i class="partyd_num">{{pmdata.psum}}</i>
-            </span>
-        </div>
-        <div>
-            <img height="50" width="50"  src='../../static/img/partym.png'/>
-            <span class="partytable">
-                    <i class="partyd_name">男性党员数</i>
-                    <i class="partyd_num">{{pmdata.pman}}</i>
-            </span>
-        </div>
-        <div> 
-            <img height="50" width="50"  src='../../static/img/partywm.png'/>
-            <span class="partytable">
-                    <i class="partyd_name">女性党员数</i>
-                    <i class="partyd_num">{{pmdata.pwoman}}</i>
-            </span>
-        </div>
+            <div class="partytable">
+
+                <img height="50" width="50"  src='../../../static/img/party.png'/>
+                <h3 class="partyd_name">党员总数</h3>
+                <i class="partyd_num">{{pmdata.psum}}</i>
+            </div>
+
+
+            
+            <div class="partytable">
+                <img height="50" width="50"  src='../../../static/img/partym.png'/>
+                <h3 class="partyd_name">男性党员数</h3>
+                <i class="partyd_num">{{pmdata.pman}}</i>
+            </div>
+            
+
+           
+            <div class="partytable">
+                <img height="50" width="50"  src='../../../static/img/partywm.png'/>
+                <h3 class="partyd_name">女性党员数</h3>
+                <i class="partyd_num">{{pmdata.pwoman}}</i>   
+            </div>
+
     </div>
 
 </template>
@@ -89,26 +91,43 @@ export default {
 
 <style lang="scss" scoped>
 .party-data{
-    height: 8vh;
-    display: flex;
-    justify-content: space-between;//定义对齐方式：两端对齐，项目之间的间隔都相等。
-    align-items: center;//交叉轴的中点对齐。
+    
+    width: 80%;
+    position: absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.2);
     //background-color: rgb(58, 8, 39);
 }
 .partytable{
+    img{
+        margin-left: 15%;
+    }
 			position: relative;
-            display: inline-block;
+            margin: 15px 0;
+
 			.partyd_name{
-				display: block;
-				font-style: normal;
+                position: absolute;
+                top: 15px;
+                margin-bottom: -5px;
+                display: inline-block;
+                font-style: normal;
+                color: white;
 			}
-			.partyd_num{
-				display: block;
-				font-style: normal;
-			}
+			
 }
 
-
+.partyd_num{
+                text-align: center;
+                display: block;
+                font-style: normal;
+                color: yellow;
+                font-size: 1.3rem;
+			}
 
 </style>
 

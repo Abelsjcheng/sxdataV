@@ -1,5 +1,5 @@
 <template>  
-    <el-container>
+    <el-container class="iot_overview">
       <el-aside width="21.2vw" class="aside_left">
         <cartesianchart/>
         <basicareachart/>
@@ -71,6 +71,10 @@ export default {
 }
 </script>
 <style lang="scss" >
+.iot_overview{
+  background-color: #040f3c;
+  height:92vh;
+}
 
 .aside_left {
     background: url(../../static/img/line_img.png) top right repeat-y;
@@ -80,9 +84,7 @@ export default {
     background: url(../../static/img/line_img.png) top left repeat-y;
    
   }
-.el-container {
-    height:92vh;
-  }
+
 .iot_main{
   margin-top: 5px;
 }

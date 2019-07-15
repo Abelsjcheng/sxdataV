@@ -21,7 +21,7 @@
         methods: {
             getPhddata:function(){ 
 
-                this.$http.get('http://localhost/api/party/ShiShiAll').then(function(res){  
+                this.$http.get('http://110.53.162.165:5050/api/party/ShiShiAll').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
                                     const info={
                                         date:res.data.data[i].adddate,//日期

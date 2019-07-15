@@ -41,7 +41,7 @@ name: "mainmap",
       zoom: 11,//缩放等级
       infowindow:{lng:'',lat:'',address:'',content:'',uname:'',grouptype:'',worktime:'', show:false},//标注弹窗数据 值班信息
       bmapStyle: {
-        styleJson:mapStyle        //地图个性样式
+       // styleJson:mapStyle        //地图个性样式
       },
       markers:[],//标注json数组
     }

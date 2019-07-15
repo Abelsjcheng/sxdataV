@@ -1,13 +1,9 @@
 .app-header{
 	background-color: rgb(00,25,49);//
 	color: white;
-	height: 8vh;
-	min-height: 80px;
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-    font-family: 'Microsoft Yahei';
+	height: 7%;
+	font-family: 'Microsoft Yahei';
+	border-bottom: 1px solid #668ac9;
 	.logo{
 		padding-left: 30px;	
 		padding-bottom: 6px	;
@@ -30,22 +26,33 @@
 			}
 		}
 	}
+	.el-menu-demo{
+		float: left;
+		width: 26%;
+		height: 100%;
+	}
 	.heading{
 		font-size: 24px;
-		position: absolute;
-		left: 50%;
-		transform: translateX(-108px);
+		float: left;
+		width: 48%;
+		height: 100%;
+		align-items:center; //垂直居中
+		justify-content:center;  //水平居中
+		display: -webkit-flex;
+		display: flex;
 		
 	}
 	
 	.bar{
+		float:right;
+		display: -webkit-flex;
 		display: flex;
 		align-items: center;
-		padding-top: 20px;
-		padding-right: 10px;
+		justify-content:flex-end;  //向尾部
 		color: #d1d3d7;
 		align-self: flex-start;
-		
+		width:26%;
+		height: 100%;
 		i{
 			margin-right: 8px;
 			img{
@@ -60,7 +67,7 @@
     		font-weight: bold;
 		}
 		.logout_btn{
-			margin-left: 10px;
+			margin: 0 10px;
 			padding: 0px 2px;
 			height: 26px;
 		    width: 80px;
@@ -72,16 +79,7 @@
 		  
 		
 	}
-	&:after{
-		content: '';
-		display: block;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-    	height: 3px;
-    	background: linear-gradient(to top right, #3fa6cb,#c2625c);
-	}
+	
 
 }
 .top-bar__item{

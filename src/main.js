@@ -7,7 +7,7 @@ import Resource from 'vue-resource'
 import './styles/common.scss';
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
-import ECharts from 'vue-echarts/components/ECharts'
+import ECharts from 'vue-echarts'
 import 'echarts/lib/component/toolbox'
 import 'echarts/lib/component/dataZoom'
 import 'echarts/lib/chart/line'
@@ -36,6 +36,7 @@ Vue.component('v-chart', ECharts)
 Vue.use(ElementUI)
 Vue.use(Resource)
 Vue.use(FlatSurfaceShader)
+
 Vue.prototype.axios = axios;
 /* eslint-disable no-new */
 new Vue({

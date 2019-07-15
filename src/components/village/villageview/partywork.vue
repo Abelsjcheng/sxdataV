@@ -49,7 +49,7 @@ export default {
 .partywork{
     position: relative;
     width: 95%;
-    margin: 10px 0 0 10px;
+    height: 250px;
     background: rgba(0,0,0,.2);
 }
 .pwtitle{

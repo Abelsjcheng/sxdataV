@@ -1,6 +1,5 @@
 <template>
 <div class="app-warpper">
-  <div id="page-wrap">
     <!-- 头 -->
      <maintop :id="id"/> 
      <!-- 主体视图层 -->
@@ -9,7 +8,7 @@
        <router-view  />  <!-- 第二层路由出口 keep-alive缓存-->
       </keep-alive>  
     </div>
-  </div>
+
   <!-- 菜单 
   <ScaleDown width="300"  >
       <router-link to="/index/mainview">  路由跳转 
@@ -54,7 +53,9 @@ li {
 a {
   color: #42b983;
 }
-
+.app-warpper{
+  height:100%;
+}
 .app-warpper /deep/ .bm-burger-bars {
     background-color: #ffffff;
   }

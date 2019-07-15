@@ -69,7 +69,7 @@ export default {
 
 <style lang="scss">
     .el-container{
-        height: 92vh;
+        height: 100%;
         
     }
     .vii-main {

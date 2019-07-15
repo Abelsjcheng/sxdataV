@@ -76,9 +76,15 @@ body {
     color: #212529;
     text-align: left;
     background-color: #fff;
+    overflow: hidden;
+    height:100%;
 }
 
-html,
+html{
+    height: 100%;
+    overflow: hidden;
+    border: 0;
+}
 
 
 fieldset,

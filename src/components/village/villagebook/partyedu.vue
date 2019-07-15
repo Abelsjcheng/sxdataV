@@ -32,7 +32,7 @@
         methods: {
             getPhddata:function(){ 
 
-                this.$http.get('http://localhost/api/party/eduAll').then(function(res){  
+                this.$http.get('http://110.53.162.165:5050/api/party/eduAll').then(function(res){  
                                 if(res.data.data.length<8)
                                 this.pageSize=res.data.data.length;
                                 for (let i = 0; i < res.data.data.length; i++) {

@@ -79,7 +79,7 @@ name: "mainmap",
       if(this.get()==true){       //延迟等待是否加载完毕
           setTimeout(() => {
           loading.close();
-        }, 5000);
+        }, 2000);
       }
      
     },

@@ -35,7 +35,7 @@
         methods: {
             getPhddata:function(){ 
 
-                this.$http.get('http://localhost/api/party/affairAll').then(function(res){  
+                this.$http.get('http://110.53.162.165:5050/api/party/affairAll').then(function(res){  
                         this.newpartyaffair={date:res.data.data[0].adddate,title:res.data.data[0].title,content:res.data.data[0].content,pic:res.data.data[0].pic,uname:res.data.data[0].uname};     
                                 for (let i = 0; i < res.data.data.length; i++) {
                                      const info=

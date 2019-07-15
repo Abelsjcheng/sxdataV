@@ -6,7 +6,7 @@
     height="420">
     <el-table-column
       prop="date"
-      width="150">
+      width="160">
     </el-table-column>
     <el-table-column prop="title" label="政策" >
       <template slot-scope="scope">
@@ -39,7 +39,7 @@
         
         getpolitics:function(){ 
 
-                this.$http.get('http://localhost/api/policy/PolAll').then(function(res){  
+                this.$http.get('http://110.53.162.165:5050/api/policy/PolAll').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
                                     const info={
                                       title:res.data.data[i].title,

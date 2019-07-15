@@ -25,8 +25,9 @@ name: "tabledata",
     
     tooltip: {
         trigger: 'item',
-        formatter: "{a} <br/>{b}: {c} ({d}%)"
-        
+        position:['25%','20%'],
+        padding:5,
+        formatter: "{a} \n<br/>{b}: {c} ({d}%)"
     },
     // legend: {
     //     orient: 'vertical',
@@ -39,28 +40,28 @@ name: "tabledata",
             name:'总运停端数',
             // formatter:'{a}: {c} ({d}%)',
             type:'pie',
-             radius: ['30%', '55%'],
+             radius: ['40%', '55%'],
              center : ['25%', '50%'],
             avoidLabelOverlap: true,
             label: {
                 normal: {
                     position: 'center',
-                    show: false,
+                    show: true,
                     //  formatter:'{a}/{b}/{c}/{d}%',
                     // formatter:'{a}',
-                    formatter:'{c}',
+                    formatter:'总运停数',
                     textStyle:{
-                      color:'#fff',
-                      fontSize:40,
+                      color:'#133',
+                      fontSize:15,
                       fontWeight: 'bold'
-                    }
+                    },
                     
-                //     legend: {
-                //         orient: 'vertical',
-                //         x: 'left',
-                //         show: true,
-                //         data:['总运行数','总停止数']
-                //     },
+                    // legend: {
+                    //     orient: 'vertical',
+                    //     x: 'left',
+                    //     show: true,
+                    //     data:['总运行数','总停止数']
+                    // },
                     
                  },
 
@@ -78,6 +79,7 @@ name: "tabledata",
             },
             itemStyle:{
               normal:{
+                
                 //   color:['#fff','#1FC06E']
               }  
             },
@@ -90,7 +92,7 @@ name: "tabledata",
                 {value:89,
                  name:'总运行数',
                  itemStyle:{normal:{
-                  color:'#27727B'}
+                  color:'cadetblue'}
                 // selected:true,
                 // tooltip:{
                 //     tigger:'item',
@@ -110,20 +112,20 @@ name: "tabledata",
             name:'区运停端数',
             // formatter:'{a}: {c} ({d}%)',
             type:'pie',
-              radius: ['30%', '55%'],
+              radius: ['40%', '55%'],
             center: ['75%', '50%'],
             avoidLabelOverlap: true,
             label: {
                 normal: {
                     position: 'center',
-                    show: false,
+                    show: true,
                     //  formatter:'{a}/{b}/{c}/{d}%',
                     // formatter:'{a}',
-                    formatter:'{c}',
+                    formatter:'区运停数',
                     textStyle:{
-                      color:'#fff',
-                      fontSize:40,
-                      fontWeight: 'bold'
+                      color:'#133',
+                      fontSize:'15',
+                      // fontWeight: 'bold'
                     }
                 //     legend: {
                 //         orient: 'vertical',
@@ -160,7 +162,7 @@ name: "tabledata",
                 {value:76,
                  name:'区运行数',
                  itemStyle:{normal:{
-                  color:'#27727B'}
+                  color:'cadetblue'}
                 // selected:true,
                 // tooltip:{
                 //     tigger:'item',

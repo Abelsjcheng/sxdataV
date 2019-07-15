@@ -1,41 +1,68 @@
 <template>
-  <div >
+   <div>
     <!-- 左视图层 -->
-    <div class="m_left" v-bind:style="{ display: activedisplay}">
+    <!-- <div class="m_left" v-bind:style="{ display: activedisplay}">
       <Kanban style="height: 92vh;" :stages="stages" :blocks="block1" @update-block="updateBlock">
         <div class="m_left1" :slot="1" :key="1">
           <tabledata />
         </div>
         <div class="m_left1" :slot="2" :key="2">
-          <!--重做 <barchart />-->
+           <barchart />
         </div>
-        <div class="m_left1"   :slot="3" :key="3">
+        <div class="m_left1"   :slot="3" :key="3"> -->
           <!--重做 <radarchart />-->
-        </div>
+        <!-- </div>
       </Kanban>
-    </div>
+    </div> -->
     <!-- 右视图层 -->
-    <div class="m_right" v-bind:style="{ display: activedisplay}">
+    <!-- <div class="m_right" v-bind:style="{ display: activedisplay}">
       <Kanban style="height: 92vh;" :stages="stages" :blocks="block2" @update-block="updateBlock">
-      <div class="m_right1" :slot="1" :key="1">
+      <div class="m_right1" :slot="1" :key="1"> -->
         <!-- 饼图 -->
         <!--重做 <piechart />   -->
-      </div>
-      <div class="m_right2" :slot="2" :key="2">
+      <!-- </div>
+      <div class="m_right2" :slot="2" :key="2"> -->
         <!-- 公告与政策 -->
        <!--重做 <zdinfo/> -->
-      </div>
+      <!-- </div>
       </Kanban>
     </div>
     <div class="m_bottom" v-bind:style="{ display: activedisplay}">
-      <div class="m_bottom1">
+      <div class="m_bottom1"> -->
         <!-- 折线图 -->
        <!--重做   <linechart /> -->
-      </div>
-    </div>
+      <!-- </div>
+    </div> -->
     <!-- 地图层 -->
-    <mainmap />
-  </div>
+    <!-- <mainmap /> -->
+  <el-container id="con1">
+    <el-aside width="23.5vw">
+      <!-- <div id="item1"> -->
+        <div class="flex-item_l"><tabledata /></div>
+        <div class="flex-item_l">f2</div>
+        <div class="flex-item_l">f3</div>
+      <!-- </div> -->
+    </el-aside>
+    <el-container id="con2">
+        <el-main>
+          <div class="flex-item_m"><mainmap/></div>
+        </el-main>
+        <el-footer height="42vh">
+            <div class="flex-container">
+              <div class="flex-item_f" id="f1">f7</div>
+              <div class="flex-item_f" id="f2"> f8</div>
+            </div>
+        </el-footer>
+    </el-container>
+    <el-aside width="24%">
+      <!-- <div id="item2"> -->
+      <div class="flex-item_r">f4</div>
+      <div class="flex-item_r">f5</div>
+      <div class="flex-item_r">f6</div>
+    <!-- </div> -->
+    </el-aside>
+  </el-container>
+  </div> 
   
 </template>
 
@@ -89,31 +116,83 @@ export default {
 </script>
 
 <style lang="scss" >
-.m_left{
-  width: 23vw;
-  height: 92vh;  
-  position: absolute;
-  left: 0;
-}
-.m_right{
-  width: 23vw;
-  height: 92vh;  
-  position: absolute;
-  right: 0;
-}
-div {
-    display: block;
-}
-.m_bottom{
+
+  #el-container,div{
+    height:100%;
+    margin:0;
+    padding:0;
+    position:relative;
+
+  }
+
+.el-footer {
+    // background-color: #B3C0D1;
+    // color: #333;
+    text-align: center;
+    line-height: 200px;
+  }
+
+  .flex-container{
+    position:absolute;
+    display:flex;
+    width:52%;
+    margin-left:-20px;
+    height:37vh;
+    flex-direction:row;
+     //background-color:lightgrey;
+    }
+
+  .flex-item_f{
+    // background-color:#B3C0D1;
+    margin:3px;
+    height:37vh;
+    width:51.7%;
+    border:1px solid #256;
+  }
+  
+  .el-aside {
+    // background-color: #D3DCE6;
+    // color: #333;
+     text-align: center;
+    line-height: 50%;
+    margin:3px;
+  }
+
+  .flex-item_l{
+    // background-color:#B3C0D1;
+    margin:3px;
+    height:29vh;
+    border:1px solid #256;
+  }
+
+.flex-item_r{
+  // background-color:#B3C0D1;
+  margin:3px;
   height:29vh;
-  margin:0 2px;
-  bottom: 5px;
-  left: 23vw;
-  width: 53.8vw;
-  position: absolute;
-  z-index:2;
-  background: rgba(0,0,0,0.5);
+  border:1px solid #256;
 }
 
+  
+  // .el-main {
+  //   // background-color: #E9EEF3;
+  //   // color: #333;
+  //   // text-align: center;
+  //   line-height: 100px;
+  // }
+
+  .flex-item_m{
+    // background-color:#B3C0D1;
+     margin:3px;
+    margin-top:5px;
+    height:50vh;
+    border:1px solid #256;
+  }
+
+  .el-container .el-footer{
+    height:37vh;
+  }
+  .el-container:nth-child(1) .el-aside {
+    line-height: 220px;
+  }
 
 </style>

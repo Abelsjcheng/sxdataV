@@ -48,7 +48,7 @@ export default {
                 this.$http.get('http://110.53.162.165:5050/api/count/mSort').then(function(res){
                         for (let i = 0; i < res.data.data.length; i++) {
                           
-                            const mdata={marea:res.data.data[i].marea,msum:res.data.data[i].msum,man:res.data.data[i].man,mwoman:res.data.data[i].woman}
+                            const mdata={marea:res.data.data[i].marea,msum:res.data.data[i].msum,man:res.data.data[i].man,woman:res.data.data[i].woman}
                             this.vmdatas.push(mdata)
                           }
                         },function(){
@@ -65,12 +65,14 @@ export default {
     },
     watch:{
         listenselectplace:function(vag){//实时监听状态库中值的改变 
+        
                 for (let i = 0; i < this.vmdatas.length; i++) {
                     if(vag==this.vmdatas[i].marea)
                     {   
-                        this.vmdata.msum =this.vmdatas[i].msum;
-                        this.vmdata.man =this.vmdatas[i].man;
-                        this.vmdata.mwoman =this.vmdatas[i].woman;
+
+                        this.vmdata.vsum =this.vmdatas[i].msum;
+                        this.vmdata.vman =this.vmdatas[i].man;
+                        this.vmdata.vwoman =this.vmdatas[i].woman;
                     }
                                 
                 } 

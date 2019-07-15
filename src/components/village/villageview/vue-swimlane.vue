@@ -6,12 +6,10 @@
     @mouseleave="toggleAnimation"
   >
     <ul :style="listStyle">
-      <li
-        v-for="(word, index) in list"
-        :key="index"
-        :style="itemStyle"
-        v-html="word"
-      />
+      <li v-for="(word, index) in list" :key="index" :style="itemStyle">
+      <a style="margin-left: 5px;">{{word}} </a>
+      <em class="list-data">2019-07-10 21:20:29 </em>
+      </li>
     </ul>
   </div>
 </template>
@@ -95,7 +93,7 @@ export default {
 
     itemStyle() {
       return `font-size: ${this.fontSize}px;
-              height: ${this.itemHeight}px;`
+              height: auto;padding-left: 15px;line-height: 32px;overflow: hidden;`
     },
 
     listStyle() {
@@ -201,8 +199,16 @@ export default {
 }
 
 .vue-swimlane ul li {
-  text-align: center;
+  
   padding: 0 !important;
   margin: 0 !important;
+}
+.list-data{
+  font-size: 12px;
+    color: #999;
+    line-height: 32px;
+    height: 32px;
+    float: right;
+    padding-right: 16px;
 }
 </style>

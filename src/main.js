@@ -18,6 +18,7 @@ import 'echarts/lib/component/tooltip'
 import 'echarts/lib/chart/graph'
 import 'echarts/lib/component/legend'
 import 'echarts/lib/component/title.js'
+import 'echarts-gl'
 import 'babel-polyfill'
 import axios from 'axios'
 import FlatSurfaceShader from 'vue-flat-surface-shader'//磁贴背景组建

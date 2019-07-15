@@ -8,9 +8,12 @@
         </div>
         <div class="m_left1" :slot="2" :key="2">
           <!--重做 <barchart />-->
+          
+          <timechart />
         </div>
         <div class="m_left1"   :slot="3" :key="3">
           <!--重做 <radarchart />-->
+          <typechart />
         </div>
       </Kanban>
     </div>
@@ -19,7 +22,7 @@
       <Kanban style="height: 92vh;" :stages="stages" :blocks="block2" @update-block="updateBlock">
       <div class="m_right1" :slot="1" :key="1">
         <!-- 饼图 -->
-        <!--重做 <piechart />   -->
+         <!-- <piechart /> -->
       </div>
       <div class="m_right2" :slot="2" :key="2">
         <!-- 公告与政策 -->
@@ -40,6 +43,8 @@
 </template>
 
 <script>
+import timechart from '@/components/broad/charts/timechart'//各时长广播分布
+import typechart from '@/components/broad/charts/typechart'//广播状态
 import piechart from '@/components/broad/charts/piechart'//饼图
 import tabledata from '@/components/broad/charts/tabledata' //table数据组
 import mainmap from './broadmap' //百度地图层
@@ -50,7 +55,7 @@ import zdinfo from '@/components/broad/annoucement/zdinfo'//公告信息列表
 import Kanban from '@/components/main/Kanban';//拖拽组件
 import { mapGetters } from 'vuex';
 export default { 
-  components: {piechart,tabledata,mainmap,barchart,radarchart,linechart,zdinfo,Kanban
+  components: {timechart,typechart,piechart,tabledata,mainmap,barchart,radarchart,linechart,zdinfo,Kanban
       },//注册组件
   name: "mianview",
   data () { //局内数据

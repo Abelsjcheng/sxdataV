@@ -1,44 +1,34 @@
 <template>
-  <div >
-    <!-- 左视图层 -->
-    <div class="m_left" v-bind:style="{ display: activedisplay}">
-      <Kanban style="height: 92vh;" :stages="stages" :blocks="block1" @update-block="updateBlock">
-        <div class="m_left1" :slot="1" :key="1">
-          <tabledata />
-        </div>
-        <div class="m_left1" :slot="2" :key="2">
-          <!--重做 <barchart />-->
-          
-          <timechart />
-        </div>
-        <div class="m_left1"   :slot="3" :key="3">
-          <!--重做 <radarchart />-->
-          <typechart />
-        </div>
-      </Kanban>
-    </div>
-    <!-- 右视图层 -->
-    <div class="m_right" v-bind:style="{ display: activedisplay}">
-      <Kanban style="height: 92vh;" :stages="stages" :blocks="block2" @update-block="updateBlock">
-      <div class="m_right1" :slot="1" :key="1">
-        <!-- 饼图 -->
-         <!-- <piechart /> -->
-      </div>
-      <div class="m_right2" :slot="2" :key="2">
-        <!-- 公告与政策 -->
-       <!--重做 <zdinfo/> -->
-      </div>
-      </Kanban>
-    </div>
-    <div class="m_bottom" v-bind:style="{ display: activedisplay}">
-      <div class="m_bottom1">
-        <!-- 折线图 -->
-       <!--重做   <linechart /> -->
-      </div>
-    </div>
-    <!-- 地图层 -->
-    <mainmap />
-  </div>
+   <div>
+    
+  <el-container class="con1">
+    <el-aside width="23.5vw">
+      <!-- <div id="item1"> -->
+        <div class="flex-item_l" id="l1"><tabledata /></div>
+        <div class="flex-item_l" id="l2"><radarchart /></div>
+        <div class="flex-item_l" id="l3"><linechart /></div>
+      <!-- </div> -->
+    </el-aside>
+    <el-container id="con2">
+        <el-main>
+          <div class="flex-item_m"><mainmap/></div>
+        </el-main>
+        <el-footer height="42vh">
+            <div class="flex-container">
+              <div class="flex-item_f" id="f1">f7</div>
+              <div class="flex-item_f" id="f2"> f8</div>
+            </div>
+        </el-footer>
+    </el-container>
+    <el-aside width="24%">
+      <!-- <div id="item2"> -->
+      <div class="flex-item_r">f4</div>
+      <div class="flex-item_r">f5</div>
+      <div class="flex-item_r">f6</div>
+    <!-- </div> -->
+    </el-aside>
+  </el-container>
+  </div> 
   
 </template>
 
@@ -93,32 +83,84 @@ export default {
 }
 </script>
 
-<style lang="scss" >
-.m_left{
-  width: 23vw;
-  height: 92vh;  
-  position: absolute;
-  left: 0;
-}
-.m_right{
-  width: 23vw;
-  height: 92vh;  
-  position: absolute;
-  right: 0;
-}
-div {
-    display: block;
-}
-.m_bottom{
-  height:29vh;
-  margin:0 2px;
-  bottom: 5px;
-  left: 23vw;
-  width: 53.8vw;
-  position: absolute;
-  z-index:2;
-  background: rgba(0,0,0,0.5);
-}
+<style lang="scss" scoped>
 
 
+  #el-container{
+    height:100%;
+    margin:0;
+    padding:0;
+    position:relative;
+    background-color: #040f3c;
+  }
+
+  .con1{
+    background-color: #040f3c;
+  }
+
+.el-footer {
+    // background-color: #B3C0D1;
+    // color: #333;
+    text-align: center;
+    line-height: 200px;
+  }
+
+  .flex-container{
+    position:absolute;
+    display:flex;
+    width:105vh;
+    margin-left:-20px;
+    height:100%;
+    flex-direction:row;
+     //background-color:lightgrey;
+    }
+
+  .flex-item_f{
+    //background-color:#B3C0D1;
+    margin:3px;
+    margin-top:10px;
+    height:38.9vh;
+    width:51vh;
+    border:1px solid #256;
+  }
+  
+  .el-aside {
+    // background-color: #040f3c;
+    // color: #333;
+     text-align: center;
+    line-height: 20vh;
+    margin:3px;
+    height:100%;
+  }
+
+  .flex-item_l{
+    // background-color:#B3C0D1;
+    margin:3px;
+    height:29.5vh;
+    border:1px solid #256;
+  }
+
+.flex-item_r{
+  // background-color:#B3C0D1;
+  margin:3px;
+  height:29.5vh;
+  border:1px solid #256;
+}
+
+  
+  .el-main {
+    // background-color: #E9EEF3;
+    // color: #333;
+    // text-align: center;
+    //line-height: 100px;
+    height:50vh;
+  }
+
+  .flex-item_m{
+    // background-color:#B3C0D1;
+     margin:3px;
+    margin-top:6.5px;
+    height:50vh;
+    border:1px solid #256;
+  }
 </style>

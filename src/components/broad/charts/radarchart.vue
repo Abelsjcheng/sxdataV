@@ -1,5 +1,5 @@
 <template>
-      <v-chart  :options="polar" style="width:23vw;height:29vh"/>    
+      <v-chart  :options="polar" style="width:23vw;height:29vh"/>   
 </template>
 
 <script>
@@ -7,64 +7,86 @@ export default {
 name: "radarchart",
   data () {
     return {
-      polar: {         
-        tooltip: {},
-        color: ['#1FC06E','#396CC0'],
-        legend: [
-            {
-                data: ['预算分配'],
-                x:'left',
-
-                textStyle:{
-                color: ['#1FC06E']//字体颜色
-             } ,
-            },{
-                data: ['实际开销'],
-                x:'left',
-                y:'10%',
-                textStyle:{
-                color: ['#396CC0']//字体颜色
-             } ,
-            }
-        ],
-        radar: {
-            // shape: 'circle',
-            name: {
-                textStyle: {
-                    color: '#fff',
-                    backgroundColor: '#999',
-                    borderRadius: 3,
-                    padding: [3, 5]
-            }
-            },
-            indicator: [
-            { name: '销售', max: 6500},
-            { name: '管理', max: 16000},
-            { name: '信息技术', max: 30000},
-            { name: '客服', max: 38000},
-            { name: '研发', max: 52000},
-            { name: '市场', max: 25000},
-            
-            ],
-            
-        },
+      polar: {  
+       title : {
+        text: '操作类型',
+        // x:'left',
+        textStyle:{
+          color:'#fff',
+          fontSize:'18',
+          fontFamily:'Arial',
+        }
+    },
+    // position:'absolute',
+    
+    textStyle:{
+        fontSize:23,
         
-        series: [{
-            name: '预算 vs 开销（Budget vs spending）',
-            type: 'radar',
-            
-            // areaStyle: {normal: {}},
-            data : [
-                {
-                    value : [4300, 10000, 28000, 35000, 50000, 19000],
-                    name : '预算分配'
-                },
-                {
-                    value : [5000, 14000, 28000, 31000, 42000, 21000],
-                    name : '实际开销'
-                }
-            ]
-        }]
+    },
+    
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    // normal: {
+    //     show: true,
+    //     position: 'inside',     //图形里显示（比如在饼图块上显示百分比）
+    //     formatter: '{d}%'       //显示的内容
+    // },
+    legend: {
+        x : 'center',
+        y : 'bottom',
+        data:['文件传输','电台广播','停止播放','关闭功效','开启功效'],
+        textStyle:{
+              fontSize:'20'
+        } 
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {
+                show: true,
+                type: ['pie', 'funnel']
+            },
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    series : [
+        {
+            name:'操作类型',
+            type:'pie',
+            radius : [30, 130],
+            center : ['50%', '50%'],
+            roseType : 'area',
+            data:[
+                {value:10, name:'文件传输'},
+                {value:5, name:'电台广播'},
+                {value:15, name:'停止播放'},
+                {value:25, name:'关闭功效'},
+                {value:20, name:'开启功效'}
+            ],
+             textStyle:{
+                fontSize:'24'
+              }, 
+            //   label:{            //饼图图形上的文本标签
+            //     normal:{
+            //         show:true,
+            //         position:'inner', //标签的位置
+            //         textStyle : {
+            //             fontWeight : 300 ,
+            //             fontSize : 10   //文字的字体大小
+            //         },
+            //         formatter:'{d}%'   //显示%
+ 
+                    
+            //     }
+            // },
+        }
+    ]
       }
     }
   },
@@ -72,3 +94,15 @@ name: "radarchart",
   
 }
 </script>
+
+<style lang="scss" scoped>
+@media screen and (max-height:28vh){
+    .left-score-image {
+        width: 190px;
+        height: 135px;
+        margin-left: 36px;
+        margin-top: 20px;
+    }
+}
+</style>
+

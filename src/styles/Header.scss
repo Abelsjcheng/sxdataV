@@ -1,7 +1,7 @@
 .app-header{
 	background-color: rgb(00,25,49);//
 	color: white;
-	height: 7%;
+	height: 65px;
 	font-family: 'Microsoft Yahei';
 	border-bottom: 1px solid #668ac9;
 	.logo{
@@ -28,13 +28,13 @@
 	}
 	.el-menu-demo{
 		float: left;
-		width: 26%;
+		width: 33%;
 		height: 100%;
 	}
 	.heading{
 		font-size: 24px;
 		float: left;
-		width: 48%;
+		width: 34%;
 		height: 100%;
 		align-items:center; //垂直居中
 		justify-content:center;  //水平居中
@@ -51,7 +51,7 @@
 		justify-content:flex-end;  //向尾部
 		color: #d1d3d7;
 		align-self: flex-start;
-		width:26%;
+		width:33%;
 		height: 100%;
 		i{
 			margin-right: 8px;

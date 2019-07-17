@@ -89,7 +89,7 @@ export default {
   margin-top: 5px;
 }
 .el-row {
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     &:last-child {
       margin-bottom: 0;
     }

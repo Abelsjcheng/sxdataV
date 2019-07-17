@@ -33,7 +33,7 @@
 .dataitem{
     border: rgba(12,122,200,0.5) 1px solid;
     background-color: rgba(20,66,125,0.12);
-    height: 90px;
+    height: 80px;
     margin-bottom: 6px;
     color: white;
 }

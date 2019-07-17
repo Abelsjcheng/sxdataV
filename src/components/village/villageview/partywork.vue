@@ -4,6 +4,7 @@
     <div class="pwitem">值班党员:{{pwdata.uname}} </div>
     <div class="pwitem">党员组名:{{pwdata.grouptype}}</div>   
     <div class="pwitem">值班地点:{{pwdata.address}}</div>    
+    <div class="pwitem">联系方式:{{pwdata.phone}}</div> 
     <div class="pwitem">值班日期:{{pwdata.worktime}}</div>
     <div class="pwitem">值班口号:{{pwdata.content}}</div>
 </div>
@@ -13,17 +14,18 @@
 export default {
     data () {
         return {
-        pwdata:{grouptype:'',uname:'',worktime:'',address:'',content:''}
+        pwdata:{grouptype:'',uname:'',worktime:'',phone:'',address:'',content:''}
         }
     },
     methods: {
         
         getPartywdata:function(){ 
 
-                this.$http.get('http://110.53.162.165:5050/api/pwork/five').then(function(res){  
+                this.$http.get('http://localhost:5050/api/pwork/five').then(function(res){  
                                 this.pwdata.grouptype=res.data.data[0].grouptype;
                                 this.pwdata.uname=res.data.data[0].uname;
-                                this.pwdata.worktime=res.data.data[0].worktime;                    
+                                this.pwdata.worktime=res.data.data[0].worktime; 
+                                this.pwdata.phone=res.data.data[0].phone;                   
                                 this.pwdata.address=res.data.data[0].address;
                                 this.pwdata.content=res.data.data[0].content;
                             },function(){

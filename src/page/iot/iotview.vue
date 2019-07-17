@@ -10,6 +10,9 @@
         <el-main class="iot_main">
           <el-row :gutter="10">
             <el-col :span="16"><div class="iot_map"><mainmap /></div></el-col>
+
+            <div id="up-map-div"><div id="table"><tabledata /></div></div>
+
             <el-col :span="8"><div class="iot_char_col"><ChartControl /></div></el-col>
           </el-row>
           <el-row :gutter="10">
@@ -29,7 +32,7 @@
 </template>
 
 <script>
-import tabledata from '@/components/Iot/charts/tabledata' //table数据组
+import tabledata from '@/components/Iot/charts/tabledata' //table数据组 终端数据
 import mainmap from './iotmap' //百度地图层
 import linechart from '@/components/Iot/charts/linechart'//温湿度折线图
 import cartesianchart from '@/components/Iot/charts/cartesianchart' //雨量图
@@ -119,4 +122,18 @@ export default {
     box-sizing: border-box;
     border: 2px solid #016ae0;
   }
+
+  #up-map-div{
+  width:350px;
+  height:330px;
+  // top:30%;
+  left:3px;
+  bottom:0%;
+  position:absolute;
+  z-index:9999;
+  border:1px solid #016ae0;
+  // background-color:#235;
+  background:rgba(235,235,235,0);
+  }
+
 </style>

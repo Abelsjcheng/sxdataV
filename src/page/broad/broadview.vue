@@ -35,12 +35,12 @@
     </div> -->
     <!-- 地图层 -->
     <!-- <mainmap /> -->
-  <el-container id="con1">
+  <el-container class="con1">
     <el-aside width="23.5vw">
       <!-- <div id="item1"> -->
-        <div class="flex-item_l"><tabledata /></div>
-        <div class="flex-item_l">f2</div>
-        <div class="flex-item_l">f3</div>
+        <div class="flex-item_l" id="l1"><tabledata /></div>
+        <div class="flex-item_l" id="l2"><radarchart /></div>
+        <div class="flex-item_l" id="l3"><linechart /></div>
       <!-- </div> -->
     </el-aside>
     <el-container id="con2">
@@ -115,14 +115,19 @@ export default {
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 
-  #el-container,div{
+
+  #el-container{
     height:100%;
     margin:0;
     padding:0;
     position:relative;
+    background-color: #040f3c;
+  }
 
+  .con1{
+    background-color: #040f3c;
   }
 
 .el-footer {
@@ -135,64 +140,59 @@ export default {
   .flex-container{
     position:absolute;
     display:flex;
-    width:52%;
+    width:105vh;
     margin-left:-20px;
-    height:37vh;
+    height:100%;
     flex-direction:row;
      //background-color:lightgrey;
     }
 
   .flex-item_f{
-    // background-color:#B3C0D1;
+    //background-color:#B3C0D1;
     margin:3px;
-    height:37vh;
-    width:51.7%;
+    margin-top:10px;
+    height:38.9vh;
+    width:51vh;
     border:1px solid #256;
   }
   
   .el-aside {
-    // background-color: #D3DCE6;
+    // background-color: #040f3c;
     // color: #333;
      text-align: center;
-    line-height: 50%;
+    line-height: 20vh;
     margin:3px;
+    height:100%;
   }
 
   .flex-item_l{
     // background-color:#B3C0D1;
     margin:3px;
-    height:29vh;
+    height:29.5vh;
     border:1px solid #256;
   }
 
 .flex-item_r{
   // background-color:#B3C0D1;
   margin:3px;
-  height:29vh;
+  height:29.5vh;
   border:1px solid #256;
 }
 
   
-  // .el-main {
-  //   // background-color: #E9EEF3;
-  //   // color: #333;
-  //   // text-align: center;
-  //   line-height: 100px;
-  // }
+  .el-main {
+    // background-color: #E9EEF3;
+    // color: #333;
+    // text-align: center;
+    //line-height: 100px;
+    height:50vh;
+  }
 
   .flex-item_m{
     // background-color:#B3C0D1;
      margin:3px;
-    margin-top:5px;
+    margin-top:6.5px;
     height:50vh;
     border:1px solid #256;
   }
-
-  .el-container .el-footer{
-    height:37vh;
-  }
-  .el-container:nth-child(1) .el-aside {
-    line-height: 220px;
-  }
-
 </style>

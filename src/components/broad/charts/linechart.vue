@@ -1,5 +1,5 @@
 <template>
-      <v-chart  :options="polar" style="width:54vw;height:29vh"/>    
+      <v-chart  :options="polar" style="width:23vw;height:29vh"/>    
 </template>
 
 <script>
@@ -9,78 +9,70 @@ name: "linechart",
     return {
       polar: {
             title: {
-                text: '某数据关系图',
-                x: 'center',
-                textStyle:{
-                    color: '#ffffff'
-                }
-            },
-            legend: {
-                data:['电压'],
-                x: 'left'
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    animation: false
-                }
-            },
-            toolbox: {
-                show: true,
-                 right: 20, //toolbox的定位位置
-                iconStyle:{
-                        color:'#ffffff'
+        text: '广播是否公共可视化',
+        textStyle:{
+            color:'#fff'
+        }
+        
+    },
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        },
+        formatter: function (params) {
+            var tar = params[1];
+            return tar.name +  ' : ' + tar.value;
+        }
+    },
+    textStyle:{
+            color:'#daca43'
+        },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type : 'category',
+        splitLine: {show:false},
+        data : ['总数','公共','非公共'],
+    },
+    yAxis: {
+        type : 'value'
+    },
+    series: [
+        {
+            name: '公共',
+            type: 'bar',
+            stack:  '总数',
+            itemStyle: {
+                normal: {
+                    barBorderColor: 'rgba(0,0,0,0)',
+                    color: 'rgba(0,0,0,0)'
                 },
-                feature: {
-                    dataZoom: {
-                        yAxisIndex: 'none'
-                    },
-                    dataView: {readOnly: false},
-                    magicType: {type: ['line', 'bar']},
-                    restore: {},
-                    saveAsImage: {}
+                emphasis: {
+                    barBorderColor: 'rgba(0,0,0,0)',
+                    color: 'rgba(0,0,0,0)'
                 }
             },
-            axisPointer: {
-                link: {xAxisIndex: 'all'}
-            },
-            dataZoom: {
-                show : true,
-                realtime : true,
-                start : 0,
-                end : 100,
-                backgroundColor:'#ffffff'
-            },
-            
-            xAxis: {
-                type: 'category',
-                data: ['2018-12-30 16:55:21','2018-12-30 16:55:24','2018-12-30 16:55:27','2018-12-30 16:55:30','2018-12-30 16:55:33','2018-12-30 16:55:36','2018-12-30 16:55:39'],
-                
-                axisLine:{ //坐标轴轴线相关设置。
-                    lineStyle:{
-                    color:'#ffffff', //坐标轴线线的颜色。
-                    dth:1,//这里是为了突出显示加上的
-                    }
+            data: [0, 1700, 0]
+        },
+        {
+            name: '非公共',
+            type: 'bar',
+            stack: '总数',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'inside',
+                    color:'#fff'
                 }
             },
-            yAxis: {
-                name : '温度(c)',
-                type : 'value',
-                max : 40,
-				axisLine:{
-		            lineStyle:{
-		            color:'#ffffff',
-		            width:1,//这里是为了突出显示加上的
-		            }
-				}
-            },
-            series: [{
-                name:'温度',
-                symbolSize: 8,
-                hoverAnimation: false,
-                data: [20, 25, 21, 22, 23, 30, 35],
-                type: 'line'
-            }]
+            data:[2900, 1200,1700]
+        }
+    ]
        }
     }
   },

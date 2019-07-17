@@ -169,7 +169,7 @@ name: "mainmap",
 <style lang="scss">
 .bm-view {
   width: 100%;
-  height: 92vh;
+  height: 50vh;
 
 }
 .m_center2{

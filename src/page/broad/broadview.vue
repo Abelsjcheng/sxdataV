@@ -15,14 +15,14 @@
         </el-main>
         <el-footer height="42vh">
             <div class="flex-container">
-              <div class="flex-item_f" id="f1">f7</div>
-              <div class="flex-item_f" id="f2"> f8</div>
+              <div class="flex-item_f" id="f1"><typechart /></div>
+              <div class="flex-item_f" id="f2"> <timechart /></div>
             </div>
         </el-footer>
     </el-container>
     <el-aside width="24%">
       <!-- <div id="item2"> -->
-      <div class="flex-item_r">f4</div>
+      <div class="flex-item_r"></div>
       <div class="flex-item_r">f5</div>
       <div class="flex-item_r">f6</div>
     <!-- </div> -->

@@ -1,6 +1,6 @@
 <template>
     <div class="iot_char_right" v-show="chartvisible">
-      <v-chart  :options="polar" style="width:20vw;height:29vh"/>   
+      <v-chart  :options="polar" style="width:100%;height:100%"/>   
     </div> 
 </template>
 
@@ -11,6 +11,101 @@ name: "radarchart",
   data () {
     return {
       // polar: {         
+      //   tooltip: {},
+      //   color: ['#1FC06E'],
+      //   legend: [
+      //       {
+      //           data: ['最新环境数据'],
+      //           x:'left',
+      //           textStyle:{
+      //           color: ['#1FC06E']//字体颜色
+      //        } ,
+      //       }
+      //   ],
+      //   radar: {
+      //       // shape: 'circle',
+      //       name: {
+      //           textStyle: {
+      //               color: '#fff',
+      //               backgroundColor: '#999',
+      //               borderRadius: 3,
+      //               padding: [3, 5]
+      //       }
+      //       },
+      //       indicator: [
+      //       { name: '雨量', max: 100},
+      //       { name: '水位', max: 30},
+      //       { name: '酸碱度', max: 15},
+      //       { name: '空气质量', max: 100},
+      //       { name: '温度', max: 50},
+      //       { name: '湿度', max: 100},
+            
+      //       ],
+            
+      //   },
+        
+      //   series: [{
+      //       name: '最新环境数据',
+      //       type: 'radar',
+            
+      //       // areaStyle: {normal: {}},
+      //       data : [
+      //           {
+      //               value : [],
+      //               name : '最新环境数据'
+      //           }
+      //       ]
+      //   }]
+      // }
+         // polar: {         
+      //   tooltip: {},
+      //   color: ['#1FC06E'],
+      //   legend: [
+      //       {
+      //           data: ['最新环境数据'],
+      //           x:'left',
+      //           textStyle:{
+      //           color: ['#1FC06E']//字体颜色
+      //        } ,
+      //       }
+      //   ],
+      //   radar: {
+      //       // shape: 'circle',
+      //       name: {
+      //           textStyle: {
+      //               color: '#fff',
+      //               backgroundColor: '#999',
+      //               borderRadius: 3,
+      //               padding: [3, 5]
+      //       }
+      //       },
+      //       indicator: [
+      //       { name: '雨量', max: 100},
+      //       { name: '水位', max: 30},
+      //       { name: '酸碱度', max: 15},
+      //       { name: '空气质量', max: 100},
+      //       { name: '温度', max: 50},
+      //       { name: '湿度', max: 100},
+            
+      //       ],
+            
+      //   },
+        
+      //   series: [{
+      //       name: '最新环境数据',
+      //       type: 'radar',
+            
+      //       // areaStyle: {normal: {}},
+      //       data : [
+      //           {
+      //               value : [],
+      //               name : '最新环境数据'
+      //           }
+      //       ]
+      //   }]
+      // }
+       // polar:{
+             // polar: {         
       //   tooltip: {},
       //   color: ['#1FC06E'],
       //   legend: [
@@ -141,7 +236,7 @@ name: "radarchart",
             
             ]
         },
-       chartvisible:false
+       chartvisible:true
 
     }
   },

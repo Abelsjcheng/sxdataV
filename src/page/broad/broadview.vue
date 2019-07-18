@@ -15,7 +15,7 @@
         </el-main>
         <el-footer height="42vh">
             <div class="flex-container">
-              <div class="flex-item_f" id="f1"><typechart /></div>
+              <div class="flex-item_f" id="f1"><tablechart02 /></div>
               <div class="flex-item_f" id="f2"> <timechart /></div>
             </div>
         </el-footer>
@@ -23,8 +23,8 @@
     <el-aside width="24%">
       <!-- <div id="item2"> -->
       <div class="flex-item_r"></div>
-      <div class="flex-item_r">f5</div>
-      <div class="flex-item_r">f6</div>
+      <div class="flex-item_r"><typechart /></div>
+      <div class="flex-item_r"></div>
     <!-- </div> -->
     </el-aside>
   </el-container>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import tablechart02 from '@/components/broad/charts/tablechart02'//
 import timechart from '@/components/broad/charts/timechart'//各时长广播分布
 import typechart from '@/components/broad/charts/typechart'//广播状态
 import piechart from '@/components/broad/charts/piechart'//饼图
@@ -45,7 +46,7 @@ import zdinfo from '@/components/broad/annoucement/zdinfo'//公告信息列表
 import Kanban from '@/components/main/Kanban';//拖拽组件
 import { mapGetters } from 'vuex';
 export default { 
-  components: {timechart,typechart,piechart,tabledata,mainmap,barchart,radarchart,linechart,zdinfo,Kanban
+  components: {tablechart02,timechart,typechart,piechart,tabledata,mainmap,barchart,radarchart,linechart,zdinfo,Kanban
       },//注册组件
   name: "mianview",
   data () { //局内数据
@@ -108,7 +109,7 @@ export default {
   .flex-container{
     position:absolute;
     display:flex;
-    width:105vh;
+    width:100%;
     margin-left:-20px;
     height:100%;
     flex-direction:row;
@@ -120,7 +121,7 @@ export default {
     margin:3px;
     margin-top:10px;
     height:38.9vh;
-    width:51vh;
+    width:25.6%;
     border:1px solid #256;
   }
   

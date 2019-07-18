@@ -17,7 +17,7 @@
           </el-row>
           <el-row :gutter="10">
             <el-col :span="12"><div class="iot_info"><warninfo/></div></el-col> <!-- 预警模块 -->
-            <el-col :span="12"><div class="iot_camera"></div></el-col> <!-- 终端信息模块 -->
+            <el-col :span="12"><div class="iot_camera"><radarchart02 /></div></el-col> <!-- 终端信息模块 -->
 
           </el-row>
         </el-main>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import radarchart02 from '@/components/Iot/charts/radarchart02'//终端信息
 import tabledata from '@/components/Iot/charts/tabledata' //table数据组 终端数据
 import mainmap from './iotmap' //百度地图层
 import linechart from '@/components/Iot/charts/linechart'//温湿度折线图
@@ -44,7 +45,7 @@ import radarchart from '@/components/Iot/charts/radarchart' //PM2.5浓度变化�
 import warninfo from '@/components/Iot/annoucement/warninfo' //预警模块
 import { mapGetters } from 'vuex';
 export default {
-  components: {tabledata,mainmap,linechart,ChartControl,cartesianchart,lineitemstylechart,basicareachart,piechart,radarchart,warninfo
+  components: {radarchart02,tabledata,mainmap,linechart,ChartControl,cartesianchart,lineitemstylechart,basicareachart,piechart,radarchart,warninfo
     },
   name: 'Iotmain',
   data () {

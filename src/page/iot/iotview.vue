@@ -124,8 +124,8 @@ export default {
   }
 
   #up-map-div{
-  width:350px;
-  height:330px;
+  width:260px;
+  height:44%;
   // top:30%;
   left:3px;
   bottom:0%;

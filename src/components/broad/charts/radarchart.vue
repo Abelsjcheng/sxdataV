@@ -1,5 +1,5 @@
 <template>
-      <v-chart  :options="polar" style="width:23vw;height:29vh"/>   
+      <v-chart  :options="polar" style="width:100%;height:100%"/>   
 </template>
 
 <script>
@@ -9,19 +9,26 @@ name: "radarchart",
     return {
       polar: {  
        title : {
-        text: '操作类型',
-        // x:'left',
-        textStyle:{
-          color:'#fff',
-          fontSize:'18',
-          fontFamily:'Arial',
+            text: '操作类型',
+            x:'left',
+            textStyle:{
+            color:'#fff',
+            fontSize:'15',
+            fontFamily:'Arial',
         }
     },
+    
     // position:'absolute',
     
     textStyle:{
-        fontSize:23,
+        fontSize:15,
         
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
     },
     
     tooltip : {
@@ -38,8 +45,10 @@ name: "radarchart",
         y : 'bottom',
         data:['文件传输','电台广播','停止播放','关闭功效','开启功效'],
         textStyle:{
-              fontSize:'20'
-        } 
+              fontSize:'12',
+              color:'#456'
+        } ,
+        
     },
     toolbox: {
         show : true,
@@ -59,8 +68,8 @@ name: "radarchart",
         {
             name:'操作类型',
             type:'pie',
-            radius : [30, 130],
-            center : ['50%', '50%'],
+            radius : ['20%', '60%'],
+            center : ['50%', '40%'],
             roseType : 'area',
             data:[
                 {value:10, name:'文件传输'},
@@ -70,21 +79,8 @@ name: "radarchart",
                 {value:20, name:'开启功效'}
             ],
              textStyle:{
-                fontSize:'24'
-              }, 
-            //   label:{            //饼图图形上的文本标签
-            //     normal:{
-            //         show:true,
-            //         position:'inner', //标签的位置
-            //         textStyle : {
-            //             fontWeight : 300 ,
-            //             fontSize : 10   //文字的字体大小
-            //         },
-            //         formatter:'{d}%'   //显示%
- 
-                    
-            //     }
-            // },
+                fontSize:'20'
+              }
         }
     ]
       }
@@ -95,14 +91,14 @@ name: "radarchart",
 }
 </script>
 
-<style lang="scss" scoped>
-@media screen and (max-height:28vh){
-    .left-score-image {
-        width: 190px;
-        height: 135px;
-        margin-left: 36px;
-        margin-top: 20px;
-    }
-}
-</style>
+// <style lang="scss" scoped>
+// @media screen and (max-height:28vh){
+//     .left-score-image {
+//         width: 190px;
+//         height: 135px;
+//         margin-left: 36px;
+//         margin-top: 20px;
+//     }
+// }
+// </style>
 

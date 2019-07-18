@@ -9,9 +9,10 @@ name: "linechart",
     return {
       polar: {
             title: {
-        text: '广播是否公共可视化',
-        textStyle:{
-            color:'#fff'
+            text: '广播是否公共可视化',
+            textStyle:{
+                color:'#fff',
+                fontSize:'15',
         }
         
     },

@@ -40,7 +40,7 @@
         }
     }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .item_title{
     color: white;
     height: 20px;

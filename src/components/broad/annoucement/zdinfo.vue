@@ -1,8 +1,10 @@
 <template>
     <div class="zdinfo">
-      <h2 style="color:#ffffff;text-align:center;">公告</h2>
+      <div class="itemTit">
+      <span class="border-yellow">终端故障公告</span>
+    </div>
       <!--公告列表框 -->
-      <virtual-list :size="60" :remain="8">
+      <virtual-list :size="30" :remain="8" style="padding: 5px">
         <item v-for="item of annoucements" :key="item.id" v-bind:item="item"  />
       </virtual-list>
     </div>  
@@ -44,9 +46,22 @@ name: "zdinfo",
 }
 </script>
 <style >
-.zdinfo /deep/ .modal-dialog {
-    top: 271.5px;
+
+.itemTit{
+    padding:12px 30px;
+    border-bottom:1px solid #1e5b6b;
   }
-
-
+  .itemTit span{
+    display:block;
+    height:30px;
+    line-height:30px;
+    border-left:5px solid transparent;
+    font-size:15px;
+    color:#fff;
+    padding-left:8px;
+    text-align:left;
+  }
+.border-yellow {
+      border-color: #ffd220 !important;
+  }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="item basicInfo">
+  <div class="item basicInfo" style="width:100%;height:100%;">
     <div class="itemTit">
       <span class="border-green">物联网终端数</span>
     </div>
@@ -118,10 +118,10 @@ function(num) {
   }
   .itemTit span{
     display:block;
-    height:20px;
+    height:12px;
     line-height:20px;
     border-left:5px solid transparent;
-    font-size:15px;
+    font-size:13px;
     color:#fff;
     padding-left:8px;
     text-align:left;
@@ -140,7 +140,7 @@ function(num) {
     margin:0;
     padding:0;
     font-size:100%;
-    height:16.35vh;
+    height:19.5vh;
     display:block;
     -webkit-margin-before:1em;
     -webkit-margin-after:1em;
@@ -176,12 +176,12 @@ function(num) {
   .infoPie ul li span {
     display: block;
     list-style:none;
-    width: 68px;
-    height: 68px;
-    margin: 0px auto;
+    width: 65px;
+    height: 65px;
+    margin: auto;
     border: 1px solid transparent;
     text-align: center;
-    line-height: 85px;
+    line-height: 70px;
     font-size: 25px;
     border-radius: 100%;
   }
@@ -201,7 +201,7 @@ function(num) {
 
   .infoPie ul li p {
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     padding-bottom: 8px;
   }
    p {
@@ -209,8 +209,8 @@ function(num) {
       margin: 0;
       padding: 0;
       display: block;
-      -webkit-margin-before: 1em;
-      -webkit-margin-after: 1em;
+      -webkit-margin-before: 0em;
+      -webkit-margin-after: 0.5em;
       -webkit-margin-start: 0px;
       -webkit-margin-end: 0px;
   }

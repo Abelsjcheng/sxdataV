@@ -1,5 +1,5 @@
 <template>
-  <div class="item basicInfo">
+  <div class="item basicInfo" style="width:100%;height:100%">
     <div class="itemTit">
       <span class="border-green">广播终端数</span>
     </div>
@@ -118,7 +118,7 @@ function(num) {
   }
   .itemTit span{
     display:block;
-    height:30px;
+    height:15px;
     line-height:20px;
     border-left:5px solid transparent;
     font-size:15px;
@@ -130,10 +130,10 @@ function(num) {
   .itembg{
     background-image:url(https://jsdaima.hu-cheng.net/2019/06/1289/images/gz.png);
     background-repeat:repeat;
-    height:75%;
+    height:80%;
   }
   .itemCon{
-    padding:14px 10px;
+    padding:0px 10px;
   }
   ul{
     border:medium none;
@@ -141,11 +141,12 @@ function(num) {
     padding:0;
     font-size:100%;
     display:block;
-    -webkit-margin-before:1em;
-    -webkit-margin-after:1em;
+    -webkit-margin-before:0em;
+    -webkit-margin-after:0em;
     -webkit-margin-start:0px;
     -webkit-margin-end:0px;
-    -webkit-padding-start:10px;
+    -webkit-padding-start:0px;
+    width:100%;
   }
   // Pseudo::before element
   // .clearfix:before{
@@ -189,9 +190,10 @@ function(num) {
   .infoPie ul li span {
     display: block;
     list-style:none;
-    width: 100px;
-    height: 100px;
-    margin: 40px auto;
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    margin-top:50%;
     border: 1px solid transparent;
     text-align: center;
     line-height: 90px;
@@ -214,7 +216,7 @@ function(num) {
 
   .infoPie ul li p {
     text-align: center;
-    font-size: 16px;
+    font-size: 13px;
     padding-bottom: 8px;
   }
    p {

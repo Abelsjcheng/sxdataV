@@ -1,5 +1,5 @@
 <template>
-      <v-chart  :options="polar" style="width:23vw;height:29vh"/>    
+      <v-chart  :options="polar" style="width:100%;height:100%"/>    
 </template>
 
 <script>
@@ -9,9 +9,10 @@ name: "linechart",
     return {
       polar: {
             title: {
-        text: '广播是否公共可视化',
-        textStyle:{
-            color:'#fff'
+            text: '广播是否公共可视化',
+            textStyle:{
+                color:'#fff',
+                fontSize:'15',
         }
         
     },

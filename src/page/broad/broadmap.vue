@@ -13,7 +13,7 @@
                 </bm-marker>
           </bml-marker-clusterer>     
            <!--地图类型控件-->
-          <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP', 'BMAP_HYBRID_MAP']" :offset="{width:450,height:8}" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
+          <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP', 'BMAP_HYBRID_MAP']"  anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
           <!-- 信息窗体-->
           <bm-info-window :position="{lng: infowindow.lng, lat: infowindow.lat}" :show="infowindow.show" @close="infoWindowClose" @open="infoWindowOpen">终端号:{{infowindow.tid}} <br>终端状态:{{infowindow.type}}<br>故障原因:{{infowindow.content}}<br>维修时间{{infowindow.ctime}}  </bm-info-window>>
           <bm-boundary name="长沙县" :strokeWeight="2" strokeColor="blue" fillColor=""  ></bm-boundary>
@@ -169,7 +169,7 @@ name: "mainmap",
 <style lang="scss">
 .bm-view {
   width: 100%;
-  height: 50vh;
+  height: 56vh;
 
 }
 .m_center2{

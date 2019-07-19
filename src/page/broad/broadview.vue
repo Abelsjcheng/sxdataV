@@ -1,8 +1,8 @@
 <template>
-   <div>
+
     
   <el-container class="con1">
-    <el-aside width="23.5vw">
+    <el-aside width="22vw">
       <!-- <div id="item1"> -->
         <div class="flex-item_l" id="l1"><tabledata /></div>
         <div class="flex-item_l" id="l2"><radarchart /></div>
@@ -16,11 +16,11 @@
         <el-footer height="42vh">
             <div class="flex-container">
               <div class="flex-item_f" id="f1">f7</div>
-              <div class="flex-item_f" id="f2"> f8</div>
+              <div class="flex-item_f" id="f2"> <zdinfo/></div>
             </div>
         </el-footer>
     </el-container>
-    <el-aside width="24%">
+    <el-aside width="22vw">
       <!-- <div id="item2"> -->
       <div class="flex-item_r">f4</div>
       <div class="flex-item_r">f5</div>
@@ -28,7 +28,7 @@
     <!-- </div> -->
     </el-aside>
   </el-container>
-  </div> 
+
   
 </template>
 
@@ -42,10 +42,10 @@ import barchart from '@/components/broad/charts/barchart'//柱状图
 import radarchart from '@/components/broad/charts/radarchart'//雷达图
 import linechart from '@/components/broad/charts/linechart'//折线图
 import zdinfo from '@/components/broad/annoucement/zdinfo'//公告信息列表
-import Kanban from '@/components/main/Kanban';//拖拽组件
+
 import { mapGetters } from 'vuex';
 export default { 
-  components: {timechart,typechart,piechart,tabledata,mainmap,barchart,radarchart,linechart,zdinfo,Kanban
+  components: {timechart,typechart,piechart,tabledata,mainmap,barchart,radarchart,linechart,zdinfo
       },//注册组件
   name: "mianview",
   data () { //局内数据
@@ -96,13 +96,13 @@ export default {
 
   .con1{
     background-color: #040f3c;
+    height:100%;
   }
 
 .el-footer {
     // background-color: #B3C0D1;
     // color: #333;
     text-align: center;
-    line-height: 200px;
   }
 
   .flex-container{
@@ -148,19 +148,12 @@ export default {
 }
 
   
-  .el-main {
-    // background-color: #E9EEF3;
-    // color: #333;
-    // text-align: center;
-    //line-height: 100px;
-    height:50vh;
-  }
+
 
   .flex-item_m{
     // background-color:#B3C0D1;
      margin:3px;
     margin-top:6.5px;
-    height:50vh;
     border:1px solid #256;
   }
 </style>

@@ -91,7 +91,7 @@ export default {
 .party-data{
     display: flex;
     flex-direction:row;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center;
     
 }

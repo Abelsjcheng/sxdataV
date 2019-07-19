@@ -118,7 +118,7 @@ function(num) {
   }
   .itemTit span{
     display:block;
-    height:30px;
+    height:15px;
     line-height:20px;
     border-left:5px solid transparent;
     font-size:15px;
@@ -130,7 +130,7 @@ function(num) {
   .itembg{
     background-image:url(https://jsdaima.hu-cheng.net/2019/06/1289/images/gz.png);
     background-repeat:repeat;
-    height:75%;
+    height:80%;
   }
   .itemCon{
     padding:0px 10px;

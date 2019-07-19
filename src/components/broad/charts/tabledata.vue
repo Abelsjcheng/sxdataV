@@ -119,7 +119,7 @@ function(num) {
   .itemTit span{
     display:block;
     height:30px;
-    line-height:20px;
+    line-height:30px;
     border-left:5px solid transparent;
     font-size:15px;
     color:#fff;
@@ -134,18 +134,19 @@ function(num) {
   }
   .itemCon{
     padding:14px 10px;
+    
   }
   ul{
     border:medium none;
     margin:0;
     padding:0;
-    font-size:100%;
-    display:block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     -webkit-margin-before:1em;
     -webkit-margin-after:1em;
     -webkit-margin-start:0px;
     -webkit-margin-end:0px;
-    -webkit-padding-start:10px;
   }
   // Pseudo::before element
   // .clearfix:before{
@@ -162,10 +163,15 @@ function(num) {
   //   line-height:0;
   //   content:"";
   // }
-  .infoPie ul li{
-    float:left;
-    width:25%;
+  .infoPie{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    ul li{
+        width:20%;
+      }
   }
+   
   .color-yellow{
       color:#ffd220 !important;
   }
@@ -189,12 +195,11 @@ function(num) {
   .infoPie ul li span {
     display: block;
     list-style:none;
-    width: 100px;
-    height: 100px;
-    margin: 40px auto;
+    width: 70px;
+    height: 70px;
+    margin:auto;
     border: 1px solid transparent;
-    text-align: center;
-    line-height: 90px;
+    line-height: 70px;
     font-size: 29px;
     border-radius: 100%;
   }
@@ -214,7 +219,7 @@ function(num) {
 
   .infoPie ul li p {
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     padding-bottom: 8px;
   }
    p {

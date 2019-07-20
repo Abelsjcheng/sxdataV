@@ -40,7 +40,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .ledinfo_main{
-    height:280px;
+    height:33%;
     width: 95%;
     background: rgba(0,0,0,.2);
 }

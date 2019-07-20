@@ -1,8 +1,6 @@
 <template>
-    <div class="vill_chart">
       <!-- 加载柱状图 并设置图表大小 -->
       <v-chart  :options="polar"  style="width:100%;height:100%;" />    
-    </div>
 </template>
 
 <script>
@@ -106,14 +104,5 @@ name: "villagerchart",
 }
 </script>
 
-<style lang="scss" scoped>
-.vill_chart{
-   
-    background: rgba(0,0,0,.2);
-    width:490px;
-    height: 250px;
-    
 
-}
-</style>
 

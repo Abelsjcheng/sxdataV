@@ -1,8 +1,9 @@
 <template>
     <div>
     <li class="list-li"> 
-        <a class="list-title" @click="opendialog()">{{item.title|ellipsis}} </a>
-        <em class="list-data">{{item.date}} </em>
+        <span class="yuan"> </span>
+        <a class="list-title" @click="opendialog()">{{item.title}} </a>
+        <em class="list-date">{{item.date}} </em>
     </li>
     <!--自定义组件 弹出窗口用于显示具体信息 v-bind： 动态赋值-->
     <infocontent v-bind:item="item" v-bind:centerDialogVisible="centerDialogVisible" v-on:dialogClose="centerDialogVisible =$event" />
@@ -51,21 +52,34 @@
     }
 </script>
 <style lang="scss">
+.yuan{
+    display: block;
+    float: left;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background: #000;
+    margin:12px;
+}
 .list-li{
-    
-    height: auto;
-    padding-left: 15px;
+    list-style: none;
+    height: 32px;
     font-size: 16px;
     line-height: 32px;
     overflow: hidden;
 }
 
-.list-data{
+.list-date{
+    width:28%;
     font-size: 12px;
     color: #999;
-    line-height: 32px;
-    height: 32px;
     float: right;
-    padding-right: 16px;
+    padding-right: 10px;
+}
+.list-title{
+    width:60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;//单行溢出设置
 }
 </style>

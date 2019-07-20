@@ -102,7 +102,7 @@ export default {
    
     background: rgba(0,0,0,.2);
     width: 95%;
-    height: 330px;
+    height: 35%;
 
 
 }

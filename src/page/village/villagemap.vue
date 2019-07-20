@@ -124,7 +124,7 @@ name: "mainmap",
 <style lang="scss">
 .vm-view {
   width: 100%;
-  height: 52vh;
+  height: 50vh;
 
 }
 .m_center2{

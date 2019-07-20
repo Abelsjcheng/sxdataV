@@ -93,15 +93,15 @@ export default {
     flex-direction:row;
     justify-content: space-around;
     text-align: center;
-    
+    height:8vh;
 }
 .partytable{
             position: relative;
-            top:15px;
-            height: 55px;
-            width: 200px;
+            top:2vh;
+            height: 6vh;
+            width: 32%;
             background: rgba(0,0,0,.2);
-            line-height: 55px;
+            line-height: 6vh;
 			.partyd_name{
 
                 display: inline-block;

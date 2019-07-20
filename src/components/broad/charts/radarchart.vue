@@ -68,7 +68,7 @@ name: "radarchart",
         {
             name:'操作类型',
             type:'pie',
-            radius : ['20%', '60%'],
+            radius : ['20%', '50%'],
             center : ['50%', '40%'],
             roseType : 'area',
             data:[

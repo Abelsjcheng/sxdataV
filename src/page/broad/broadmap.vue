@@ -103,7 +103,7 @@ name: "mainmap",
     },
     get:function(){ //3000个终端点
             //发送get请求
-            this.$http.get('http://localhost:5050/api/gps/all').then(function(res){
+            this.$http.get('http://110.53.162.165:5050/api/gps/all').then(function(res){
                           
                           for (let i = 0; i < res.data.data.length; i++) {
                             const position = {
@@ -125,7 +125,7 @@ name: "mainmap",
     },
     getrspot:function(){ //随机100个终端点
             //发送get请求
-            this.$http.get('http://localhost:5050/api/gps/random').then(function(res){
+            this.$http.get('http://110.53.162.165:5050/api/gps/random').then(function(res){
                           
                           for (let i = 0; i < res.data.data.length; i++) {
                             const position = {

@@ -14,9 +14,21 @@
            <!--地图类型控件-->
           <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP', 'BMAP_HYBRID_MAP']"  anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
           <!-- 信息窗体-->
-          <bm-info-window :position="{lng: infowindow.lng, lat: infowindow.lat}" :show="infowindow.show" @close="infoWindowClose" @open="infoWindowOpen">党员值班人:{{infowindow.uname}} <br>组别:{{infowindow.grouptype}}<br>值班地点:{{infowindow.address}}<br>值班时间:{{infowindow.worktime}}<br>值班口号:{{infowindow.content}}  </bm-info-window>>
+          <bm-info-window :position="{lng: infowindow.lng, lat: infowindow.lat}" :show="infowindow.show" @close="infoWindowClose" @open="infoWindowOpen">
+            <ul style="margin:0 0 5px 0;padding:0.2em 0"> 
+                <li><span>终端IMEI: </span>{{infowindow.tid}} </li>
+                <li><span>分组名称: </span>{{infowindow.aname}} </li>
+                <li><span>所属用户: </span>{{infowindow.uname}} </li>
+                <li><span>终端电话: </span>{{infowindow.phone}} </li>
+                <li><span>安装地址: </span>{{infowindow.address}} </li>
+                <li><span>最后访问时间: </span>{{infowindow.receivetime}} </li>
+                <li><span>状态: </span>{{infowindow.isuse}} </li>
+            </ul>
+            
+          </bm-info-window>>
           <bm-boundary name="长沙县" :strokeWeight="2" strokeColor="blue" fillColor=""  ></bm-boundary>
         </baidu-map>
+        <div id="up-map-div"><tabledata /></div>
     </div> 
 </template>
 
@@ -26,9 +38,10 @@ import { mapGetters } from 'vuex';
 import mapStyle from '@/static/json/mapstyle.json';//地区json
 import {BmlMarkerClusterer} from 'vue-baidu-map'
 import mapvillage from '@/static/json/mapvillage';
+import tabledata from '@/components/Iot/charts/tabledata' //table数据组 终端数据
 export default {
 
-components: { VDistpicker,BmlMarkerClusterer },//注册组件
+components: { VDistpicker,BmlMarkerClusterer,tabledata },//注册组件
 name: "mainmap",
   data () {//局内数据
     return {
@@ -71,18 +84,21 @@ name: "mainmap",
     },
     get:function(){ //3000个终端点
             //发送get请求
-            this.$http.get('http://110.53.162.165:5050/api/pwork/five').then(function(res){
+            this.$http.get('http://localhost:5050/api/gps/iotAll').then(function(res){
               
-                          for (let i = 0; i < res.data.data.length; i++) {    
-
-                            for(let j=0;j<mapvillage.length;j++){
-                              if(mapvillage[j].address==res.data.data[i].address) //与地区json匹配赋予经纬度
-                              {
-                                
-                                const pworkdata={address:res.data.data[i].address,uname:res.data.data[i].uname,grouptype:res.data.data[i].grouptype,worktime:res.data.data[i].worktime,content:res.data.data[i].content,lng: mapvillage[j].lng, lat: mapvillage[j].lat}                            
-                                this.markers.push(pworkdata)
-                              }     
-                            }
+                          for (let i = 0; i < res.data.data.length; i++) {
+                            const position = {
+                                  lng: res.data.data[i].longitude, 
+                                  lat: res.data.data[i].latitude,
+                                  tid: res.data.data[i].tid,
+                                  receivetime: res.data.data[i].receivetime,
+                                  address: res.data.data[i].address,
+                                  isuse: res.data.data[i].isuse,
+                                  uname: res.data.data[i].uname,
+                                  phone: res.data.data[i].phone,
+                                  aname: res.data.data[i].aname
+                                }
+                            this.markers.push(position)
                           }
                           
                         },function(){
@@ -96,7 +112,18 @@ name: "mainmap",
       this.infowindow.show = true
     },
     Opencontent:function (message) {//打开点信息窗口传值
-      this.infowindow={lng:message.lng,lat:message.lat,address:message.address,content:message.content,uname:message.uname,grouptype:message.grouptype,worktime:message.worktime,show:true}
+      this.infowindow={
+                        lng: message.lng, 
+                        lat: message.lat,
+                        tid: message.tid,
+                        receivetime: message.receivetime,
+                        address: message.address,
+                        isuse: message.isuse==true?"正常":"停止",
+                        uname: message.uname,
+                        phone: message.phone,
+                        aname: message.aname,
+                        show:true
+            }
     },
     
     
@@ -124,12 +151,12 @@ name: "mainmap",
         },
   },
    mounted:function(){//页面初始化函数
-        //this.get();
+        this.get();
     }
 
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .iot_mapview {
   width: 100%;
   height: 59.5vh;
@@ -156,5 +183,23 @@ name: "mainmap",
 .anchorBL{
 display:none;
 }
-
+li{
+  line-height: 26px;
+  font-size: 15px;
+  span{
+    width: 120px;display: inline-block;
+  }
+}
+#up-map-div{
+  width:260px;
+  height:44%;
+  // top:30%;
+  left:3px;
+  bottom:0%;
+  position:absolute;
+  z-index:9999;
+  border:1px solid #016ae0;
+  // background-color:#235;
+  background:rgba(235,235,235,0);
+  }
 </style>

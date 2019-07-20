@@ -1,12 +1,12 @@
 <template>
-    <div class="zdinfo">
+    <div class="fault_info">
       <div class="itemTit">
-      <span class="border-yellow">终端故障公告</span>
-    </div>
+        <span class="border-yellow">终端故障公告</span>
+      </div>
       <!--公告列表框 -->
-      <virtual-list :size="30" :remain="8" style="padding: 5px">
+      <div class="fault_list">
         <item v-for="item of annoucements" :key="item.id" v-bind:item="item"  />
-      </virtual-list>
+      </div>
     </div>  
 </template>
 
@@ -63,5 +63,9 @@ name: "zdinfo",
   }
 .border-yellow {
       border-color: #ffd220 !important;
+  }
+  .fault_list{
+    overflow: scroll;
+    height: 53.5vh;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="dataitem" @click="showcontent(item)">
 
-            <span style="width: 38%;">{{item.tid}} </span>
+            <span class="data_tid">{{item.tid}} </span>
            <span  class="data_content" > {{item.content}} </span>
             <span class="data_time">{{item.ctime}} </span>
 
@@ -27,21 +27,33 @@
     }
 </script>
 <style lang="scss" scoped>
-
+span{
+    float: left;
+    display: block;
+    
+}
 .dataitem{
     border-bottom: 1px dashed #404040;
     background-color: rgba(20,66,125,0.12);
     color: white;
     height: 40px;
-    text-align:left;
+    text-align:center;
     line-height: 40px;
-    
+    overflow: hidden;//行溢出
+    :hover{
+        cursor:pointer;
+    }
 }
-
+.data_tid{
+    font-size: 14px;
+}
 .data_content{
-    width: 33%;
-    margin-left:5px;
+    width: 36%;
+    
+    font-size: 14px;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;//单行溢出设置
 
 }
 .data_time{
@@ -49,6 +61,7 @@
     font-size: 12px;
     text-align: right;
     float: right;
-    width: 28%;
+    width:31%;
+    
 }
 </style>

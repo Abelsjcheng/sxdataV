@@ -13,18 +13,18 @@
         <el-main>
           <div class="flex-item_m"><mainmap/></div>
         </el-main>
-        <el-footer height="42vh">
-            <div class="flex-container">
-              <div class="flex-item_f" id="f1">f7</div>
-              <div class="flex-item_f" id="f2"> <zdinfo/></div>
-            </div>
+        <el-footer height="41vh">
+            <el-row :gutter="10">
+              <el-col :span="12"><div class="flex-item_f"><programtable /></div></el-col>
+              <el-col :span="12"><div class="flex-item_f"><timechart /></div></el-col>
+            </el-row>
         </el-footer>
     </el-container>
     <el-aside width="22vw">
       <!-- <div id="item2"> -->
-      <div class="flex-item_r">f4</div>
-      <div class="flex-item_r">f5</div>
-      <div class="flex-item_r">f6</div>
+      
+      <div class="flex-item_r"><typechart /></div>
+      <div class="flex-item_r2"><zdinfo/></div>
     <!-- </div> -->
     </el-aside>
   </el-container>
@@ -33,9 +33,9 @@
 </template>
 
 <script>
+import programtable from '@/components/broad/charts/programtable'//
 import timechart from '@/components/broad/charts/timechart'//各时长广播分布
 import typechart from '@/components/broad/charts/typechart'//广播状态
-import piechart from '@/components/broad/charts/piechart'//饼图
 import tabledata from '@/components/broad/charts/tabledata' //table数据组
 import mainmap from './broadmap' //百度地图层
 import barchart from '@/components/broad/charts/barchart'//柱状图
@@ -45,7 +45,7 @@ import zdinfo from '@/components/broad/annoucement/zdinfo'//公告信息列表
 
 import { mapGetters } from 'vuex';
 export default { 
-  components: {timechart,typechart,piechart,tabledata,mainmap,barchart,radarchart,linechart,zdinfo
+  components: {programtable,timechart,typechart,tabledata,mainmap,barchart,radarchart,linechart,zdinfo
       },//注册组件
   name: "mianview",
   data () { //局内数据
@@ -97,61 +97,58 @@ export default {
   .con1{
     background-color: #040f3c;
     height:100%;
+    width: 100%;
   }
-
+.el-main{
+  overflow: hidden;
+}
 .el-footer {
-    // background-color: #B3C0D1;
-    // color: #333;
+    padding:0 5px;
     text-align: center;
   }
 
-  .flex-container{
-    position:absolute;
-    display:flex;
-    width:105vh;
-    margin-left:-20px;
-    height:100%;
-    flex-direction:row;
-     //background-color:lightgrey;
-    }
 
   .flex-item_f{
-    //background-color:#B3C0D1;
-    margin:3px;
-    margin-top:10px;
+    margin-top:5px;
     height:38.9vh;
-    width:51vh;
     border:1px solid #256;
   }
   
   .el-aside {
-    // background-color: #040f3c;
-    // color: #333;
+    display: flex;
+      flex-direction:column;
+      justify-content: space-around;
+      align-items:center; //垂直居中
      text-align: center;
-    line-height: 20vh;
-    margin:3px;
+    overflow: hidden;
+    padding: 4px;
     height:100%;
   }
 
+
   .flex-item_l{
-    // background-color:#B3C0D1;
     margin:3px;
-    height:29.5vh;
+    width: 100%;
+    height:29vh;
     border:1px solid #256;
   }
 
 .flex-item_r{
-  // background-color:#B3C0D1;
+  width: 100%;
   margin:3px;
-  height:29.5vh;
+  height:29vh;
   border:1px solid #256;
 }
-
+.flex-item_r2{
+  width: 100%;
+  margin:3px;
+  height:60vh;
+  border:1px solid #256;
+}
   
 
 
   .flex-item_m{
-    // background-color:#B3C0D1;
      margin:3px;
     margin-top:6.5px;
     border:1px solid #256;

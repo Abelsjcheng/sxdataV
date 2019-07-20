@@ -1,5 +1,5 @@
 <template>
-  <div class="item basicInfo">
+  <div class="item basicInfo" style="width:100%;height:100%">
     <div class="itemTit">
       <span class="border-green">广播终端数</span>
     </div>
@@ -7,19 +7,19 @@
       <div class="infoPie">
         <ul class="clearfix">
           <li class="color-yellow">
-            <span class="border-yellow" id="indicator1" total="2591">2591</span>
+            <span class="border-yellow">{{terdata.sum}}</span>
             <p>总终端总量</p>
           </li>
           <li class="color-green">
-            <span class="border-green" id="indicator2" run="2500"> 2500</span>
+            <span class="border-green">{{terdata.run}}</span>
             <p>终端设备运行数</p>
           </li>
           <li class="color-blue">
-            <span class="border-blue" id="indicator3" stop="61"> 61</span>
+            <span class="border-blue">{{terdata.down}}</span>
             <p>终端设备停止数</p>
           </li>
           <li class="color-purple">
-            <span class="border-purple" id="indicator4" maintain="30"> 30</span>
+            <span class="border-purple">{{terdata.req}}</span>
             <p>终端设备维护数</p>
           </li>
         </ul>
@@ -35,42 +35,36 @@ export default {
 name: "tabledata",
   data () {
     return {
-      mdata:[],
-      sumdata:{dev:'',run:'',stop:''},
-      terdata:{aname:'null',run:'null',stop:'null'},
+      terdatas:[],
+      terdata:{aname:'',sum:0,run:0,down:0,req:0},
 
-function(num) {
-   document.getElementById("indicatorl").innerHTML =data[0]
-   document.getElementById("indicator2").innerHTML =data[1]
-   document.getElementById("indicator3").innerHTML =data[2]
-   document.getElementById("indicator4").innerHTML =data[3]
-},
-       
+    }
+  },   
 
     methods: {
-    get:function(){ 
-            //发送get请求 获取终端总数
-            this.$http.get('http://110.53.162.165:5050/api/bcount/bindex').then(function(res){ 
-                            this.data[0].value=res.data.data.dev
-                            this.data[1].value=res.data.data.run
-                            this.data[2].value=res.data.data.stop
-                            this.data[3].value=res.data.data
+    getpreter:function(){ 
+            //发送get请求 回传目前设备挂载总数,运行数，停止数
+            this.$http.get('http://110.53.162.165:5050/api/device/sumters').then(function(res){ 
+                            this.terdata.sum=res.data.data.sum;
+                            this.terdata.run=res.data.data.run;
+                            this.terdata.down=res.data.data.down;
+                            this.terdata.req=res.data.data.req;
                         },function(){
                     console.log('请求失败处理');
                 });
-            //发送get请求 获取某村终端数信息
-            this.$http.get('http://110.53.162.165:5050/api/device/tersga').then(function(res){
-                        for (let i = 0; i < res.data.data.length; i++) {
-                          this.polar.serise[1].data[0].value=res.data.data[i].run
-                           this.polar.serise[1].data[1].value=res.data.data[i].stop
-
-                            // const tersdata={aname:res.data.data[i].aname,run:res.data.data[i].run,down:res.data.data[i].down}
-                            // this.mdata.push(tersdata)
-                          }
-                        },function(){
-                    console.log('请求失败处理');
-                });
-        }
+            
+        },
+      getallters:function(){
+          //发送get请求 获取按照终端地址进行运行状态的分组统计
+            this.$http.get('http://110.53.162.165:5050/api/device/sumtermSort').then(function(res){
+                  for (let i = 0,len=res.data.data.length; i < len; i++) {
+                  const tdata={aname:res.data.data[i].aname,sum:res.data.data[i].sum,run:res.data.data[i].run,down:res.data.data[i].down,req:res.data.data[i].req}
+                  this.terdatas.push(tdata)
+                }
+              },function(){
+                   console.log('请求失败处理');
+            });
+      }
   },
   computed: { //计算属性 取存在状态库中的值
      ...mapGetters(["selectplace"]),
@@ -80,22 +74,26 @@ function(num) {
      
   },
   watch:{
-     /* listenselectplace:function(vag){//实时监听状态库中值的改变 
-        for (let i = 0; i < this.mdata.length; i++) {
-            if(vag==this.mdata[i].aname)
+      listenselectplace:function(vag){//实时监听状态库中值的改变 
+        for (let i = 0,len=this.terdatas.length; i < len; i++) {
+            if(vag==this.terdatas[i].aname)
             {
-              this.terdata={aname:this.mdata[i].aname,run:this.mdata[i].run,down:this.mdata[i].down}
+              console.log(vag)
+              this.terdata={aname:this.terdatas[i].aname,sum:this.terdatas[i].sum,run:this.terdatas[i].run,down:this.terdatas[i].down,req:this.terdatas[i].req}
             }
+            if(vag==''){
+                    this.getpreter();
+                }
           }
-      }*/
+      }
   },
    mounted:function(){//页面初始化函数
-        this.get();
-        
+        this.getpreter();
+        this.getallters();
     }
-    }
+    
   
-}
+
   
 }
 </script>
@@ -118,8 +116,8 @@ function(num) {
   }
   .itemTit span{
     display:block;
-    height:30px;
-    line-height:30px;
+    height:15px;
+    line-height:20px;
     border-left:5px solid transparent;
     font-size:15px;
     color:#fff;
@@ -130,23 +128,23 @@ function(num) {
   .itembg{
     background-image:url(https://jsdaima.hu-cheng.net/2019/06/1289/images/gz.png);
     background-repeat:repeat;
-    height:75%;
+    height:80%;
   }
   .itemCon{
-    padding:14px 10px;
-    
+    padding:0px 10px;
   }
   ul{
     border:medium none;
     margin:0;
     padding:0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    -webkit-margin-before:1em;
-    -webkit-margin-after:1em;
+    font-size:100%;
+    display:block;
+    -webkit-margin-before:0em;
+    -webkit-margin-after:0em;
     -webkit-margin-start:0px;
     -webkit-margin-end:0px;
+    -webkit-padding-start:0px;
+    width:100%;
   }
   // Pseudo::before element
   // .clearfix:before{
@@ -163,13 +161,10 @@ function(num) {
   //   line-height:0;
   //   content:"";
   // }
-  .infoPie{
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    ul li{
-        width:20%;
-      }
+  .infoPie ul li{
+        float: left;
+        width:25%;
+      
   }
    
   .color-yellow{
@@ -197,7 +192,8 @@ function(num) {
     list-style:none;
     width: 70px;
     height: 70px;
-    margin:auto;
+    margin: auto;
+    margin-top:50%;
     border: 1px solid transparent;
     line-height: 70px;
     font-size: 29px;
@@ -219,7 +215,7 @@ function(num) {
 
   .infoPie ul li p {
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
     padding-bottom: 8px;
   }
    p {

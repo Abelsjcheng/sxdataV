@@ -15,7 +15,24 @@
            <!--地图类型控件-->
           <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP', 'BMAP_HYBRID_MAP']"  anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
           <!-- 信息窗体-->
-          <bm-info-window :position="{lng: infowindow.lng, lat: infowindow.lat}" :show="infowindow.show" @close="infoWindowClose" @open="infoWindowOpen">终端号:{{infowindow.tid}} <br>终端状态:{{infowindow.type}}<br>故障原因:{{infowindow.content}}<br>维修时间{{infowindow.ctime}}  </bm-info-window>>
+          <bm-info-window :position="{lng: infowindow.lng, lat: infowindow.lat}" :show="infowindow.show" @close="infoWindowClose" @open="infoWindowOpen">
+            <ul style="margin:0 0 5px 0;padding:0.2em 0"> 
+                <li><span>终端IMEI号: </span>{{infowindow.tid}} </li>
+                <li><span>终端状态: </span>{{infowindow.type}} </li>
+                <li><span>故障原因: </span>{{infowindow.content}} </li>
+                <li><span>维修时间: </span>{{infowindow.ctime}} </li>
+            </ul>
+          </bm-info-window>>
+          <bm-info-window :position="{lng: normalinfowindow.lng, lat: normalinfowindow.lat}" :show="normalinfowindow.show" @close="normalinfoWindowClose" @open="normalinfoWindowOpen">
+            <ul style="margin:0 0 5px 0;padding:0.2em 0"> 
+                <li><span>终端IMEI号: </span>{{normalinfowindow.tid}} </li>
+                <li><span>分组名称: </span>{{normalinfowindow.aname}} </li>
+                <li><span>所属用户: </span>{{normalinfowindow.uname}} </li>
+                <li><span>终端电话: </span>{{normalinfowindow.phone}} </li>
+                <li><span>安装地址: </span>{{normalinfowindow.address}} </li>
+                <li><span>状态: </span>{{normalinfowindow.isuse}} </li>
+            </ul>
+          </bm-info-window>>
           <bm-boundary name="长沙县" :strokeWeight="2" strokeColor="blue" fillColor=""  ></bm-boundary>
         </baidu-map>
     </div> 
@@ -39,7 +56,8 @@ name: "mainmap",
       },
       center: {lng: 0, lat: 0},  //地区中心点
       zoom: 12,//缩放等级
-      infowindow:{lng:'',lat:'',tid:'',content:'',ctime:'',show:false},//标注弹窗数据
+      infowindow:{lng:'',lat:'',tid:'',type:'',content:'',ctime:'',show:false},//故障终端弹窗数据
+      normalinfowindow:{lng:'',lat:'',tid:'',address:'',isuse:'',uname:'',aname:'',phone:'',show:false},//正常终端弹窗数据
       bmapStyle: {
         styleJson:mapStyle        //地图个性样式
       },
@@ -85,10 +103,19 @@ name: "mainmap",
     },
     get:function(){ //3000个终端点
             //发送get请求
-            this.$http.get('http://110.53.162.165:5050/api/gps/all').then(function(res){
+            this.$http.get('http://localhost:5050/api/gps/all').then(function(res){
                           
                           for (let i = 0; i < res.data.data.length; i++) {
-                            const position = {lng: res.data.data[i].longitude, lat: res.data.data[i].latitude}
+                            const position = {
+                              tid: res.data.data[i].tid,
+                              lng: res.data.data[i].longitude, 
+                              lat: res.data.data[i].latitude,
+                              address: res.data.data[i].address,
+                              isuse: res.data.data[i].isuse,
+                              uname: res.data.data[i].uname,
+                              phone: res.data.data[i].phone,
+                              aname: res.data.data[i].aname
+                              }
                             this.markers.push(position)
                           }
                         },function(){
@@ -98,10 +125,19 @@ name: "mainmap",
     },
     getrspot:function(){ //随机100个终端点
             //发送get请求
-            this.$http.get('http://110.53.162.165:5050/api/gps/random').then(function(res){
+            this.$http.get('http://localhost:5050/api/gps/random').then(function(res){
                           
                           for (let i = 0; i < res.data.data.length; i++) {
-                            const position = {lng: res.data.data[i].longitude, lat: res.data.data[i].latitude}
+                            const position = {
+                              tid: res.data.data[i].tid,
+                              lng: res.data.data[i].longitude, 
+                              lat: res.data.data[i].latitude,
+                              address: res.data.data[i].address,
+                              isuse: res.data.data[i].isuse,
+                              uname: res.data.data[i].uname,
+                              phone: res.data.data[i].phone,
+                              aname: res.data.data[i].aname
+                              }
                             this.markers.push(position)
                           }
                         },function(){
@@ -114,8 +150,36 @@ name: "mainmap",
     infoWindowOpen:function () { //打开点信息窗口
       this.infowindow.show = true
     },
+    normalinfoWindowClose:function () { //关闭点信息窗口
+      this.normalinfowindow.show=false
+    },
+    normalinfoWindowOpen:function () { //打开点信息窗口
+      this.normalinfowindow.show=true
+    },
     Opencontent:function (message) {//打开点信息窗口传值
-      this.infowindow={lng:message.lng,lat:message.lat,tid:message.tid,type:message.type,content:message.content,ctime:message.ctime,show:true}
+      if(message.type=="停止"){
+        this.infowindow={
+        lng:message.lng,
+        lat:message.lat,
+        tid:message.tid,
+        type:message.type,
+        content:message.content,
+        ctime:message.ctime,
+        show:true}
+      }else{
+        this.normalinfowindow={
+          lng: message.lng, 
+          lat: message.lat,
+          tid: message.tid,
+          address: message.address,
+          isuse: message.isuse==true?"正常":"停止",
+          uname: message.uname,
+          phone: message.phone,
+          aname: message.aname,
+          show:true
+        }
+      }
+      
     },
     // isActive:function(judge){ //v-bind绑定属性用函数进行判断 标注是否执行跳动动画 :animation="isActive(marker.type)"
     //     if(judge=="bad") //judage==warning/danger
@@ -153,10 +217,18 @@ name: "mainmap",
         this.bmapStyle={styleJson:vag}
       },
       listenzdinfocontent:function(message){ //同上
-        this.infowindow={lng:message.lo,lat:message.la,tid:message.tid,type:message.type,content:message.content,ctime:message.ctime,show:true}
-        this.center.lng = message.lo
-        this.center.lat = message.la
-        this.zoom = 15
+        this.infowindow={
+          lng:message.lo,
+          lat:message.la,
+          tid:message.tid,
+          type:message.type,
+          content:message.content,
+          ctime:message.ctime,
+          show:true
+          };
+        this.center.lng = message.lo;
+        this.center.lat = message.la;
+        this.zoom = 15;
       }
   },
    mounted:function(){//页面初始化函数
@@ -169,7 +241,7 @@ name: "mainmap",
 <style lang="scss">
 .bm-view {
   width: 100%;
-  height: 56vh;
+  height: 50vh;
 
 }
 .m_center2{
@@ -193,5 +265,11 @@ name: "mainmap",
 .anchorBL{
 display:none;
 }
-
+li{
+  line-height: 26px;
+  font-size: 15px;
+  span{
+    width: 100px;display: inline-block;
+  }
+}
 </style>

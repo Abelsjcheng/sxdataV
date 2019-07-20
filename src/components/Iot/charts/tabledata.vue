@@ -7,19 +7,19 @@
       <div class="infoPie">
         <ul class="clearfix">
           <li class="color-yellow">
-            <span class="border-yellow" id="indicator1" total="5929">5929</span>
+            <span class="border-yellow" >{{terdata.sum}}</span>
             <p>总终端总量</p>
           </li>
           <li class="color-green">
-            <span class="border-green" id="indicator2" run="5529"> 5529</span>
+            <span class="border-green" >{{terdata.run}}</span>
             <p>终端设备运行数</p>
           </li>
           <li class="color-blue">
-            <span class="border-blue" id="indicator3" stop="320"> 320</span>
+            <span class="border-blue" >{{terdata.down}}</span>
             <p>终端设备停止数</p>
           </li>
           <li class="color-purple">
-            <span class="border-purple" id="indicator3" maintain="80"> 80</span>
+            <span class="border-purple" >{{terdata.req}}</span>
             <p>终端设备维护数</p>
           </li>
         </ul>
@@ -35,42 +35,36 @@ export default {
 name: "floatpie",
   data () {
     return {
-      mdata:[],
+      terdatas:[],
       sumdata:{dev:'',run:'',stop:''},
-      terdata:{aname:'null',run:'null',stop:'null'},
-
-function(num) {
-   document.getElementById("indicatorl").innerHTML =data[0]
-   document.getElementById("indicator2").innerHTML =data[1]
-   document.getElementById("indicator3").innerHTML =data[2]
-   document.getElementById("indicator4").innerHTML =data[3]
-},
+      terdata:{aname:'',sum:0,run:0,down:0,req:0},
+    }
+  },
        
 
     methods: {
     get:function(){ 
             //发送get请求 获取终端总数
-            this.$http.get('http://110.53.162.165:5050/api/bcount/bindex').then(function(res){ 
-                            this.data[0].value=res.data.data.dev
-                            this.data[1].value=res.data.data.run
-                            this.data[2].value=res.data.data.stop
-                            this.data[3].value=res.data.data
+            this.$http.get('http://110.53.162.165:5050/api/iot/devicecount').then(function(res){ 
+                            this.terdata.sum=res.data.data;
+                            this.terdata.run=res.data.data;
+                            this.terdata.down=0;
+                            this.terdata.req=0;
                         },function(){
                     console.log('请求失败处理');
                 });
-            //发送get请求 获取某村终端数信息
-            this.$http.get('http://110.53.162.165:5050/api/device/tersga').then(function(res){
-                        for (let i = 0; i < res.data.data.length; i++) {
-                          this.polar.serise[1].data[0].value=res.data.data[i].run
-                           this.polar.serise[1].data[1].value=res.data.data[i].stop
-
-                            // const tersdata={aname:res.data.data[i].aname,run:res.data.data[i].run,down:res.data.data[i].down}
-                            // this.mdata.push(tersdata)
-                          }
-                        },function(){
-                    console.log('请求失败处理');
-                });
-        }
+        },
+        getallters:function(){
+          //发送get请求 获取按照终端地址进行运行状态的分组统计
+            this.$http.get('http://110.53.162.165:5050/api/device/sumtermSort').then(function(res){
+                  for (let i = 0,len=res.data.data.length; i < len; i++) {
+                  const tdata={aname:res.data.data[i].aname,sum:res.data.data[i].sum,run:res.data.data[i].run,down:res.data.data[i].down,req:res.data.data[i].req}
+                  this.terdatas.push(tdata)
+                }
+              },function(){
+                   console.log('请求失败处理');
+            });
+      }
   },
   computed: { //计算属性 取存在状态库中的值
      ...mapGetters(["selectplace"]),
@@ -93,18 +87,17 @@ function(num) {
         this.get();
         
     }
-    }
-  
 }
   
-}
+
+  
+
 </script>
 
 
 <style lang="scss" scoped>
 
   .item{
-    margin-bottom:24px;
     background-color:rgba(0,0,0,0.3);
     border-radius:8px;
     font-size:14px;
@@ -181,7 +174,7 @@ function(num) {
     margin: auto;
     border: 1px solid transparent;
     text-align: center;
-    line-height: 70px;
+    line-height: 65px;
     font-size: 25px;
     border-radius: 100%;
   }
@@ -202,7 +195,7 @@ function(num) {
   .infoPie ul li p {
     text-align: center;
     font-size: 14px;
-    padding-bottom: 8px;
+    
   }
    p {
       border: medium none;

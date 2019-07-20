@@ -1,5 +1,5 @@
 <template>
-    <div class="iot_char" v-show="chartvisible">
+    <div class="iot_zdchar" v-show="chartvisible">
       <v-chart  :options="polar" style="width:100%;height:100%"/>   
     </div> 
 </template>
@@ -102,3 +102,20 @@ name: "radarchart02",
   
  }
  </script>
+
+ <style lang="scss" scoped>
+ .iot_zdchar{
+   position: relative;
+    height:28vh;
+    width: 96%;
+    margin:4.5px 0;
+    padding:5px 10px;	
+    color:#fff;
+    text-align:center;
+    z-index:2;
+    background: url(../../../static/img/bgbg1.png) no-repeat;
+    background-size: 100% 100%;
+    box-shadow: inset 0px 0px 20px #038d98;
+ }
+ </style>
+ 

@@ -8,9 +8,10 @@
             <h3 style="display:block">{{item.title}}</h3>
             <div class="pa_info">时间:{{item.date}}&nbsp;&nbsp;发布人:{{item.uname}}</div>
           </div>
+          <div class="scroll_content">
            <el-image style="height: 300px" :src="item.pic" fit="cover"></el-image>
           <span class="content" v-html="item.content"></span>
-          
+          </div>
     </el-dialog>
 
 </template>

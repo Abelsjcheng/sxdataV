@@ -7,7 +7,7 @@
   >
     <ul :style="listStyle">
       <li v-for="(word, index) in list" :key="index" :style="itemStyle">
-      <a style="margin-left: 5px;">{{word}} </a>
+      <a class="list-title">{{word}} </a>
       <em class="list-data">2019-07-10 21:20:29 </em>
       </li>
     </ul>
@@ -102,7 +102,7 @@ export default {
               transition-duration: ${this.transitionDuration}ms;
               transition-timing-function: ${this.transition};
               will-change: transform;
-              transform: translateY(${this.listTop}px)`
+              transform: translateY(${this.listTop}px);`
     },
 
     listParentStyle() {
@@ -204,11 +204,20 @@ export default {
   margin: 0 !important;
 }
 .list-data{
+  width:50%;
   font-size: 12px;
     color: #999;
     line-height: 32px;
     height: 32px;
     float: right;
-    padding-right: 16px;
+    text-align: right;
+    padding-right:3px; 
+}
+.list-title{
+  margin-left: 5px;
+  width: 46%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>

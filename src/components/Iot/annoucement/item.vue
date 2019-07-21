@@ -29,11 +29,11 @@
         }
     }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .dataitem{
     border: rgba(12,122,200,0.5) 1px solid;
     background-color: rgba(20,66,125,0.12);
-    height: 90px;
+    height: 80px;
     margin-bottom: 6px;
     color: white;
 }
@@ -44,11 +44,9 @@
 
 .data_level {
     float: left;
-    color: white;
-    font-size: 12px;
-    text-align: center;
+    
 }
-.el-badge__content{
+.data_level /deep/ .el-badge__content{
     height: 22px;   
     padding: 0 10px;
     border:none;

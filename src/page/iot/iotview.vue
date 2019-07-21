@@ -11,13 +11,11 @@
           <el-row :gutter="10">
             <el-col :span="16"><div class="iot_map"><mainmap /></div></el-col>
 
-            <div id="up-map-div"><div id="table"><tabledata /></div></div>
-
             <el-col :span="8"><div class="iot_char_col"><ChartControl /></div></el-col>
           </el-row>
           <el-row :gutter="10">
             <el-col :span="12"><div class="iot_info"><warninfo/></div></el-col> <!-- 预警模块 -->
-            <el-col :span="12"><div class="iot_camera"></div></el-col> <!-- 终端信息模块 -->
+            <el-col :span="12"><div class="iot_camera"><radarchart02 /></div></el-col> <!-- 终端信息模块 -->
 
           </el-row>
         </el-main>
@@ -32,7 +30,8 @@
 </template>
 
 <script>
-import tabledata from '@/components/Iot/charts/tabledata' //table数据组 终端数据
+import radarchart02 from '@/components/Iot/charts/radarchart02'//终端信息
+
 import mainmap from './iotmap' //百度地图层
 import linechart from '@/components/Iot/charts/linechart'//温湿度折线图
 import cartesianchart from '@/components/Iot/charts/cartesianchart' //雨量图
@@ -44,7 +43,7 @@ import radarchart from '@/components/Iot/charts/radarchart' //PM2.5浓度变化�
 import warninfo from '@/components/Iot/annoucement/warninfo' //预警模块
 import { mapGetters } from 'vuex';
 export default {
-  components: {tabledata,mainmap,linechart,ChartControl,cartesianchart,lineitemstylechart,basicareachart,piechart,radarchart,warninfo
+  components: {radarchart02,mainmap,linechart,ChartControl,cartesianchart,lineitemstylechart,basicareachart,piechart,radarchart,warninfo
     },
   name: 'Iotmain',
   data () {
@@ -90,9 +89,10 @@ export default {
 
 .iot_main{
   margin-top: 5px;
+  overflow: hidden;
 }
 .el-row {
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     &:last-child {
       margin-bottom: 0;
     }
@@ -123,17 +123,6 @@ export default {
     border: 2px solid #016ae0;
   }
 
-  #up-map-div{
-  width:350px;
-  height:330px;
-  // top:30%;
-  left:3px;
-  bottom:0%;
-  position:absolute;
-  z-index:9999;
-  border:1px solid #016ae0;
-  // background-color:#235;
-  background:rgba(235,235,235,0);
-  }
+  
 
 </style>

@@ -1,25 +1,30 @@
 <template>
     <div class="party-data"> 
             <div class="partytable">
-
-                <img height="50" width="50"  src='../../../static/img/party.png'/>
-                <h3 class="partyd_name">党员总数</h3>
+                <div style="height:50px">
+                    <img height="50" width="50"  src='../../../static/img/party.png'/>
+                    <h3 class="partyd_name">党员总数</h3>
+                </div>
                 <i class="partyd_num">{{pmdata.psum}}</i>
             </div>
 
 
             
             <div class="partytable">
-                <img height="50" width="50"  src='../../../static/img/partym.png'/>
-                <h3 class="partyd_name">男性党员数</h3>
+                <div style="height:50px">
+                    <img height="50" width="50"  src='../../../static/img/partym.png'/>
+                    <h3 class="partyd_name">男性党员数</h3>
+                </div>
                 <i class="partyd_num">{{pmdata.pman}}</i>
             </div>
             
 
            
             <div class="partytable">
-                <img height="50" width="50"  src='../../../static/img/partywm.png'/>
-                <h3 class="partyd_name">女性党员数</h3>
+                <div style="height:50px">
+                    <img height="50" width="50"  src='../../../static/img/partywm.png'/>
+                    <h3 class="partyd_name">女性党员数</h3>
+                </div>
                 <i class="partyd_num">{{pmdata.pwoman}}</i>   
             </div>
 
@@ -91,30 +96,23 @@ export default {
 
 <style lang="scss" scoped>
 .party-data{
-    
-    width: 80%;
-    position: absolute;
-
-    left:50%;
-
-    top:50%;
-
-    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items:center; //垂直居中
     background: rgba(0,0,0,.2);
     //background-color: rgb(58, 8, 39);
+    height: 40vh;
 }
 .partytable{
     img{
-        margin-left: 15%;
+        float: left;
     }
 			position: relative;
             margin: 15px 0;
-
 			.partyd_name{
-                position: absolute;
-                top: 15px;
-                margin-bottom: -5px;
-                display: inline-block;
+                margin-top: 12.5px;
+                float: left;
                 font-style: normal;
                 color: white;
 			}

@@ -1,8 +1,6 @@
 <template>
-    <div class="vill_chart">
       <!-- 加载柱状图 并设置图表大小 -->
       <v-chart  :options="polar"  style="width:100%;height:100%;" />    
-    </div>
 </template>
 <script>
 export default {

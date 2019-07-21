@@ -1,6 +1,6 @@
 <template>
 
-        <virtualList :size="33" :remain="8" >
+        <virtualList :size="28" :remain="8" style="height:100%">
             <item v-for="item of items" :key="item.id" v-bind:item="item"  />
         </virtualList>
 
@@ -40,7 +40,7 @@
         }
     }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .item_title{
     color: white;
     height: 20px;

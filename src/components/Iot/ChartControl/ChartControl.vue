@@ -62,7 +62,7 @@ export default {
        options:{
             handler(newVal) { //遍历判断 若都没有则返回-1
                this.nomore=newVal.findIndex(function(value, index, arr) {
-                return value.chartshow ==false;
+                return value.chartshow ==false; //判断条件
                 })   
                 
         },

@@ -1,5 +1,5 @@
 <template>
-      <v-chart  :options="polar" style="width:23vw;height:29vh"/>    
+      <v-chart  :options="polar" style="width:100%;height:100%"/>    
 </template>
 
 <script>
@@ -33,7 +33,7 @@ name: "typechart",
               },
               radiusAxis: {
                   type: 'category',
-                  data: ['0~2', '2~4', '4~6', '6~8','8~10','>10'],
+                  data: [],
                   axisLine:{ //坐标轴轴线相关设置。
                     lineStyle:{
                     color:'#e8e4e4', //坐标轴线线的颜色。
@@ -48,7 +48,7 @@ name: "typechart",
               },
               series: [{
                   type: 'bar',
-                  data: [390,180,960,600,1300,1200],
+                  data: [],
                   coordinateSystem: 'polar'
               }],
               itemStyle: {
@@ -65,8 +65,8 @@ name: "typechart",
     get:function(){ 
             this.$http.get('http://110.53.162.165:5050/api/bp/bl').then(function(res){
                         for (let i = 0; i < res.data.data.length; i++) {
-                          this.polar.serise[1].data[0].value=res.data.data[i].lenth
-                           this.polar.serise[1].data[1].value=res.data.data[i].count
+                          this.polar.radiusAxis.data.push(res.data.data[i].lenth);
+                           this.polar.series[0].data.push(res.data.data[i].count);
 
                             // const tersdata={aname:res.data.data[i].aname,run:res.data.data[i].run,down:res.data.data[i].down}
                             // this.mdata.push(tersdata)

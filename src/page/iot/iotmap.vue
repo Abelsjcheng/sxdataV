@@ -69,8 +69,7 @@ name: "mainmap",
       this.temp.address__province = data.province.value,
       this.temp.address__city = data.city.value,
       this.temp.address__dist = data.area.value,
-
-      this.$store.commit('SET_SELECTPLACE',this.temp.address__dist[0]);
+      this.$store.commit('SET_SELECTPLACE',this.temp.address__city);
       this.center.lng = this.temp.address__dist[1],
       this.center.lat = this.temp.address__dist[2],
       this.zoom = 17

@@ -36,7 +36,6 @@ name: "floatpie",
   data () {
     return {
       terdatas:[],
-      sumdata:{dev:'',run:'',stop:''},
       terdata:{aname:'',sum:0,run:0,down:0,req:0},
     }
   },
@@ -56,7 +55,7 @@ name: "floatpie",
         },
         getallters:function(){
           //发送get请求 获取按照终端地址进行运行状态的分组统计
-            this.$http.get('http://110.53.162.165:5050/api/device/sumtermSort').then(function(res){
+            this.$http.get('http://localhost:5050/api/iot/iotsumters').then(function(res){
                   for (let i = 0,len=res.data.data.length; i < len; i++) {
                   const tdata={aname:res.data.data[i].aname,sum:res.data.data[i].sum,run:res.data.data[i].run,down:res.data.data[i].down,req:res.data.data[i].req}
                   this.terdatas.push(tdata)
@@ -74,18 +73,22 @@ name: "floatpie",
      
   },
   watch:{
-     /* listenselectplace:function(vag){//实时监听状态库中值的改变 
-        for (let i = 0; i < this.mdata.length; i++) {
-            if(vag==this.mdata[i].aname)
+      listenselectplace:function(vag){//实时监听状态库中值的改变 
+        for (let i = 0,len=this.terdatas.length; i < len; i++) {
+            if(vag==this.terdatas[i].aname)
             {
-              this.terdata={aname:this.mdata[i].aname,run:this.mdata[i].run,down:this.mdata[i].down}
+              
+              this.terdata={aname:this.terdatas[i].aname,sum:this.terdatas[i].sum,run:this.terdatas[i].run,down:this.terdatas[i].down,req:this.terdatas[i].req}
             }
+            if(vag==''){
+                    this.get();
+                }
           }
-      }*/
+      }
   },
    mounted:function(){//页面初始化函数
         this.get();
-        
+        this.getallters();
     }
 }
   

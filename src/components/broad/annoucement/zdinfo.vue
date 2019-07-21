@@ -66,6 +66,7 @@ name: "zdinfo",
   }
   .fault_list{
     overflow: scroll;
+    overflow-x: hidden;
     height: 53.5vh;
   }
 </style>

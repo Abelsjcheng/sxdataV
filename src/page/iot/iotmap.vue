@@ -156,7 +156,7 @@ name: "mainmap",
 
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
 .iot_mapview {
   width: 100%;
   height: 59.5vh;
@@ -166,6 +166,13 @@ name: "mainmap",
   position: relative;
   overflow: hidden;
   z-index:0;
+  li{
+    line-height: 26px;
+    font-size: 15px;
+    span{
+      width: 120px;display: inline-block;
+    }
+  }
 }
 
 .clearall-btn{
@@ -183,13 +190,7 @@ name: "mainmap",
 .anchorBL{
 display:none;
 }
-li{
-  line-height: 26px;
-  font-size: 15px;
-  span{
-    width: 120px;display: inline-block;
-  }
-}
+
 #up-map-div{
   width:260px;
   height:44%;

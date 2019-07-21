@@ -5,7 +5,7 @@ import login from '@/page/index/login2'//登录页面（测试页）
 Vue.use(Router)
 
 export default new Router({
-  //base:'/dist/',//部署到tomcat
+  //base:'/sxdataV/',//部署到tomcat
   routes: [
     
     {                     //一级url路径

@@ -55,7 +55,7 @@ name: "floatpie",
         },
         getallters:function(){
           //发送get请求 获取按照终端地址进行运行状态的分组统计
-            this.$http.get('http://localhost:5050/api/iot/iotsumters').then(function(res){
+            this.$http.get('http://110.53.162.165:5050/api/iot/iotsumters').then(function(res){
                   for (let i = 0,len=res.data.data.length; i < len; i++) {
                   const tdata={aname:res.data.data[i].aname,sum:res.data.data[i].sum,run:res.data.data[i].run,down:res.data.data[i].down,req:res.data.data[i].req}
                   this.terdatas.push(tdata)

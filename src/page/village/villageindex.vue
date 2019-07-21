@@ -75,7 +75,7 @@ export default {
     .vii-main {
         background-color: rgb(233, 233, 196);
         padding-top: 15px;
-
+        overflow-x:hidden;
     }
 
     .vii-row {

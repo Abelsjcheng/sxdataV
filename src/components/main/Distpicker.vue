@@ -323,6 +323,7 @@ export default {
     height: 30px;
     top:5px;
     cursor:pointer;
+    font-size: 14px;
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
@@ -330,7 +331,7 @@ export default {
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
 
     option {
-      font-weight: normal;
+      
       display: block;
       white-space: pre;
       min-height: 1.2em;

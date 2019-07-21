@@ -15,13 +15,23 @@
 								<ul class="line">
 									<li v-for="item of tableData" :key="item.id">
 										<div class="fontInner clearfix">
-											<span>{{item.pname}}</span>
+                                            <el-popover
+                                                placement="top-start"
+                                                title="节目名称"
+                                                width="200"
+                                                trigger="hover"
+                                                :content="item.pname" >
+                                                <span slot="reference" style="width:100%">{{item.pname}}</span>
+                                            </el-popover>
+											
 											<span>
 												<sup v-bind:class="[contentclass,item.ptype=='正常播出单'?normalclass:dangerclass]">{{item.ptype}}</sup>
 											</span>
 											<span>{{item.createtime}}</span>
 								            <span>{{item.broaddate}}</span>
 										</div>
+                                        
+
 									</li>
 								</ul>
 								
@@ -123,6 +133,7 @@ export default {
     #FontScroll {
         height:27.5vh;
         overflow:scroll;
+        overflow-x: hidden;
     }
     ul{
         list-style: none;

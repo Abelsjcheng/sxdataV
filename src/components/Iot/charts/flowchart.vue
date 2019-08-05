@@ -7,7 +7,7 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-name: "lineitemstylechart",
+name: "flowchart",
  data () {
     return {
         polar:
@@ -44,13 +44,14 @@ name: "lineitemstylechart",
             axisPointer: {
                 link: {xAxisIndex: 'all'}
             },
-            dataZoom: {
-                show : true,
-                realtime : true,
-                start : 0,
-                end : 100,
-                backgroundColor:'#ffffff'
-            },
+            dataZoom:[{
+                    type:'inside',
+                    
+                    filterMode: 'empty',
+                    start: 0,
+                    end: 100
+
+                }],
             xAxis: {
                 type: 'category',
                  data: [],
@@ -131,7 +132,7 @@ name: "lineitemstylechart",
           handler(vag){  //handler执行具体方法
             if(vag.name=='flow') //
             {
-                //this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit);
+                this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit);
                 this.chartvisible=vag.chartvisible;
             }
         },

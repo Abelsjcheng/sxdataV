@@ -7,7 +7,7 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-name: "radarchart02",
+name: "iotchart",
   data () {
     return {
          polar:{
@@ -36,12 +36,14 @@ name: "radarchart02",
                 }
                 },
                 indicator: [
-                { name: 'charge', max: 11},
-                { name: 'work', max: 2},
-                { name: 'pow1', max: 30},
-                { name: 'grouppower', max: 40},
-                { name: 'v24', max: 40},
-                { name: 'v28', max: 40}
+                { name: '电池1电压', max: 50},
+                { name: '电池组电压', max: 50},
+                { name: '24v输出电压', max: 50},
+                { name: '28v输出电压', max: 50},
+                { name: '18v1输出电压', max: 50},
+                { name: '18v2输出电压', max: 50},
+                { name: '外部电压', max: 50},
+                { name: '太阳能电压;', max: 50}
                 ]
             },
             series: [{
@@ -50,7 +52,7 @@ name: "radarchart02",
                 // areaStyle: {normal: {}},
                 data : [
                     {
-                        value : [1, 2, 23.31, 32.99, 32.99,32.99],
+                        value : [],
                         name : '物联网状态数据'
                     }
                 ]
@@ -61,13 +63,22 @@ name: "radarchart02",
     }
   },
   methods:{
-      getcoldata:function(){ //
+      getcoldata:function(btime,etime,lim,tid){ //
               //发送get请求
                   
-                  this.$http.get('http://www.teavamc.com/api/rivervis/envbytl').then(function (res) {
-                     
-                    this.polar.series[0].data[0].value=res.data[0].pm
-                    
+                  this.$http.get('http://110.53.162.165:5050/api/iot/iotbyitl',
+                  {params :{begintime:btime,endtime:etime,limit:lim,IMEI:tid}}).then(function (res) {
+                    let length=res.data.data.length-1;
+                    this.polar.series[0].data[0].value=[
+                      res.data.data[length].pow1,
+                      res.data.data[length].grouppow,
+                      res.data.data[length].v24,
+                      res.data.data[length].v28,
+                      res.data.data[length].outv1,
+                      res.data.data[length].outv2,
+                      res.data.data[length].extendpow,
+                      res.data.data[length].solarpow
+                      ];
                     
                     })
                     .catch(function (error) {
@@ -85,9 +96,9 @@ name: "radarchart02",
   watch:{
       listenchartSet:{
           handler(vag){  //handler执行具体方法
-            if(vag.name=='pm') //温度表
+            if(vag.name=='iot') //
             {
-                this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit);
+                this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit,987654321123450);
                 this.chartvisible=vag.chartvisible;
             }
         },
@@ -96,7 +107,7 @@ name: "radarchart02",
       }
   },
   mounted:function(){//页面初始化函数
-        this.getcoldata();
+        this.getcoldata("2019-03-17 13:02:31","2019-08-22 15:18:55",20,987654321123450);
 
     }
   

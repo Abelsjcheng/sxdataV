@@ -7,7 +7,15 @@
   >
     <ul :style="listStyle">
       <li v-for="(word, index) in list" :key="index" :style="itemStyle">
-      <a class="list-title">{{word}} </a>
+      <el-popover
+        placement="top-start"
+        title="led内容"
+        width="200"
+        trigger="hover"
+        :content="word" >
+        <a slot="reference" class="list-title">{{word}} </a>
+      </el-popover>
+      
       <em class="list-data">2019-07-10 21:20:29 </em>
       </li>
     </ul>
@@ -187,7 +195,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+
 .vue-swimlane {
   overflow: hidden !important;
 }

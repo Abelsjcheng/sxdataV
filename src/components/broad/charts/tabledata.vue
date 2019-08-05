@@ -78,7 +78,7 @@ name: "tabledata",
         for (let i = 0,len=this.terdatas.length; i < len; i++) {
             if(vag==this.terdatas[i].aname)
             {
-              console.log(vag)
+              
               this.terdata={aname:this.terdatas[i].aname,sum:this.terdatas[i].sum,run:this.terdatas[i].run,down:this.terdatas[i].down,req:this.terdatas[i].req}
             }
             if(vag==''){

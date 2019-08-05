@@ -7,7 +7,7 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-name: "cartesianchart",
+name: "rainchart",
  data () {
     return {
         polar: {

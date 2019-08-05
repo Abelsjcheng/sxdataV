@@ -7,7 +7,7 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-name: "piechart",
+name: "phchart",
   data () {
     return {
     polar: {
@@ -42,7 +42,7 @@ name: "piechart",
                                 width:1,//这里是为了突出显示加上的
                                 }
                             },
-                data: ['2018-04-21 12:37:14', '2018-04-22 12:37:14', '2018-04-23 12:37:14', '2018-04-24 12:37:14', '2018-04-21 12:37:14', '2018-04-21 12:37:14', '2018-04-21 12:37:14']
+                data: []
             },
             yAxis: {
                 type: 'value',
@@ -62,7 +62,7 @@ name: "piechart",
                     type:'line',
                     symbol: 'none',
                     sampling: 'average',
-                    data:[6,8,4,7,2,5,9,3],
+                    data:[],
                     itemStyle: {
                         normal: {
                             color: '#f2c31a'
@@ -87,25 +87,25 @@ name: "piechart",
     }
   },
    methods:{
-      getcoldata:function(){ //
+      getcoldata:function(btime,etime,lim){ //
               //发送get请求
-                  
-                  this.$http.get('http://localhost:8081/RiverVis/api/newpow?id=862105024024824').then(function (res) {
+                  this.polar.series[0].data=[];
+                  this.polar.xAxis.data=[];
+                  this.$http.get('http://110.53.162.165:5050/api/rivervis/envbytl',
+                  {params :{begintime:btime,endtime:etime,limit:lim}}).then(function (res) {
+                      
+                     // console.log(res.data.data[0].temp);
                     
-                    this.polar.series[0].data[0].value=res.data.pow1;
-                    this.polar.series[0].data[1].value=res.data.grouppow;
-                    this.polar.series[0].data[2].value=res.data.v24;
-                    this.polar.series[0].data[3].value=res.data.v28;
-                    this.polar.series[0].data[4].value=res.data.outv1;
-                    this.polar.series[0].data[5].value=res.data.outv2;
-                    this.polar.series[0].data[6].value=res.data.extendpow;
-                    this.polar.series[0].data[7].value=res.data.solarpow;
+                      for (let i = 0; i<res.data.data.length; i++) {
+                            this.polar.series[0].data.push(res.data.data[i].ph);
+                            this.polar.xAxis.data.push(res.data.data[i].time);
+                          }
+                       
                     })
                     .catch(function (error) {
                       console.log(error);
-                    });
-             
-      }
+                    });  
+      },
   },
   computed: { //计算属性 取存在状态库中的值
      ...mapGetters(["chartSet"]),
@@ -127,7 +127,7 @@ name: "piechart",
       }
   },
   mounted:function(){//页面初始化函数
-        this.getpowdata();
+        this.getcoldata("2019-03-17 13:02:31","2019-03-22 15:18:55",20);
     }
   
 }

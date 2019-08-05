@@ -1,65 +1,60 @@
 <template>
-    <div class="iot_char" v-show="chartvisible">
-      <v-chart  :options="polar" style="width:100%;height:29vh"/>    
+    <div class="iot_char_right" v-show="chartvisible">
+      <v-chart  :options="polar" style="width:20vw;height:29vh"/>    
     </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 export default {
-name: "linechart2",
+name: "tempAhumchart",
   data () {
     return {
-      polar: {
+
+    polar: {
             title: {
                 text: '温湿度数据',
                 x: 'center',
                 textStyle:{
-                    color: '#ffffff'
+                   color: '#ffffff'
                 }
             },
+            
+            toolbox: {
+                show: true,
+                 right: 10, //toolbox的定位位置
+                feature: {
+                    
+                    dataView: {readOnly: false},
+                    magicType: {type: ['line', 'bar']},
+                }
+            },
+             tooltip : {
+                trigger: 'axis',
+                axisPointer: {
+                type: 'cross',
+                animation: false,
+                label: {
+                       backgroundColor: '#505765'
+            }
+        }
+    },
             legend: {
                 data:['温度','湿度'],
                 x: 'left', 
-                    textStyle: {  //组件每项颜色
+                 textStyle: {  //组件每项颜色
                         color: ['#1FC06E','#396CC0']
                     }
-                
             },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    animation: false
-                }
-            },
-          /*  
-            toolbox: {
-                show: true,
-                 right: 20, //toolbox的定位位置
-                iconStyle:{
-                        color:'#ffffff'
-                },
-                feature: {
-                    dataZoom: {
-                        yAxisIndex: 'none'
-                    },
-                    dataView: {readOnly: false},
-                    magicType: {type: ['line', 'bar']},
-                    restore: {},
-                    saveAsImage: {}
-                }
-            },*/
-            axisPointer: {
-                link: {xAxisIndex: 'all'}
-            },
-            dataZoom: {
-                show : true,
-                realtime : true,
-                start : 0,
-                end : 100,
-                backgroundColor:'#ffffff'
-            },
-            
+             dataZoom:[{
+                    type:'inside',
+                    
+                    filterMode: 'empty',
+                    start: 0,
+                    end: 100
+
+                }],
+    
             xAxis: {
                 type: 'category',
                 data: [],
@@ -73,7 +68,7 @@ name: "linechart2",
             },
             yAxis: [
                 {
-                    name : '温度(c)',
+                    name : '温度(/°C)',
                     type : 'value',
                     max : 50,
                     axisLine:{
@@ -100,20 +95,22 @@ name: "linechart2",
                     name:'温度',
                     symbolSize: 8,
                     hoverAnimation: false,
-                    data: [],
+                    data: [22,23,23,37,40,32,27,28],
                     type: 'line'
+                    
                 },
                 {
                     name:'湿度',
                     yAxisIndex:1,
                     symbolSize: 8,
                     hoverAnimation: false,
-                    data: [],
+                    data: [ 99,23,54,67,44,86,55],
                     type: 'line'
+                
                 }
             ]
        },
-       chartvisible:false 
+       chartvisible:false
     }
   },
   methods:{
@@ -138,7 +135,9 @@ name: "linechart2",
                       console.log(error);
                     });  
       },
-
+      LopTime(){
+        setInterval(this.getcoldata,10000)   //目前用定时器进行ajax轮询 ，后期用websocket
+      },
   },
   computed: { //计算属性 取存在状态库中的值
      ...mapGetters(["chartSet"]),
@@ -161,7 +160,7 @@ name: "linechart2",
   },
   mounted:function(){//页面初始化函数
         this.getcoldata("2019-03-17 13:02:31","2019-03-22 15:18:55",20);
-
+        //this.LopTime();
     }
   
   

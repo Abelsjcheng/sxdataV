@@ -238,16 +238,23 @@ name: "mainmap",
 
 }
 </script>
-<style lang="scss">
+<style lang="scss" >
 .bm-view {
   width: 100%;
-  height: 50vh;
+  height: 55vh;
 
 }
 .m_center2{
   position: relative;
   overflow: hidden;
   z-index:0;
+    li{
+    line-height: 26px;
+    font-size: 15px;
+    span{
+      width: 100px;display: inline-block;
+    }
+  }
 }
 
 .clearall-btn{
@@ -265,11 +272,5 @@ name: "mainmap",
 .anchorBL{
 display:none;
 }
-li{
-  line-height: 26px;
-  font-size: 15px;
-  span{
-    width: 100px;display: inline-block;
-  }
-}
+
 </style>

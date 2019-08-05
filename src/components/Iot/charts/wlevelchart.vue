@@ -7,7 +7,7 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-name: "basicareachart",
+name: "wlevelchart",
  data () {
     return {
         polar:
@@ -25,7 +25,14 @@ name: "basicareachart",
                     animation: false
                 }
             },
-            
+            dataZoom:[{
+                    type:'inside',
+                    
+                    filterMode: 'empty',
+                    start: 0,
+                    end: 100
+
+                }],
            xAxis: {
                 type: 'category',
                 boundaryGap: false,
@@ -92,7 +99,8 @@ name: "basicareachart",
           handler(vag){  //handler执行具体方法
             if(vag.name=='wlevel') //
             {
-                //this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit);
+             
+                this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit);
                 this.chartvisible=vag.chartvisible;
             }
         },

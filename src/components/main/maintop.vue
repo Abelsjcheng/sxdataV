@@ -17,15 +17,15 @@
                   <span slot="title">山洪灾害数据可视化</span>
             </el-menu-item>
         </el-menu>
-				<div class="heading">融媒体综合数据平台</div>
+				<div class="heading">农村信息综合数据展示平台</div>
 				<div class="bar">
-          <el-tooltip effect="dark" :content="isdisplay?'隐藏图表':'显示图表'"  placement="bottom">
+         <!-- <el-tooltip effect="dark" :content="isdisplay?'隐藏图表':'显示图表'"  placement="bottom">
             <div class="top-bar__item">
               <i @click="handledisplay">
                 <img height="20" width="20" src='../../static/img/display.png' alt="" />
               </i>
             </div>
-          </el-tooltip>
+          </el-tooltip>--> 
           <el-tooltip effect="dark" :content="isFullScren?'退出全屏':'全屏'" placement="bottom">
             <div class="top-bar__item">
               <i :class="isFullScren?'icon-tuichuquanping':'icon-quanping'"
@@ -39,8 +39,9 @@
               <mapTheme></mapTheme>
             </div>
           </el-tooltip>
+         
 					<i><img  src='../../static/img/uesrname.png' alt="" /></i>
-					<span>欢迎您</span><em>|</em><span>施景程</span>
+					<span>欢迎您</span> <em>|</em><span>程程</span>
 					<button class="logout_btn" ><router-link to="/">首页</router-link></button>
 				</div>
     </div>

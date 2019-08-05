@@ -9,7 +9,7 @@
         <div class="flex-item_l" id="l3"><linechart /></div>
       <!-- </div> -->
     </el-aside>
-    <el-container id="con2">
+    <el-container class="con2">
         <el-main>
           <div class="flex-item_m"><mainmap/></div>
         </el-main>
@@ -98,6 +98,9 @@ export default {
     background-color: #040f3c;
     height:100%;
     width: 100%;
+  }
+  .con2{
+    width:100%
   }
 .el-main{
   overflow: hidden;

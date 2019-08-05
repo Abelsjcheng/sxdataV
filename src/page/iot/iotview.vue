@@ -1,9 +1,9 @@
 <template>  
     <el-container class="iot_overview">
       <el-aside width="21.2vw" class="aside_left">
-        <cartesianchart/>
-        <basicareachart/>
-        <lineitemstylechart/>
+        <rainchart/>
+        <wlevelchart/>
+        <flowchart/>
         
       </el-aside>
       <el-container>
@@ -15,35 +15,35 @@
           </el-row>
           <el-row :gutter="10">
             <el-col :span="12"><div class="iot_info"><warninfo/></div></el-col> <!-- 预警模块 -->
-            <el-col :span="12"><div class="iot_camera"><radarchart02 /></div></el-col> <!-- 终端信息模块 -->
+            <el-col :span="12"><div class="iot_info"><iotchart /></div></el-col> <!-- 终端信息模块 -->
 
           </el-row>
         </el-main>
       </el-container>
       <el-aside width="21.2vw" class="aside_right">
-        <linechart />
-        <radarchart/>
-        <piechart/>
+        <tempAhumchart />
+        <pmchart/>
+        <phchart/>
       </el-aside>
     </el-container>
 
 </template>
 
 <script>
-import radarchart02 from '@/components/Iot/charts/radarchart02'//终端信息
+import iotchart from '@/components/Iot/charts/iotchart'//终端信息
 
 import mainmap from './iotmap' //百度地图层
-import linechart from '@/components/Iot/charts/linechart'//温湿度折线图
-import cartesianchart from '@/components/Iot/charts/cartesianchart' //雨量图
-import lineitemstylechart from '@/components/Iot/charts/lineitemstylechart' //流量图
-import basicareachart from '@/components/Iot/charts/basicareachart'//水位图
+import tempAhumchart from '@/components/Iot/charts/tempAhumchart'//温湿度折线图
+import rainchart from '@/components/Iot/charts/rainchart' //雨量图
+import flowchart from '@/components/Iot/charts/flowchart' //流量图
+import wlevelchart from '@/components/Iot/charts/wlevelchart'//水位图
 import ChartControl from '@/components/Iot/ChartControl/ChartControl' //图表控制器
-import piechart from '@/components/Iot/charts/piechart' //河水酸碱度
-import radarchart from '@/components/Iot/charts/radarchart' //PM2.5浓度变化图
+import phchart from '@/components/Iot/charts/phchart' //河水酸碱度
+import pmchart from '@/components/Iot/charts/pmchart' //PM2.5浓度变化图
 import warninfo from '@/components/Iot/annoucement/warninfo' //预警模块
 import { mapGetters } from 'vuex';
 export default {
-  components: {radarchart02,mainmap,linechart,ChartControl,cartesianchart,lineitemstylechart,basicareachart,piechart,radarchart,warninfo
+  components: {iotchart,mainmap,tempAhumchart,ChartControl,rainchart,flowchart,wlevelchart,phchart,pmchart,warninfo
     },
   name: 'Iotmain',
   data () {
@@ -75,7 +75,7 @@ export default {
 <style lang="scss" >
 .iot_overview{
   background-color: #040f3c;
-  height:92vh;
+  height:100%;
 }
 
 .aside_left {
@@ -112,16 +112,12 @@ export default {
   }
   .iot_info{
     height: 30vh;
+    margin: 10px 0;
     border-radius: 4px;
     box-sizing: border-box;
     border: 2px solid #016ae0;
   }
-  .iot_camera{
-    height: 30vh;
-    border-radius: 4px;
-    box-sizing: border-box;
-    border: 2px solid #016ae0;
-  }
+  
 
   
 

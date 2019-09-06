@@ -25,9 +25,15 @@
                 <img height="20" width="20" src='../../static/img/display.png' alt="" />
               </i>
             </div>
-          </el-tooltip>--> 
+          </el-tooltip>-->
+          <select id="choice" @change="streetChange()">
+            <option id="street" value="镇/街道">镇/街道</option>
+            <option id="street" value="星沙街道">星沙街道</option>
+            <option id="street" value="暮云镇">暮云镇</option>
+            <option id="street" value="高桥镇">高桥镇</option>
+          </select> 
           <el-tooltip effect="dark" :content="isFullScren?'退出全屏':'全屏'" placement="bottom">
-            <div class="top-bar__item">
+            <div class="top-bar_item">
               <i :class="isFullScren?'icon-tuichuquanping':'icon-quanping'"
                 @click="handleScreen">
                 <img height="20" width="20" src='../../static/img/quanping.png' alt="" />
@@ -46,12 +52,12 @@
 				</div>
     </div>
 </template>
-
 <script>
 import mapTheme from "./map-theme";
 import { mapGetters } from 'vuex';
 import { fullscreenToggel, listenfullscreen } from "@/util/util";
 let moment = require("moment");//直接引入组件
+
 export default {
   name: 'maintop',
   data () {
@@ -63,6 +69,35 @@ export default {
   props:['id'],
   components: {mapTheme},//注册组件
   methods:{
+    getUserIP(onNewIP) {
+            let MyPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+            let pc = new MyPeerConnection({
+                iceServers: []
+            });
+            let noop = () => {
+            };
+            let localIPs = {};
+            let ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g;
+            let iterateIP = (ip) => {
+            if (!localIPs[ip]) 
+                onNewIP(ip);
+                localIPs[ip] = true;
+            };
+            pc.createDataChannel('');
+            pc.createOffer().then((sdp) => {
+            sdp.sdp.split('\n').forEach(function (line) {
+                if (line.indexOf('candidate') < 0) return;
+                line.match(ipRegex).forEach(iterateIP);
+            });
+            pc.setLocalDescription(sdp, noop, noop);
+            }).catch((reason) => {
+            });
+            pc.onicecandidate = (ice) => {
+                if (!ice || !ice.candidate || !ice.candidate.candidate || !ice.candidate.candidate.match(ipRegex)) return;
+                ice.candidate.candidate.match(ipRegex).forEach(iterateIP);
+            };
+           
+        },
     login:function(){
         window.location.href="http://110.53.162.165:5050/"
     },
@@ -87,10 +122,34 @@ export default {
     open (menupath) {
 
       this.$router.push(menupath)
+    },
+    streetChange(){  
+      var myselect=document.getElementById("choice");
+      var opt= myselect.options[myselect.selectedIndex].value;
+      var aid;
+      if(opt){
+        if(opt=='镇/街道'){
+            console.log('镇/街道');
+            aid=430000;
+        }
+        if(opt=='星沙街道'){
+            console.log('星沙街道');
+            aid=430100;
+        }
+        if(opt=='暮云镇'){
+            console.log('暮云镇');
+            aid=430400;
+        }
+        if(opt=='高桥镇'){
+            console.log('高桥镇');
+            aid=431200;
+        }
+        this.$store.commit("SET_SELECTAID",aid);
+      }
     }
-    
 
   },
+ 
   computed:{
     ...mapGetters(["isFullScren"]),
     ...mapGetters(["isdisplay"]),
@@ -98,8 +157,31 @@ export default {
   mounted:function(){//页面初始化函数
       //this.LopTime();
       listenfullscreen(this.setScreen); 
+       this.getUserIP((ip) => {
+            this.ip = ip;
+            console.log(ip); 
+            this.$store.commit('SET_SELECTIP',ip);
+      });
   }
-}
+};
+
+
 </script>
+
+<style scoped>
+select {
+    background: rgba(0,0,0,0.3);
+    border: #194b78 solid 1px;
+    border-radius: 13px;
+    color: #dddddd;
+    padding: 0px 10px;
+    margin:0 10px;
+    height: 26px;
+    font-size: 14px;
+    }
+    option {
+      display: block;
+    }
+</style>
 
 

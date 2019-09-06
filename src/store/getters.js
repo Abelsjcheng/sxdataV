@@ -9,5 +9,7 @@ const getters = {
     chartSet: state => state.common.chartSet,//图表数据配置
     warnlocate:state => state.common.warnlocate,//预警信息定位
     newpartyaffairs:state => state.common.newpartyaffairs,//党务公开热点新闻，用于轮播
+    selectaid:state => state.common.selectaid,//页面区段号传递
+    selectip:state => state.common.selectip,//获取IP号传递
     }
 export default getters

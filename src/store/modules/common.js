@@ -15,6 +15,8 @@ const common = {
         chartSet: getStore({ name: 'chartSet' }) || '',
         warnlocate:getStore({name:'warnlocate'}) || '',
         newpartyaffairs:getStore({name:'newpartyaffairs'}) || '',
+        selectaid:getStore({name:'selectaid'}) || '',
+        selectip:getStore({name:'selectip'}) || '',
     },
     actions: {
         //获取字典公用类
@@ -95,6 +97,20 @@ const common = {
                 content:state.newpartyaffairs,
             })
         },
+        SET_SELECTAID: (state, selectaid) => {
+            state.selectaid = selectaid;
+            setStore({
+                name: 'selectaid',
+                content: state.selectaid,
+            })
+        }, 
+        SET_SELECTIP: (state, selectip) => {
+            state.selectip = selectip;
+            setStore({
+                name: 'selectip',
+                content: state.selectip,
+            })
+        }, 
     }
 }
 export default common

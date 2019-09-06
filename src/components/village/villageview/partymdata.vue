@@ -37,28 +37,18 @@ export default {
     name: 'partymdata',
     data () {
         return {
-        pmdatas:[],
-        pmdata:{parea:'',psum:0,pman:0,pwoman:0}
+        pmdata:{psum:'',man:'',woman:''}
         }
     },
     methods: {
         
-        getPartydata:function(){ 
-
-                this.$http.get('http://110.53.162.165:5050/api/count/p_m').then(function(res){  
-                                this.pmdata.psum=res.data.data[0].psum;
-                                this.pmdata.pman=res.data.data[0].pman;
-                                this.pmdata.pwoman=res.data.data[0].pwoman;
-
-                                                    
-                            },function(){
-                        console.log('请求失败处理');
-                    });
+        getPartydata:function(selectip){
                 this.$http.get('http://110.53.162.165:5050/api/count/pm').then(function(res){
                         for (let i = 0; i < res.data.data.length; i++) {
-                          
-                            const pdata={parea:res.data.data[i].parea,psum:res.data.data[i].psum,pman:res.data.data[i].man,pwoman:res.data.data[i].woman}
-                            this.pmdatas.push(pdata)
+                            this.pmdata.psum=res.data.data[j].psum;
+                            this.pmdata.pman=res.data.data[j].man;
+                            this.pmdata.pwoman=res.data.data[j].woman;
+                            
                           }
                         },function(){
                     console.log('请求失败处理');
@@ -70,6 +60,10 @@ export default {
         listenselectplace(){ //返回状态库中的值
         return this.selectplace;
         },
+        ...mapGetters(["selectip"]),
+        listenselectip(){  
+            return this.selectip;
+     },
         
     },
     watch:{
@@ -89,7 +83,7 @@ export default {
             }      
     },
      mounted:function(){//页面初始化函数
-        this.getPartydata();
+        this.getPartydata(this.selectip);
     }
 }
 </script>

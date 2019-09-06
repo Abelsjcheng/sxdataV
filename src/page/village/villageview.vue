@@ -57,19 +57,17 @@ export default {
     },
   name: 'villagemain',
   data () {
-    return {
-
-    };
   },
   methods:{
-    
   },
   computed: { //计算属性 取存在状态库中的值
 
   },
   watch:{
 
-  }
+  },
+  mounted:function(){//页面初始化函数
+    }
 
 }
 </script>

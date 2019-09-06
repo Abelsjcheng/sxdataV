@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     data () {
         return {
@@ -19,30 +20,35 @@ export default {
     },
     methods: {
         
-        getPartywdata:function(){ 
-
-                this.$http.get('http://110.53.162.165:5050/api/pwork/five').then(function(res){  
-                                this.pwdata.grouptype=res.data.data[0].grouptype;
-                                this.pwdata.uname=res.data.data[0].uname;
-                                this.pwdata.worktime=res.data.data[0].worktime; 
-                                this.pwdata.phone=res.data.data[0].phone;                   
-                                this.pwdata.address=res.data.data[0].address;
-                                this.pwdata.content=res.data.data[0].content;
-                            },function(){
+        getPartywdata:function(selectip){
+                this.$http.get('http://110.53.162.165:5050/api/pwork/five').then(function(res){
+                      for (let i = 0; i<res.data.data.length; i++) {
+                         if(res.data.data[i].id==j){
+                                this.pwdata.grouptype=res.data.data[i].grouptype;
+                                this.pwdata.uname=res.data.data[i].uname;
+                                this.pwdata.worktime=res.data.data[i].worktime; 
+                                this.pwdata.phone=res.data.data[i].phone;                   
+                                this.pwdata.address=res.data.data[i].address;
+                                this.pwdata.content=res.data.data[i].content;
+                          }
+                     }
+                },function(){
                         console.log('请求失败处理');
                     });
                 
             }
     }, 
     computed: { //计算属性 取存在状态库中的值
-        
+        ...mapGetters(["selectip"]),
+        listenselectip(){  
+            return this.selectip;
+     },
         
     },
-    watch:{
-            
+    watch:{   
     },
      mounted:function(){//页面初始化函数
-        this.getPartywdata();
+        this.getPartywdata(this.selectip);
     }
 }
 </script>

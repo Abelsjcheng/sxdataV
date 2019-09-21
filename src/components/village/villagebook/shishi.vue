@@ -7,6 +7,7 @@
     </div>
 </template>
 <script>
+    import { mapGetters } from 'vuex';
     import item from './item.vue'
     import virtualList from 'vue-virtual-scroll-list'
 
@@ -19,19 +20,21 @@
         },
         components: { item, virtualList },
         methods: {
-            getPhddata:function(){ 
+            getPhddata:function(selectaid){ 
 
                 this.$http.get('http://110.53.162.165:5050/api/party/shishiAll').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
-                                    const info={
-                                        date:res.data.data[i].adddate,//日期
-                                        title:res.data.data[i].title,//标题
-                                        content:res.data.data[i].content,//内容
-                                        type:res.data.data[i].type,//类型
-                                        uname:res.data.data[i].uname,//信息发布人
-                                        pic:res.data.data[i].pic}//图片
-                                    
-                                    this.tableData.push(info) //存入json数组
+                                     if(res.data.data[i].aid==selectaid){
+                                        const info={
+                                            date:res.data.data[i].adddate,//日期
+                                            title:res.data.data[i].title,//标题
+                                            content:res.data.data[i].content,//内容
+                                            type:res.data.data[i].type,//类型
+                                            uname:res.data.data[i].uname,//信息发布人
+                                            pic:res.data.data[i].pic}//图片
+                                        
+                                        this.tableData.push(info) //存入json数组
+                                    }
                                 }
                             },function(){
                         console.log('请求失败处理');
@@ -40,15 +43,18 @@
             }
             
         }, 
-        computed: { //计算属性 取存在状态库中的值
-            
-            
+      computed: { //计算属性 取存在状态库中的值
+            ...mapGetters(["selectaid"]),
+            listenselectaid() {
+            return this.selectaid;
+            },
         },
         watch:{
-                
+            listenselectaid (vag) {
+            },    
         },
-        mounted:function(){//页面初始化函数
-        this.getPhddata();
+        mounted:function(){
+            this.getPhddata(this.selectaid);
         }
     }
 </script>

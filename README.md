@@ -1,4 +1,4 @@
-# sjcvue
+# sxdataV
 
 > 基于Vue框架的农村信息综合数据展示平台   
 > 作者：sjcheng   

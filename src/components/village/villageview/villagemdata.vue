@@ -40,7 +40,7 @@ export default {
                                 this.vmdata.vsum=res.data.data[0].msum;
                                 this.vmdata.vman=res.data.data[0].mman;
                                 this.vmdata.vwoman=res.data.data[0].mwoman;
-
+                                console.log(res.data.data);
                                                     
                             },function(){
                         console.log('请求失败处理');

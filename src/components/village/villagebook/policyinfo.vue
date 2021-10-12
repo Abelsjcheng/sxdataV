@@ -28,6 +28,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   export default {
     data() {
       return {
@@ -37,10 +38,11 @@
     },
     methods: {
         
-        getpolicyinfo:function(){ 
+        getpolicyinfo:function(selectaid){ 
 
                 this.$http.get('http://110.53.162.165:5050/api/policy/infoAll').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
+                                  if(res.data.data[i].aid==selectaid){
                                     const info={
                                       title:res.data.data[i].title,
                                       type:res.data.data[i].type,
@@ -50,23 +52,27 @@
                                       pic:res.data.data[i].pic
                                       }
                                     this.tableData.push(info) //存入json数组
-                                }
+                                  }
+                               }
                             },function(){
                         console.log('请求失败处理');
                     });
                 
             }
     }, 
-    computed: { //计算属性 取存在状态库中的值
-        
-        
-    },
-    watch:{
-            
-    },
-     mounted:function(){//页面初始化函数
-        this.getpolicyinfo();
+     computed: { //计算属性 取存在状态库中的值
+            ...mapGetters(["selectaid"]),
+            listenselectaid() {
+            return this.selectaid;
+            },
+        },
+        watch:{
+            listenselectaid (vag) {
+            },    
+        },
+        mounted:function(){
+            this.getpolicyinfo(this.selectaid);
+        }
     }
-}
 </script>
 

@@ -71,30 +71,14 @@ name: "rainchart",
     }
  },
  methods:{
-    //  build(){
-    //         this.polar.xAxis.data= ['周一','周二','周三','周四','周五','周六','周天'];
-            
-    //         this.polar.series[0].data = this.polar.xAxis.data.map(function (item, i) {
-    //             return Math.round(Math.random() * 50 * (i + 1));
-    //         });
-    //         this.polar.series[0].links = this.polar.series[0].data.map(function (item, i) {
-    //             return {
-    //                 source: i,
-    //                 target: i + 1
-    //             };
-    //         });
-    //  },
-    getcoldata:function(selectip){ //
+    getcoldata:function(selectaid,btime,etime,lim){ //
               //发送get请求
                   this.polar.series[0].data=[];
-                  this.polar.xAxis.data= ['周一','周二','周三','周四','周五','周六','周天'];
-                  
-                  this.$http.get('http://localhost:8080/tccp/user/getAllUser').then(function (res) {
-                    //   console.log(selectip);
-                      for (let i = 0; i<res.data.length; i++) {
-                          if(res.data[i].ip==selectip){
-                            this.polar.series[0].data.push(res.data[i].rain);
-                            // this.polar.xAxis.data.push(res.data[i].time);
+                  this.polar.xAxis.data=['周一','周二','周三','周四','周五','周六','周天'];
+                  this.$http.get('http://110.53.162.165:5050/api/rivervis/envbytl',{params :{begintime:btime,endtime:etime,limit:lim}}).then(function (res) {
+                      for (let i = 0; i<res.data.data.length; i++) {
+                         if(res.data.data[i].aid==selectaid){
+                            this.polar.series[0].data.push(res.data.data[i].rain);
                             this.polar.series[0].links = this.polar.series[0].data.map(function (item, i) {
                                 return {
                                     source: i,
@@ -110,27 +94,29 @@ name: "rainchart",
                
              
       },
+      LopTime(){
+        setInterval(this.getcoldata,10000)   //目前用定时器进行ajax轮询 ，后期用websocket
+      },
  },
  computed: { //计算属性 取存在状态库中的值
      ...mapGetters(["chartSet"]),
      listenchartSet(){  //监听 chartSet值的变化
        return this.chartSet;
      },
-    ...mapGetters(["selectip"]),
-    listenselectip(){  
-      return this.selectip;
+     ...mapGetters(["selectaid"]),
+    listenselectaid(){  
+      return this.selectaid;
     },
   },
   watch:{
-    listenselectip (vag) {
-    //   console.log(vag);
-        this.getcoldata(vag);
+      listenselectaid (vag) {
+        // this.getcoldata(vag,"2019-03-16 13:02:31","2019-03-24 15:18:55",20);
     },
       listenchartSet:{
           handler(vag){  //handler执行具体方法
             if(vag.name=='rain') //
             {
-                //this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit);
+                this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit);
                 this.chartvisible=vag.chartvisible;
             }
         },
@@ -139,8 +125,7 @@ name: "rainchart",
       }
   },
  mounted:function(){
-     this.getcoldata(this.selectip);
-     //this.getcoldata("2019-03-18 13:02:31","2019-03-24 15:18:55",20);
+     this.getcoldata(this.selectaid,"2019-03-16 13:02:31","2019-03-24 15:18:55",50);
  }
 }
 </script>

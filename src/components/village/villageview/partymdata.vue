@@ -37,18 +37,28 @@ export default {
     name: 'partymdata',
     data () {
         return {
-        pmdata:{psum:'',man:'',woman:''}
+        pmdatas:[],
+        pmdata:{parea:'',psum:0,pman:0,pwoman:0}
         }
     },
     methods: {
         
-        getPartydata:function(selectip){
+        getPartydata:function(){ 
+
+                this.$http.get('http://110.53.162.165:5050/api/count/p_m').then(function(res){  
+                                this.pmdata.psum=res.data.data[0].psum;
+                                this.pmdata.pman=res.data.data[0].pman;
+                                this.pmdata.pwoman=res.data.data[0].pwoman;
+
+                                                    
+                            },function(){
+                        console.log('请求失败处理');
+                    });
                 this.$http.get('http://110.53.162.165:5050/api/count/pm').then(function(res){
                         for (let i = 0; i < res.data.data.length; i++) {
-                            this.pmdata.psum=res.data.data[j].psum;
-                            this.pmdata.pman=res.data.data[j].man;
-                            this.pmdata.pwoman=res.data.data[j].woman;
-                            
+                          
+                            const pdata={parea:res.data.data[i].parea,psum:res.data.data[i].psum,pman:res.data.data[i].man,pwoman:res.data.data[i].woman}
+                            this.pmdatas.push(pdata)
                           }
                         },function(){
                     console.log('请求失败处理');
@@ -58,14 +68,13 @@ export default {
     computed: { //计算属性 取存在状态库中的值
         ...mapGetters(["selectplace"]),
         listenselectplace(){ //返回状态库中的值
-        return this.selectplace;
+            return this.selectplace;
         },
-        ...mapGetters(["selectip"]),
-        listenselectip(){  
-            return this.selectip;
-     },
-        
-    },
+        ...mapGetters(["selectaid"]),
+        listenselectaid() {
+            return this.selectaid;
+        },
+},
     watch:{
         listenselectplace:function(vag){//实时监听状态库中值的改变 
                 for (let i = 0; i < this.pmdatas.length; i++) {
@@ -83,7 +92,8 @@ export default {
             }      
     },
      mounted:function(){//页面初始化函数
-        this.getPartydata(this.selectip);
+        this.getPartydata();
+        console.log(this.selectaid); 
     }
 }
 </script>

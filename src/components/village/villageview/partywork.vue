@@ -20,37 +20,39 @@ export default {
     },
     methods: {
         
-        getPartywdata:function(selectip){
+        getPartywdata:function(selectaid){ 
+
                 this.$http.get('http://110.53.162.165:5050/api/pwork/five').then(function(res){
-                      for (let i = 0; i<res.data.data.length; i++) {
-                         if(res.data.data[i].id==j){
-                                this.pwdata.grouptype=res.data.data[i].grouptype;
-                                this.pwdata.uname=res.data.data[i].uname;
-                                this.pwdata.worktime=res.data.data[i].worktime; 
-                                this.pwdata.phone=res.data.data[i].phone;                   
-                                this.pwdata.address=res.data.data[i].address;
-                                this.pwdata.content=res.data.data[i].content;
-                          }
-                     }
-                },function(){
+                    for (let i = 0; i < res.data.data.length; i++) {
+                        if(res.data.data[i].aid==selectaid){ 
+                                    this.pwdata.grouptype=res.data.data[i].grouptype;
+                                    this.pwdata.uname=res.data.data[i].uname;
+                                    this.pwdata.worktime=res.data.data[i].worktime; 
+                                    this.pwdata.phone=res.data.data[i].phone;                   
+                                    this.pwdata.address=res.data.data[i].address;
+                                    this.pwdata.content=res.data.data[i].content;
+                                    }
+                                }
+                            },function(){
                         console.log('请求失败处理');
                     });
                 
             }
     }, 
-    computed: { //计算属性 取存在状态库中的值
-        ...mapGetters(["selectip"]),
-        listenselectip(){  
-            return this.selectip;
-     },
-        
-    },
-    watch:{   
-    },
-     mounted:function(){//页面初始化函数
-        this.getPartywdata(this.selectip);
+      computed: { //计算属性 取存在状态库中的值
+            ...mapGetters(["selectaid"]),
+            listenselectaid() {
+            return this.selectaid;
+            },
+        },
+        watch:{
+            listenselectaid (vag) {
+            },    
+        },
+        mounted:function(){
+            this.getPartywdata(this.selectaid);
+        }
     }
-}
 </script>
 
 <style lang="scss">

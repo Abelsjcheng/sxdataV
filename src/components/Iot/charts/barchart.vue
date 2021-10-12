@@ -147,22 +147,22 @@ name: "barchart",
     }
   },
   methods:{
-      getcoldata:function(selectaid){ //
+      getcoldata:function(btime,etime,lim){ //
               //发送get请求
                   var datalength;
                   this.polar.series[0].data=[];
                   this.polar.series[1].data=[];
                   this.polar.xAxis.data=[];
-                  this.$http.get('http://localhost:8080/tccp/user/getAllUser').then(function (res) {
+                  this.$http.get('http://110.53.162.165:5050/api/rivervis/envbytl',
+                  {params :{begintime:btime,endtime:etime,limit:lim}}).then(function (res) {
 
                       for (let i = 0; i<res.data.data.length; i++) {
-                          if(res.data[i].aid==selectaid){
                             this.polar.series[0].data.push(res.data.data[i].rain);
                             this.polar.series[1].data.push(res.data.data[i].wlevel);
 
                             this.polar.xAxis.data.push(res.data.data[i].time)
                           }
-                      } 
+                          
                     })
                     .catch(function (error) {
                       console.log(error);
@@ -171,20 +171,12 @@ name: "barchart",
       }
   },
   computed: { //计算属性 取存在状态库中的值
-     ...mapGetters(["selectaid"]),
      ...mapGetters(["chartSet"]),
      listenchartSet(){  //监听 chartSet值的变化
        return this.chartSet;
-     },
-      listenselectaid () {
-      return this.selectaid;
-    },
+     }
   },
   watch:{
-       listenselectaid (vag) {
-    //   console.log(vag);
-    this.getcoldata(vag);
-    },
       listenchartSet:{
           handler(vag){  //handler执行具体方法
             if(vag.name=='rain') //

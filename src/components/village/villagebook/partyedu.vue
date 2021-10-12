@@ -15,6 +15,7 @@
     </div>
 </template>
 <script>
+    import { mapGetters } from 'vuex';
     import item from './item.vue'
     import virtualList from 'vue-virtual-scroll-list'
 
@@ -30,25 +31,25 @@
         },
         components: { item, virtualList },
         methods: {
-            getPhddata:function(){ 
-
-                this.$http.get('http://110.53.162.165:5050/api/party/eduAll').then(function(res){  
-                                if(res.data.data.length<8)
-                                this.pageSize=res.data.data.length;
+            getPhddata:function(selectaid){ 
+                var j=0;
+                this.$http.get('http://110.53.162.165:5050/api/party/eduAll').then(function(res){ 
                                 for (let i = 0; i < res.data.data.length; i++) {
-                                    const info={
-                                        date:res.data.data[i].adddate,//日期
-                                        title:res.data.data[i].courtit,//课程名称
-                                        courass:res.data.data[i].courass,//课程地址
-                                        content:res.data.data[i].coursum,//课程介绍
-                                        pic:res.data.data[i].courpic,//图片
-                                        uname:res.data.data[i].uname,//信息发布人
-                                        };//图片
-                                    this.tableData.push(info) //存入json数组
-                                    if(i<this.pageSize){
-                                        this.infolist.push(info);
-                                    }
-                                    
+                                    if(res.data.data[i].aid==selectaid){
+                                        j=j+1;
+                                        const info={
+                                            date:res.data.data[i].adddate,//日期
+                                            title:res.data.data[i].courtit,//课程名称
+                                            courass:res.data.data[i].courass,//课程地址
+                                            content:res.data.data[i].coursum,//课程介绍
+                                            pic:res.data.data[i].courpic,//图片
+                                            uname:res.data.data[i].uname,//信息发布人
+                                            };//图片
+                                        this.tableData.push(info) //存入json数组
+                                        if(j<=this.pageSize){
+                                            this.infolist.push(info);
+                                        }
+                                    } 
                                 }
                             },function(){
                         console.log('请求失败处理');
@@ -70,14 +71,17 @@
             
         }, 
         computed: { //计算属性 取存在状态库中的值
-            
-            
+            ...mapGetters(["selectaid"]),
+            listenselectaid() {
+            return this.selectaid;
+            },
         },
         watch:{
-                
+            listenselectaid (vag) {
+            },    
         },
-        mounted:function(){//页面初始化函数
-        this.getPhddata();
+        mounted:function(){
+            this.getPhddata(this.selectaid);
         }
     }
 </script>

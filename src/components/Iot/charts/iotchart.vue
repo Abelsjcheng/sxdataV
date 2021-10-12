@@ -36,14 +36,14 @@ name: "iotchart",
                 }
                 },
                 indicator: [
-                { name: '电池1电压', max: 50},
-                { name: '电池组电压', max: 50},
-                { name: '24v输出电压', max: 50},
-                { name: '28v输出电压', max: 50},
-                { name: '18v1输出电压', max: 50},
-                { name: '18v2输出电压', max: 50},
-                { name: '外部电压', max: 50},
-                { name: '太阳能电压;', max: 50}
+                  { name: '电池1电压', max: 50},
+                  { name: '电池组电压', max: 50},
+                  { name: '24v输出电压', max: 50},
+                  { name: '28v输出电压', max: 50},
+                  { name: '18v1输出电压', max: 50},
+                  { name: '18v2输出电压', max: 50},
+                  { name: '外部电压', max: 50},
+                  { name: '太阳能电压;', max: 50}
                 ]
             },
             series: [{
@@ -63,23 +63,26 @@ name: "iotchart",
     }
   },
   methods:{
-      getcoldata:function(btime,etime,lim,tid){ //
+      getcoldata:function(selectaid,btime,etime,lim,tid){ //
               //发送get请求
-                  
+                  this.polar.series[0].data=[];
                   this.$http.get('http://110.53.162.165:5050/api/iot/iotbyitl',
                   {params :{begintime:btime,endtime:etime,limit:lim,IMEI:tid}}).then(function (res) {
-                    let length=res.data.data.length-1;
-                    this.polar.series[0].data[0].value=[
-                      res.data.data[length].pow1,
-                      res.data.data[length].grouppow,
-                      res.data.data[length].v24,
-                      res.data.data[length].v28,
-                      res.data.data[length].outv1,
-                      res.data.data[length].outv2,
-                      res.data.data[length].extendpow,
-                      res.data.data[length].solarpow
-                      ];
-                    
+                     for (let i = 0; i<res.data.data.length; i++) {
+                          if(res.data.data[i].dataid==selectaid){
+                              this.polar.series[0].data.value=[
+                                    res.data.data[i].pow1,
+                                    res.data.data[i].grouppow,
+                                    res.data.data[i].v24,
+                                    res.data.data[i].v28,
+                                    res.data.data[i].outv1,
+                                    res.data.data[i].outv2,
+                                    res.data.data[i].extendpow,
+                                    res.data.data[i].solarpow
+                                  ];
+                              this.polar.series[0].data.push(this.polar.series[0].data.value);
+                          }
+                       }
                     })
                     .catch(function (error) {
                       console.log(error);
@@ -91,14 +94,21 @@ name: "iotchart",
      ...mapGetters(["chartSet"]),
      listenchartSet(){  //监听 chartSet值的变化
        return this.chartSet;
-     }
+     },
+     ...mapGetters(["selectaid"]),
+     listenselectaid() {
+      return this.selectaid;
+    },
   },
   watch:{
+    listenselectaid (vag) {
+        // this.getcoldata(vag,"2019-03-16 13:02:31","2019-03-24 15:18:55",20);
+    },
       listenchartSet:{
           handler(vag){  //handler执行具体方法
             if(vag.name=='iot') //
             {
-                this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit,987654321123450);
+                // this.getcoldata(vag.timeframe[0],vag.timeframe[1],vag.limit);
                 this.chartvisible=vag.chartvisible;
             }
         },
@@ -107,8 +117,7 @@ name: "iotchart",
       }
   },
   mounted:function(){//页面初始化函数
-        this.getcoldata("2019-03-17 13:02:31","2019-08-22 15:18:55",20,987654321123450);
-
+        this.getcoldata(this.selectaid,"2019-08-22 13:02:31","2019-08-26 15:18:55",20,862105024042297);
     }
   
  }

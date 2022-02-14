@@ -69,7 +69,7 @@ name: "wlevelchart",
               //发送get请求
                   this.polar.series[0].data=[];
                   this.polar.xAxis.data=[];
-                  this.$http.get('http://110.53.162.165:5050/api/rivervis/envbytl',
+                  this.$http.get('api/rivervis/envbytl',
                   {params :{begintime:btime,endtime:etime,limit:lim}}).then(function (res) {
                        for (let i = 0; i<res.data.data.length; i++) {
                           if(res.data.data[i].aid==selectaid){

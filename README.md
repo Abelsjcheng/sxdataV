@@ -5,7 +5,7 @@
 > 版本：1.9.9   
 
 # 效果演示
-[查看效果请戳这里](http://101.201.150.246:8081/sxdataV/)
+[查看效果请戳这里](https://abelsjcheng.github.io/sxdataV/)
 
 # 项目结构
 ``` bash

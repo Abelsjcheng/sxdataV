@@ -66,7 +66,7 @@ name: "iotchart",
       getcoldata:function(selectaid,btime,etime,lim,tid){ //
               //发送get请求
                   this.polar.series[0].data=[];
-                  this.$http.get('http://110.53.162.165:5050/api/iot/iotbyitl',
+                  this.$http.get('api/iot/iotbyitl',
                   {params :{begintime:btime,endtime:etime,limit:lim,IMEI:tid}}).then(function (res) {
                      for (let i = 0; i<res.data.data.length; i++) {
                           if(res.data.data[i].dataid==selectaid){

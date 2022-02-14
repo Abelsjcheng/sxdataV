@@ -46,7 +46,7 @@ name: "Iotinfo",
     },
     get:function(){ 
             //发送get请求
-            this.$http.get('http://110.53.162.165:5050/api/policy/ten').then(function(res){
+            this.$http.get('api/policy/ten').then(function(res){
                           for (let i = 0; i < res.data.data.length; i++) {
                             this.info={badge:'普通',variant:'info',title:res.data.data[i].title,type:res.data.data[i].type,reldate:res.data.data[i].reldate,content:res.data.data[i].content,adduname:res.data.data[i].adduname,pic:res.data.data[i].pic}
                             this.annoucements.push(this.info) //存入json数组

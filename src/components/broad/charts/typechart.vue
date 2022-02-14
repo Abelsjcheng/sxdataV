@@ -52,7 +52,7 @@ name: "typechart",
   },
    methods: {
     get:function(){ 
-            this.$http.get('http://110.53.162.165:5050/api/btime/bds').then(function(res){
+            this.$http.get('api/btime/bds').then(function(res){
                         
                           this.polar.series[0].data.push({value:res.data.data[0].bcount,name:res.data.data[0].scategory});
                           this.polar.series[0].data.push({value:res.data.data[1].bcount,name:res.data.data[1].scategory});

@@ -53,7 +53,7 @@ export default {
 	},
 	methods:{
 		getprolist:function(){
-            this.$http.get('http://110.53.162.165:5050/api/prosin/proOne').then(function(res){ 
+            this.$http.get('api/prosin/proOne').then(function(res){ 
                             for (let i = 0; i < res.data.data.length; i++) {
                             const info={
                                         id:i,

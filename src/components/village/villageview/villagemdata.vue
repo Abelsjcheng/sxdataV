@@ -36,7 +36,7 @@ export default {
         
         getPartydata:function(){ 
 
-                this.$http.get('http://110.53.162.165:5050/api/count/p_m').then(function(res){  
+                this.$http.get('api/count/p_m').then(function(res){  
                                 this.vmdata.vsum=res.data.data[0].msum;
                                 this.vmdata.vman=res.data.data[0].mman;
                                 this.vmdata.vwoman=res.data.data[0].mwoman;
@@ -45,7 +45,7 @@ export default {
                             },function(){
                         console.log('请求失败处理');
                     });
-                this.$http.get('http://110.53.162.165:5050/api/count/mSort').then(function(res){
+                this.$http.get('api/count/mSort').then(function(res){
                         for (let i = 0; i < res.data.data.length; i++) {
                           
                             const mdata={marea:res.data.data[i].marea,msum:res.data.data[i].msum,man:res.data.data[i].man,woman:res.data.data[i].woman}

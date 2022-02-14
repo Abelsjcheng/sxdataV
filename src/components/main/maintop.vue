@@ -64,7 +64,7 @@ export default {
   components: {mapTheme},//注册组件
   methods:{
     login:function(){
-        window.location.href="http://110.53.162.165:5050/"
+        window.location.href=""
     },
     getTime(){
       let week = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六']//把一周七天用数组的形式方便获取时间索引

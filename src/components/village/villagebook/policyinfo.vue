@@ -40,7 +40,7 @@
         
         getpolicyinfo:function(selectaid){ 
 
-                this.$http.get('http://110.53.162.165:5050/api/policy/infoAll').then(function(res){  
+                this.$http.get('api/policy/infoAll').then(function(res){  
                                 for (let i = 0; i < res.data.data.length; i++) {
                                   if(res.data.data[i].aid==selectaid){
                                     const info={

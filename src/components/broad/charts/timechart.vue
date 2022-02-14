@@ -63,7 +63,7 @@ name: "typechart",
   },
     methods: {
     get:function(){ 
-            this.$http.get('http://110.53.162.165:5050/api/bp/bl').then(function(res){
+            this.$http.get('api/bp/bl').then(function(res){
                         for (let i = 0; i < res.data.data.length; i++) {
                           this.polar.radiusAxis.data.push(res.data.data[i].lenth);
                            this.polar.series[0].data.push(res.data.data[i].count);

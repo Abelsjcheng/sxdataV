@@ -83,7 +83,7 @@ name: "mainmap",
     },
     get:function(){ //3000个终端点
             //发送get请求
-            this.$http.get('http://110.53.162.165:5050/api/gps/iotAll').then(function(res){
+            this.$http.get('api/gps/iotAll').then(function(res){
               
                           for (let i = 0; i < res.data.data.length; i++) {
                             const position = {

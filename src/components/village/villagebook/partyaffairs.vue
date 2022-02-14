@@ -35,7 +35,7 @@
         components: { item, virtualList,infocontent },
         methods: {
             getPhddata:function(selectaid){ 
-                this.$http.get('http://110.53.162.165:5050/api/party/affairAll').then(function(res){  
+                this.$http.get('api/party/affairAll').then(function(res){  
                             
                                 for (let i = 1; i <= res.data.data.length; i++) {
                                     if(res.data.data[i].aid==selectaid){

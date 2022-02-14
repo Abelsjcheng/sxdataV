@@ -125,7 +125,7 @@ export default {
       getcoldata:function(){ //
               //发送get请求
                   this.polar.legend.data=["总面积","农用地小计","耕地","园地","林地","农田水利设施用地","养殖水面","其他农用地"];
-                  this.$http.get('http://110.53.162.165:5050/api/count/g_viiGroup').then(function (res) {
+                  this.$http.get('api/count/g_viiGroup').then(function (res) {
                       
                       for (let i = 0; i<res.data.data.length; i++) {
                           this.polar.angleAxis.data.push(res.data.data[i].grouptype);

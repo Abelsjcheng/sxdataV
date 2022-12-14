@@ -7,16 +7,17 @@
   >
     <ul :style="listStyle">
       <li v-for="(word, index) in list" :key="index" :style="itemStyle">
-      <el-popover
-        placement="top-start"
-        title="led内容"
-        width="200"
-        trigger="hover"
-        :content="word" >
-        <a slot="reference" class="list-title">{{word}} </a>
-      </el-popover>
-      
-      <em class="list-data">2019-07-10 21:20:29 </em>
+        <el-popover
+          placement="top-start"
+          title="led内容"
+          width="200"
+          trigger="hover"
+          :content="word"
+        >
+          <a slot="reference" class="list-title">{{ word }} </a>
+        </el-popover>
+
+        <em class="list-data">2019-07-10 21:20:29 </em>
       </li>
     </ul>
   </div>
@@ -24,13 +25,13 @@
 
 <script>
 export default {
-  name: 'VueSwimlane',
+  name: "VueSwimlane",
 
   props: {
     words: {
       type: Array,
       default: () => {
-        return []
+        return [];
       },
       required: true,
     },
@@ -52,7 +53,7 @@ export default {
     },
     transition: {
       type: String,
-      default: 'ease-out',
+      default: "ease-out",
     },
     circular: {
       type: Boolean,
@@ -74,34 +75,34 @@ export default {
       listTop: 0,
       isPaused: false,
       isMovingBackwards: false,
-    }
+    };
   },
 
   computed: {
     listCount() {
-      return this.list.length
+      return this.list.length;
     },
 
     fontSize() {
       // scale from 16px font size
-      return 16 * this.scale
+      return 16 * this.scale;
     },
 
     itemHeight() {
-      return this.fontSize * 1.5
+      return this.fontSize * 1.5;
     },
 
     listHeight() {
-      return this.itemHeight * this.listCount
+      return this.itemHeight * this.listCount;
     },
 
     listParentHeight() {
-      return this.itemHeight * this.rows
+      return this.itemHeight * this.rows;
     },
 
     itemStyle() {
       return `font-size: ${this.fontSize}px;
-              height: auto;padding-left: 15px;line-height: 32px;overflow: hidden;`
+              height: auto;padding-left: 15px;line-height: 32px;overflow: hidden;`;
     },
 
     listStyle() {
@@ -110,94 +111,92 @@ export default {
               transition-duration: ${this.transitionDuration}ms;
               transition-timing-function: ${this.transition};
               will-change: transform;
-              transform: translateY(${this.listTop}px);`
+              transform: translateY(${this.listTop}px);`;
     },
 
     listParentStyle() {
-      return `height: ${this.listParentHeight}px;`
+      return `height: ${this.listParentHeight}px;`;
     },
   },
 
   // update word list
   watch: {
     words(val) {
-      this.list = val
+      this.list = val;
     },
   },
 
   // copy word list
   created() {
-    this.list = this.words
+    this.list = this.words;
   },
 
   // initiate animation
   mounted() {
-    setTimeout(this.updateState, this.transitionDelay)
+    setTimeout(this.updateState, this.transitionDelay);
   },
 
   methods: {
     updateState() {
       // check if enough keywords or is not paused
-      if (this.listCount <= this.rows) return
-      if (this.isPaused) return
+      if (this.listCount <= this.rows) return;
+      if (this.isPaused) return;
 
       // update list state
       if (this.isMovingBackwards) {
-        this.listTop += this.itemHeight
+        this.listTop += this.itemHeight;
       } else {
-        this.listTop -= this.itemHeight
+        this.listTop -= this.itemHeight;
       }
 
       if (this.circular) {
         // cricular animation
         if (this.listTop < this.rows * this.itemHeight - this.listHeight) {
-          this.listTop += this.itemHeight * (this.rows - 1)
-          this.isMovingBackwards = !this.isMovingBackwards
+          this.listTop += this.itemHeight * (this.rows - 1);
+          this.isMovingBackwards = !this.isMovingBackwards;
         }
 
         if (this.listTop > -this.itemHeight) {
-          this.listTop = 0
-          this.isMovingBackwards = !this.isMovingBackwards
+          this.listTop = 0;
+          this.isMovingBackwards = !this.isMovingBackwards;
         }
       } else if (this.continous) {
         // continous animation
         // BUG: current implmentation does not allow animation :(
 
         if (this.listTop < this.rows * this.itemHeight - this.listHeight) {
-          this.listTop += this.itemHeight
-          this.list.push(this.list.shift())
+          this.listTop += this.itemHeight;
+          this.list.push(this.list.shift());
         }
       }
       // one way animation
       else if (this.listTop < this.rows * this.itemHeight - this.listHeight) {
-        this.listTop = 0
+        this.listTop = 0;
       }
 
       // set time out for next update
       this.timeOutId = window.setTimeout(() => {
-        this.updateState()
-      }, this.transitionDuration + this.transitionDelay)
+        this.updateState();
+      }, this.transitionDuration + this.transitionDelay);
     },
 
     // pause/resume animaiton on hover
     toggleAnimation() {
       if (this.pauseOnHover) {
-        this.isPaused = !this.isPaused
+        this.isPaused = !this.isPaused;
 
         if (this.isPaused) {
-          clearTimeout(this.timeOutId)
+          clearTimeout(this.timeOutId);
         } else {
-          this.updateState()
+          this.updateState();
         }
       }
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
-
-
 .vue-swimlane {
   overflow: hidden !important;
 }
@@ -209,21 +208,20 @@ export default {
 }
 
 .vue-swimlane ul li {
-  
   padding: 0 !important;
   margin: 0 !important;
 }
-.list-data{
-  width:50%;
+.list-data {
+  width: 50%;
   font-size: 12px;
-    color: #999;
-    line-height: 32px;
-    height: 32px;
-    float: right;
-    text-align: right;
-    padding-right:3px; 
+  color: #999;
+  line-height: 32px;
+  height: 32px;
+  float: right;
+  text-align: right;
+  padding-right: 3px;
 }
-.list-title{
+.list-title {
   margin-left: 5px;
   width: 46%;
   overflow: hidden;

@@ -25,7 +25,7 @@ export function dateFormat(date) {
             if (new RegExp("(" + k + ")").test(format))
                 format = format.replace(RegExp.$1,
                     RegExp.$1.length == 1 ? o[k] :
-                    ("00" + o[k]).substr(("" + o[k]).length));
+                        ("00" + o[k]).substr(("" + o[k]).length));
         return format;
     }
     return '';
@@ -34,7 +34,7 @@ export function dateFormat(date) {
 export function timeAgo(time) {
     const between = Date.now() / 1000 - Number(time)
     if (between < 3600) {
-         return pluralize(~~(between / 60), ' minute')
+        return pluralize(~~(between / 60), ' minute')
     } else if (between < 86400) {
         return pluralize(~~(between / 3600), ' hour')
     } else {
